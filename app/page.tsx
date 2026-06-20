@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 
 // ==========================================
-// 1. INLINE SVG ICONS (Native, fast, and secure)
+// 1. INLINE SVG ICONS (Ensures Turbopack compatibility)
 // ==========================================
 const GithubIcon = ({ className = "h-5 w-5" }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={className} strokeLinecap="round" strokeLinejoin="round">
@@ -30,6 +30,19 @@ const MailIcon = ({ className = "h-5 w-5" }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={className} strokeLinecap="round" strokeLinejoin="round">
     <rect width="20" height="16" x="2" y="4" rx="2" />
     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+  </svg>
+);
+
+const PhoneIcon = ({ className = "h-5 w-5" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={className} strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+  </svg>
+);
+
+const MapPinIcon = ({ className = "h-5 w-5" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={className} strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+    <circle cx="12" cy="10" r="3" />
   </svg>
 );
 
@@ -87,7 +100,7 @@ const XIcon = ({ className = "h-6 w-6" }) => (
 );
 
 // ==========================================
-// 2. STRUCTURAL DATA & TYPINGS
+// 2. PROJECT SCHEMA & STRUCTURAL DATA
 // ==========================================
 interface Project {
   title: string;
@@ -95,150 +108,146 @@ interface Project {
   description: string;
   githubUrl: string;
   liveUrl?: string;
-  category: 'AI & RAG' | 'Automation' | 'Web & API';
+  category: 'Business Tools' | 'AI / RAG Engineering';
 }
 
-const PROJECTS: Project[] = [
+const PROJECTS_DATA: Project[] = [
+  // --- Business Tools ---
   {
-    title: 'DocuQuery — RAG Document Analysis',
-    technologies: ['Python', 'RAG', 'Streamlit', 'ChromaDB', 'Sentence Transformers'],
-    description: 'Upload any PDF and ask questions. Built with Retrieval-Augmented Generation using Sentence Transformers for embeddings and ChromaDB for vector storage. 100% free, no API keys needed.',
-    githubUrl: 'https://github.com/Abdulgeni/docuquery',
-    liveUrl: 'https://docuquery.streamlit.app',
-    category: 'AI & RAG'
+    title: 'SaaS AI Platform',
+    technologies: ['Next.js 16', 'TypeScript', 'PostgreSQL (Neon)', 'Prisma', 'NextAuth.js', 'Stripe', 'Gemini 2.5 Flash', 'Vercel'],
+    description: 'Full multi-tenant SaaS with Google/email authentication, Stripe subscription billing with webhook handlers, and an AI-powered feature. Production-grade: Prisma ORM, protected routes by subscription status, CI/CD via Vercel.',
+    githubUrl: 'https://github.com/Abdulgeni/ai-saas',
+    category: 'Business Tools'
   },
   {
-    title: 'Multi-Document RAG',
-    technologies: ['Python', 'RAG', 'Streamlit', 'Vector Databases'],
-    description: 'Query multiple PDFs simultaneously. Upload any number of documents and search across all of them at once. Features source attribution showing which document each result came from.',
-    githubUrl: 'https://github.com/Abdulgeni/multidoc-rag',
-    liveUrl: 'https://multidoc-rag.streamlit.app',
-    category: 'AI & RAG'
+    title: 'AI WhatsApp Customer Support Bot',
+    technologies: ['Python', 'LangChain', 'Twilio', 'ChromaDB', 'OpenAI API'],
+    description: '24/7 customer support bot deployable on WhatsApp — answers queries using a RAG knowledge base. Handles multi-turn conversation with per-user memory and escalates to a human agent when confidence is low.',
+    githubUrl: 'https://github.com/Abdulgeni/support-bot',
+    category: 'Business Tools'
   },
+  {
+    title: 'Embeddable AI Chatbot Widget',
+    technologies: ['Next.js', 'TypeScript', 'LangChain', 'ChromaDB', 'Gemini API', 'Vercel'],
+    description: 'RAG-powered chat widget embeddable on any website via a single script tag. Customizable bot name, colors, and greeting; zero external dependencies for the host site.',
+    githubUrl: 'https://github.com/Abdulgeni/chat-widget',
+    category: 'Business Tools'
+  },
+  {
+    title: 'AI Email Automation System',
+    technologies: ['n8n', 'OpenAI API', 'Gmail API', 'Webhooks'],
+    description: 'Reads incoming emails, classifies intent, generates a tailored draft reply, and notifies the team via Slack. Saves 2–3 hours/day of manual email handling.',
+    githubUrl: 'https://github.com/Abdulgeni/email-automation',
+    category: 'Business Tools'
+  },
+  {
+    title: 'AI Invoice & Document Data Extractor',
+    technologies: ['Next.js', 'TypeScript', 'Gemini 2.5 Flash Vision API', 'Tailwind CSS', 'Vercel'],
+    description: 'Uploads any invoice or document — extracts vendor, amount, date, and line items as structured data in under 2 seconds. Exports to CSV.',
+    githubUrl: 'https://github.com/Abdulgeni/invoice-extractor',
+    category: 'Business Tools'
+  },
+  {
+    title: 'AI Social Media Content Automation',
+    technologies: ['n8n', 'Gemini 2.0 Flash API', 'Buffer API', 'Webhooks', 'REST APIs'],
+    description: 'Generates platform-optimised posts for Instagram, LinkedIn, and Twitter from a single topic and auto-schedules them via Buffer API. Fully automated from idea to published post.',
+    githubUrl: 'https://github.com/Abdulgeni/social-automation',
+    category: 'Business Tools'
+  },
+
+  // --- AI / RAG Engineering ---
   {
     title: 'Agentic RAG — AI Agent with Tool Calling',
-    technologies: ['Python', 'RAG', 'AI Agents', 'Tool Calling', 'Streamlit'],
-    description: 'An AI agent that searches documents, evaluates if results are sufficient, refines queries when needed, and explains its reasoning step by step. Demonstrates autonomous decision-making in RAG pipelines.',
+    technologies: ['Python', 'LangChain', 'ChromaDB', 'Streamlit'],
+    description: 'Autonomous AI agent that evaluates search quality, refines queries iteratively, and surfaces chain-of-thought reasoning. Reduces manual search iterations by 80%+ vs naive retrieval.',
     githubUrl: 'https://github.com/Abdulgeni/agentic-rag',
     liveUrl: 'https://agentic-rag.streamlit.app',
-    category: 'AI & RAG'
-  },
-  {
-    title: 'Real-Time AI Assistant',
-    technologies: ['Python', 'RAG', 'Real-Time APIs', 'Streaming', 'Streamlit'],
-    description: 'Live data retrieval meets RAG. Fetches real-time information from external APIs and answers questions instantly with streaming response simulation.',
-    githubUrl: 'https://github.com/Abdulgeni/realtime-rag',
-    liveUrl: 'https://realtime-rag.streamlit.app',
-    category: 'AI & RAG'
-  },
-  {
-    title: 'Multimodal RAG — Text + Images',
-    technologies: ['Python', 'CLIP Model', 'RAG', 'Multimodal Embeddings'],
-    description: 'Upload PDFs and images together. One search across all content types. Uses the CLIP model for multimodal embeddings.',
-    githubUrl: 'https://github.com/Abdulgeni/multimodal-rag',
-    liveUrl: 'https://multimodal-rag.streamlit.app',
-    category: 'AI & RAG'
-  },
-  {
-    title: 'GraphRAG — Knowledge Graph + RAG',
-    technologies: ['Python', 'Knowledge Graph', 'RAG', 'Entity Extraction'],
-    description: 'Smarter retrieval using entity relationships. Extracts people, organizations, technologies, and concepts, then builds a knowledge graph to find connected information beyond text similarity.',
-    githubUrl: 'https://github.com/Abdulgeni/graphrag',
-    liveUrl: 'https://graphrag.streamlit.app',
-    category: 'AI & RAG'
-  },
-  {
-    title: 'IBM Guided RAG with LangChain',
-    technologies: ['Python', 'LangChain', 'ChromaDB', 'Grounding Validation'],
-    description: 'Production-grade RAG following IBM enterprise architecture. Features intelligent chunking with overlap, metadata tracking, ChromaDB vector storage, and response grounding validation.',
-    githubUrl: 'https://github.com/Abdulgeni/ibm-rag',
-    liveUrl: 'https://ibm-rag.streamlit.app',
-    category: 'AI & RAG'
-  },
-  {
-    title: 'LangChain RAG Agent with Memory',
-    technologies: ['Python', 'LangChain', 'AI Agents', 'Conversation Memory'],
-    description: 'Production-ready RAG agent with document search tools, entity extraction, conversation memory, and chain-of-thought reasoning following LangChain agent architecture patterns.',
-    githubUrl: 'https://github.com/Abdulgeni/langchain-agent',
-    liveUrl: 'https://langchain-agent.streamlit.app',
-    category: 'AI & RAG'
-  },
-  {
-    title: 'Document Analysis with LLM Patterns',
-    technologies: ['Python', 'LLM Patterns', 'PDF Parsing', 'Structure Analysis'],
-    description: 'Extract text, analyze document structure, identify key entities, generate summaries, and prepare Q&A pairs from PDFs. Built following LLM document processing patterns.',
-    githubUrl: 'https://github.com/Abdulgeni/document-analysis',
-    liveUrl: 'https://document-analysis.streamlit.app',
-    category: 'AI & RAG'
-  },
-  {
-    title: 'DocuDigest — AI Document Summarizer',
-    technologies: ['Python', 'OpenAI GPT', 'Streamlit', 'Summarization'],
-    description: 'AI-powered document summarizer using OpenAI GPT models. Paste any text and get an instant bullet-point summary. Features adjustable creativity settings and downloadable results.',
-    githubUrl: 'https://github.com/Abdulgeni/docusumm',
-    liveUrl: 'https://docusumm.streamlit.app',
-    category: 'AI & RAG'
+    category: 'AI / RAG Engineering'
   },
   {
     title: 'VulnAlert Bot — Security Monitoring',
-    technologies: ['n8n Automation', 'GitHub Webhooks', 'Slack API', 'Security'],
-    description: 'Real-time security monitoring bot that detects vulnerability-related issues in GitHub repositories and instantly alerts teams via Slack. Built with n8n workflow automation, GitHub Webhooks, and Slack API.',
-    githubUrl: 'https://github.com/Abdulgeni/vulnalert-bot',
-    category: 'Automation'
+    technologies: ['n8n', 'Python', 'GitHub Webhooks', 'Slack API'],
+    description: 'Event-driven automation engine monitoring GitHub repositories for security-related keywords in real time. Delivers Slack alerts within 5 seconds of a suspicious code push.',
+    githubUrl: 'https://github.com/Abdulgeni/vulnalert',
+    category: 'AI / RAG Engineering'
   },
   {
-    title: 'JS Summary API — REST API',
-    technologies: ['Node.js', 'Express', 'REST API', 'JavaScript'],
-    description: 'RESTful API built with Node.js and Express for text summarization. Features health check endpoint and compression ratio calculation. Demonstrates JavaScript backend development skills.',
+    title: 'Multi-Document RAG',
+    technologies: ['Python', 'Sentence Transformers', 'ChromaDB'],
+    description: 'Simultaneous search across multiple PDFs with per-result source attribution. Extended with CLIP embeddings for combined text and image retrieval.',
+    githubUrl: 'https://github.com/Abdulgeni/multidoc-rag',
+    liveUrl: 'https://multidoc-rag.streamlit.app',
+    category: 'AI / RAG Engineering'
+  },
+  {
+    title: 'Multimodal RAG — Text + Images',
+    technologies: ['Python', 'CLIP', 'ChromaDB'],
+    description: 'Unified search pipeline across PDFs and images using CLIP model embeddings for true multimodal retrieval.',
+    githubUrl: 'https://github.com/Abdulgeni/multimodal-rag',
+    liveUrl: 'https://multimodal-rag.streamlit.app',
+    category: 'AI / RAG Engineering'
+  },
+  {
+    title: 'Developer Portfolio',
+    technologies: ['Next.js', 'React', 'Tailwind CSS', 'Vercel', 'Figma'],
+    description: 'Server-side rendered portfolio with clean design, performance optimizations, and layout structures to target high Lighthouse audit metrics.',
+    githubUrl: 'https://github.com/Abdulgeni/my-portfolio',
+    liveUrl: 'https://abdulgeni-abdulaziz.vercel.app',
+    category: 'AI / RAG Engineering'
+  },
+  {
+    title: 'JS Summary API',
+    technologies: ['Node.js', 'Express', 'JavaScript'],
+    description: 'RESTful text summarization API with health check endpoint and compression ratio calculation. Demonstrates clean JavaScript routing logic.',
     githubUrl: 'https://github.com/Abdulgeni/js-summary-api',
-    category: 'Web & API'
-  },
-  {
-    title: 'Personal Developer Portfolio',
-    technologies: ['Next.js', 'React', 'Tailwind CSS', 'Vercel'],
-    description: 'A high-performance, server-side rendered portfolio website featuring structured responsive designs, dynamic custom elements, and highly automated CI/CD deployment.',
-    githubUrl: 'https://github.com/Abdulgeni/portfolio',
-    category: 'Web & API'
+    category: 'AI / RAG Engineering'
   }
 ];
 
-interface TimelineItem {
-  period: string;
+interface JobExperience {
   role: string;
-  institution: string;
-  description: string;
+  company: string;
+  period: string;
+  highlights: string[];
 }
 
-const EXPERIENCE: TimelineItem[] = [
+const EXPERIENCE_DATA: JobExperience[] = [
   {
-    period: 'Present',
-    role: 'Computer Science & Engineering Student',
-    institution: 'University Program',
-    description: 'Focusing on algorithmic foundations, systems engineering, database structures, and practical applications of generative AI systems.'
+    role: 'AI Systems Engineer',
+    company: 'Independent Engineering (Remote)',
+    period: '2024 – Present',
+    highlights: [
+      'Architected 20+ production AI systems including RAG pipelines, WhatsApp customer support bots, and embeddable chat widgets using LangChain, ChromaDB, and OpenAI/Gemini API.',
+      'Built an AI WhatsApp support bot handling customer queries 24/7 using RAG-powered knowledge base retrieval — deployable for any business within hours.',
+      'Engineered an embeddable AI chatbot widget added to any website via a single script tag, with streaming responses and customizable branding.',
+      'Designed and shipped VulnAlert Bot — an event-driven GitHub security monitor delivering Slack alerts within 5 seconds of a suspicious commit.',
+      'Implemented n8n and Zapier automation workflows including AI email classification, social media content generation, and auto-reply systems, eliminating 15+ hours/week of manual operations per client.'
+    ]
   },
   {
-    period: '2023 - Present',
-    role: 'Freelance Full-Stack Developer & AI Automation Specialist',
-    institution: 'Self-employed',
-    description: 'Designing automation workflows with n8n, implementing generative AI APIs, and constructing responsive Next.js frontend architectures.'
+    role: 'Full Stack Software Engineer',
+    company: 'Independent Engineering (Remote)',
+    period: '2024 – Present',
+    highlights: [
+      'Engineered 15+ production web applications end-to-end — from system design through deployment — using React, Next.js, Node.js, and Python.',
+      'Built a full SaaS platform with user authentication (NextAuth.js), Stripe subscription billing, and an AI feature — complete multi-tenant product from database schema to production deployment.',
+      'Developed an AI invoice and document data extractor using Gemini Vision API, outputting structured data to CSV automatically from any uploaded PDF.',
+      'Built an AI social media automation tool generating platform-specific posts for Instagram, LinkedIn, and Twitter from a single topic.',
+      'Integrated third-party APIs (Airtable, Slack, Stripe, ClickUp, GitHub) into client applications, enabling real-time cross-platform synchronisation.'
+    ]
   }
 ];
 
 // ==========================================
-// 3. MAIN PORTFOLIO COMPONENT
+// 3. MAIN COMPONENT LOGIC
 // ==========================================
 export default function Portfolio() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState<string>('All');
+  const [projectGroup, setProjectGroup] = useState<'Business Tools' | 'AI / RAG Engineering'>('Business Tools');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [formMessage, setFormMessage] = useState('');
-
-  const categories = ['All', 'AI & RAG', 'Automation', 'Web & API'];
-
-  const filteredProjects = selectedFilter === 'All' 
-    ? PROJECTS 
-    : PROJECTS.filter(project => project.category === selectedFilter);
 
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -256,7 +265,7 @@ export default function Portfolio() {
 
       if (response.ok) {
         setFormStatus('success');
-        setFormMessage(data.message || 'Your message was sent successfully!');
+        setFormMessage(data.message || 'Thank you! Your message was received.');
         setFormData({ name: '', email: '', message: '' });
       } else {
         setFormStatus('error');
@@ -264,7 +273,7 @@ export default function Portfolio() {
       }
     } catch (err) {
       setFormStatus('error');
-      setFormMessage('Something went wrong. Please verify your connection.');
+      setFormMessage('An unexpected communication error occurred. Please try again.');
     }
   };
 
@@ -272,21 +281,23 @@ export default function Portfolio() {
     <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-indigo-500/30 selection:text-indigo-200">
       
       {/* Sticky Blurred Header */}
-      <header className="sticky top-0 z-50 w-full border-b border-slate-800/60 bg-slate-950/80 backdrop-blur-md">
+      <header className="sticky top-0 z-50 w-full border-b border-slate-900 bg-slate-950/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a href="#" className="text-xl font-bold tracking-tight text-white">
             Abdulgeni<span className="text-indigo-400">.</span>
           </a>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation Links */}
           <nav className="hidden items-center space-x-8 text-sm font-medium text-slate-400 md:flex">
             <a href="#about" className="transition-colors hover:text-indigo-400">About</a>
-            <a href="#projects" className="transition-colors hover:text-indigo-400">Projects</a>
+            <a href="#skills" className="transition-colors hover:text-indigo-400">Skills</a>
             <a href="#experience" className="transition-colors hover:text-indigo-400">Experience</a>
+            <a href="#projects" className="transition-colors hover:text-indigo-400">Projects</a>
+            <a href="#education-certs" className="transition-colors hover:text-indigo-400">Education</a>
             <a href="#contact" className="transition-colors hover:text-indigo-400">Contact</a>
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Icon */}
           <button 
             className="text-slate-400 hover:text-white md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -296,38 +307,16 @@ export default function Portfolio() {
           </button>
         </div>
 
-        {/* Mobile Dropdown Navigation */}
+        {/* Mobile Dropdown */}
         {isMobileMenuOpen && (
-          <nav className="border-b border-slate-800 bg-slate-950 px-6 py-4 md:hidden">
+          <nav className="border-b border-slate-900 bg-slate-950 px-6 py-4 md:hidden">
             <div className="flex flex-col space-y-4 text-sm font-medium text-slate-400">
-              <a 
-                href="#about" 
-                onClick={() => setIsMobileMenuOpen(false)} 
-                className="transition-colors hover:text-indigo-400"
-              >
-                About
-              </a>
-              <a 
-                href="#projects" 
-                onClick={() => setIsMobileMenuOpen(false)} 
-                className="transition-colors hover:text-indigo-400"
-              >
-                Projects
-              </a>
-              <a 
-                href="#experience" 
-                onClick={() => setIsMobileMenuOpen(false)} 
-                className="transition-colors hover:text-indigo-400"
-              >
-                Experience
-              </a>
-              <a 
-                href="#contact" 
-                onClick={() => setIsMobileMenuOpen(false)} 
-                className="transition-colors hover:text-indigo-400"
-              >
-                Contact
-              </a>
+              <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-indigo-400">About</a>
+              <a href="#skills" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-indigo-400">Skills</a>
+              <a href="#experience" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-indigo-400">Experience</a>
+              <a href="#projects" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-indigo-400">Projects</a>
+              <a href="#education-certs" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-indigo-400">Education</a>
+              <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-indigo-400">Contact</a>
             </div>
           </nav>
         )}
@@ -335,207 +324,286 @@ export default function Portfolio() {
 
       <main className="mx-auto max-w-6xl px-6 py-12 space-y-28">
 
-        {/* Hero Section */}
+        {/* Hero Area */}
         <section className="flex flex-col-reverse items-center justify-between gap-12 pt-8 md:flex-row md:pt-16">
           <div className="flex-1 space-y-6 text-center md:text-left">
-            <div className="inline-flex items-center space-x-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-300">
-              <span>Open to Freelance & Internships</span>
+            <div className="inline-flex items-center space-x-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-300">
+              <span>Active in Addis Ababa, Ethiopia & Remote Workbases</span>
             </div>
-            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Abdulgeni Abdulaziz Jemal
-            </h1>
-            <p className="text-lg text-slate-400 sm:text-xl font-medium">
-              Computer Science & Engineering Student, Full-Stack Developer & AI Automation Engineer
-            </p>
+            
+            <div className="space-y-3">
+              <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Abdulgeni Abdulaziz
+              </h1>
+              <p className="text-lg font-medium text-indigo-400 sm:text-xl">
+                Full Stack AI Engineer · RAG Systems · Workflow Automation · Next.js
+              </p>
+            </div>
+
             <p className="max-w-xl text-sm leading-relaxed text-slate-400 sm:text-base">
-              I build web architectures using React, Next.js, and Python. I interface with AI architectures to parse complex document datasets, and build custom workspaces with tools like n8n to eliminate repetitive workflows.
+              I design and ship production-grade RAG pipelines, secure WhatsApp agents, embeddable client widgets, and SaaS frameworks. Certified in Cybersecurity (CC) by ISC², ensuring all applications are built safe and robust by design.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 md:justify-start">
-              <a 
-                href="#projects" 
-                className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-500"
-              >
-                View Work
+
+            {/* Quick Contact Badges */}
+            <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-slate-400 md:justify-start">
+              <span className="flex items-center gap-1.5">
+                <MapPinIcon className="h-4 w-4 text-indigo-400" /> Addis Ababa, Ethiopia
+              </span>
+              <span className="flex items-center gap-1.5">
+                <PhoneIcon className="h-4 w-4 text-indigo-400" /> +251 910 963 110
+              </span>
+              <span className="flex items-center gap-1.5">
+                <MailIcon className="h-4 w-4 text-indigo-400" /> abdulgeniabdulaziz@gmail.com
+              </span>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-2 md:justify-start">
+              <a href="#projects" className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-500 shadow-sm">
+                Explore Project Catalog
               </a>
-              <a 
-                href="#contact" 
-                className="inline-flex items-center justify-center rounded-lg border border-slate-700 bg-slate-900/50 px-5 py-2.5 text-sm font-semibold text-slate-200 transition hover:bg-slate-800"
-              >
+              <a href="#contact" className="inline-flex items-center justify-center rounded-lg border border-slate-800 bg-slate-900/40 px-5 py-2.5 text-sm font-semibold text-slate-200 transition hover:bg-slate-800">
                 Contact Me
               </a>
             </div>
           </div>
 
-          {/* Profile Placeholder Icon */}
+          {/* Profile Graphics Area */}
           <div className="flex items-center justify-center">
-            <div className="relative flex h-48 w-48 items-center justify-center rounded-full border border-slate-800 bg-gradient-to-br from-slate-900 to-indigo-950/40 p-1 sm:h-56 sm:w-56">
+            <div className="relative flex h-48 w-48 items-center justify-center rounded-full border border-slate-800 bg-gradient-to-br from-slate-950 to-indigo-900/30 p-1 sm:h-56 sm:w-56">
               <div className="flex h-full w-full items-center justify-center rounded-full bg-slate-950">
-                <CodeIcon className="h-16 w-16 text-indigo-500/80" />
+                <CodeIcon className="h-16 w-16 text-indigo-400/80" />
               </div>
             </div>
           </div>
         </section>
 
-        {/* About & Skills Section */}
-        <section id="about" className="scroll-mt-24 space-y-8">
+        {/* Professional Summary Section */}
+        <section id="about" className="scroll-mt-24 space-y-6">
           <div className="border-t border-slate-900 pt-12">
-            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">About Me</h2>
-            <div className="mt-6 grid gap-8 md:grid-cols-3">
-              <div className="md:col-span-2 space-y-4 text-slate-400 leading-relaxed text-sm sm:text-base">
-                <p>
-                  I'm a Computer Science & Engineering student with a builder's mindset and an obsession with making things work. My world sits at the intersection of full-stack development, artificial intelligence, and automation.
-                </p>
-                <p>
-                  I build complete web applications using React, Next.js, and Python. I train AI models to summarize documents and extract insights. I design automated workflows with n8n that connect tools and eliminate repetitive work. And I do it all with a security-first approach, because working software isn't enough—it has to be safe.
-                </p>
-                <p>
-                  Every project in my portfolio started as a real problem I wanted to solve. From an AI document summarizer to a GitHub security alert bot, I believe the best way to learn is to build, deploy, and iterate.
-                </p>
-              </div>
+            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Professional Summary</h2>
+            <p className="mt-4 text-sm leading-relaxed text-slate-400 sm:text-base max-w-4xl">
+              Full Stack AI Engineer with production experience designing and shipping RAG pipelines, AI-powered chatbots, workflow automation systems, and SaaS products for commercial clients. I have architected over 15 production systems including RAG applications, WhatsApp bots, embeddable chat widgets, and email automation pipelines. I own the full engineering lifecycle—system design, backend APIs, frontend interfaces, and deployment—while holding an ISC² certification in cybersecurity to keep data transmission and storage safe.
+            </p>
+          </div>
+        </section>
 
-              {/* Core Skills block */}
-              <div className="rounded-xl border border-slate-800 bg-slate-900/30 p-6 space-y-4">
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">Core Expertise</h3>
-                <div className="flex flex-wrap gap-2">
-                  {['Python', 'JavaScript', 'React', 'Next.js', 'Node.js', 'AI/ML', 'RAG Systems', 'Vector Databases', 'n8n Automation', 'REST APIs', 'Git', 'Cybersecurity'].map((skill) => (
-                    <span 
-                      key={skill} 
-                      className="rounded-md bg-slate-900 border border-slate-800 px-2.5 py-1 text-xs text-slate-300 font-mono"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+        {/* Technical Skills Section */}
+        <section id="skills" className="scroll-mt-24 space-y-8">
+          <div className="border-t border-slate-900 pt-12">
+            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Technical Spectrum</h2>
+            <p className="mt-1 text-sm text-slate-400">Languages, frameworks, and utility platforms utilized in development pipelines.</p>
+            
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                { category: 'AI & RAG Engineering', list: ['OpenAI API', 'Gemini API', 'LangChain', 'RAG', 'ChromaDB', 'Sentence Transformers', 'Hugging Face', 'CLIP', 'Prompt Engineering'] },
+                { category: 'Workflow Automation', list: ['n8n', 'Zapier', 'GitHub Actions', 'Slack API', 'REST APIs', 'Webhooks', 'Airtable', 'ClickUp', 'Buffer API'] },
+                { category: 'Frontend Architecture', list: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Figma', 'Responsive UI Design'] },
+                { category: 'Backend Systems', list: ['Node.js', 'Express', 'Python', 'PostgreSQL', 'NeonDB', 'Prisma ORM', 'Docker basics', 'Vercel'] },
+                { category: 'Auth, Payments & Security', list: ['NextAuth.js', 'Stripe payments', 'ISC² CC (Cybersecurity)', 'OWASP Top 10', 'Secure Coding', 'Vulnerability Assessment'] },
+                { category: 'Programming Languages', list: ['Python', 'JavaScript (ES6+)', 'TypeScript', 'SQL', 'HTML5/CSS3', 'Bash', 'C++', 'Rust'] }
+              ].map((skillBlock, idx) => (
+                <div key={idx} className="rounded-xl border border-slate-900 bg-slate-950/40 p-6 space-y-4">
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">{skillBlock.category}</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {skillBlock.list.map((skill) => (
+                      <span key={skill} className="rounded bg-slate-900/50 border border-slate-800/60 px-2 py-1 text-xs text-slate-300 font-mono">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Work Experience Section */}
+        <section id="experience" className="scroll-mt-24 space-y-8">
+          <div className="border-t border-slate-900 pt-12">
+            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Professional Engineering History</h2>
+            <div className="mt-8 space-y-12">
+              {EXPERIENCE_DATA.map((job, idx) => (
+                <div key={idx} className="relative border-l border-slate-800 pl-6 space-y-4">
+                  {/* Timeline dot node */}
+                  <div className="absolute -left-[6px] top-1.5 h-3.5 w-3.5 rounded-full border border-indigo-500 bg-slate-950" />
+                  
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                    <h3 className="text-lg font-bold text-white">{job.role}</h3>
+                    <span className="text-xs font-mono text-indigo-400">{job.period}</span>
+                  </div>
+                  <p className="text-sm font-medium text-slate-400">{job.company}</p>
+                  
+                  <ul className="space-y-2 text-sm text-slate-400 list-disc list-inside leading-relaxed pl-2">
+                    {job.highlights.map((highlight, index) => (
+                      <li key={index}>{highlight}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Projects Grid Section */}
         <section id="projects" className="scroll-mt-24 space-y-8">
-          <div className="flex flex-col justify-between gap-4 border-t border-slate-900 pt-12 sm:flex-row sm:items-center">
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Selected Projects</h2>
-              <p className="mt-1 text-sm text-slate-400">A demonstration of solutions across RAG systems, web platforms, and automated workflows.</p>
+          <div className="border-t border-slate-900 pt-12">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+              <div>
+                <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Shipped Systems</h2>
+                <p className="mt-1 text-sm text-slate-400">Explore complete AI integrations, automation roadmaps, and full-stack utilities.</p>
+              </div>
+
+              {/* Segment Toggle Filter */}
+              <div className="flex border border-slate-800 rounded-lg p-1 bg-slate-950">
+                {(['Business Tools', 'AI / RAG Engineering'] as const).map((group) => (
+                  <button
+                    key={group}
+                    onClick={() => setProjectGroup(group)}
+                    className={`rounded-md px-3.5 py-1.5 text-xs font-semibold transition-all ${
+                      projectGroup === group
+                        ? 'bg-indigo-600 text-white'
+                        : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    {group}
+                  </button>
+                ))}
+              </div>
             </div>
 
-            {/* Interactive Filters */}
-            <div className="flex flex-wrap gap-2">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedFilter(cat)}
-                  className={`rounded-md px-3 py-1.5 text-xs font-semibold transition-all ${
-                    selectedFilter === cat
-                      ? 'bg-indigo-600 text-white shadow-sm'
-                      : 'border border-slate-800 bg-slate-900/30 text-slate-400 hover:bg-slate-800 hover:text-slate-200'
-                  }`}
+            {/* Shipped Systems Grid */}
+            <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {PROJECTS_DATA.filter(p => p.category === projectGroup).map((project, idx) => (
+                <div 
+                  key={idx}
+                  className="flex flex-col justify-between rounded-xl border border-slate-900 bg-slate-950/20 p-6 transition-all duration-300 hover:border-slate-800/80 hover:bg-slate-900/10"
                 >
-                  {cat}
-                </button>
-              ))}
-            </div>
-          </div>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-mono text-indigo-400">{project.category}</span>
+                      <div className="flex items-center space-x-3">
+                        <a 
+                          href={project.githubUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-slate-500 hover:text-slate-200 transition-colors"
+                          aria-label="GitHub Repository"
+                        >
+                          <GithubIcon className="h-5 w-5" />
+                        </a>
+                        {project.liveUrl && (
+                          <a 
+                            href={project.liveUrl} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-slate-500 hover:text-indigo-400 transition-colors"
+                            aria-label="Live Demo Link"
+                          >
+                            <ExternalLinkIcon className="h-4 w-4" />
+                          </a>
+                        )}
+                      </div>
+                    </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {filteredProjects.map((project) => (
-              <div 
-                key={project.title} 
-                className="group flex flex-col justify-between rounded-xl border border-slate-800 bg-slate-900/20 p-6 transition-all duration-300 hover:border-slate-700/80 hover:bg-slate-900/40"
-              >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono font-medium text-indigo-400">
-                      {project.category}
-                    </span>
-                    <div className="flex items-center space-x-3">
+                    <h3 className="text-base font-bold text-white group-hover:text-indigo-300 transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-400 leading-relaxed line-clamp-5">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 space-y-4">
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.technologies.map((tech) => (
+                        <span key={tech} className="rounded bg-slate-900/60 border border-slate-800/50 px-2 py-0.5 text-[10px] sm:text-xs font-mono text-slate-400">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center justify-between border-t border-slate-900 pt-3 text-xs font-medium">
                       <a 
                         href={project.githubUrl} 
                         target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="text-slate-500 hover:text-slate-300 transition-colors"
-                        aria-label={`${project.title} github link`}
+                        rel="noopener noreferrer"
+                        className="text-indigo-400 hover:text-indigo-300 transition-colors flex items-center gap-1"
                       >
-                        <GithubIcon className="h-5 w-5" />
+                        Source Code <ExternalLinkIcon className="h-3 w-3" />
                       </a>
                       {project.liveUrl && (
                         <a 
                           href={project.liveUrl} 
                           target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="text-slate-500 hover:text-indigo-400 transition-colors"
-                          aria-label={`${project.title} live demo`}
+                          rel="noopener noreferrer"
+                          className="text-slate-400 hover:text-white transition-colors"
                         >
-                          <ExternalLinkIcon className="h-4 w-4" />
+                          View Live Deployment
                         </a>
                       )}
                     </div>
                   </div>
-                  <h3 className="mt-3 text-lg font-semibold text-white group-hover:text-indigo-300 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-400 line-clamp-4 leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-
-                <div className="mt-6 space-y-4">
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.technologies.map((tech) => (
-                      <span 
-                        key={tech} 
-                        className="rounded bg-slate-900/80 border border-slate-800/80 px-2 py-0.5 text-xs text-slate-400 font-mono"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex items-center justify-between pt-2">
-                    <a 
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-xs font-medium text-indigo-400 hover:text-indigo-300 transition-colors gap-1"
-                    >
-                      Explore Codebase <ExternalLinkIcon className="h-3 w-3" />
-                    </a>
-                    {project.liveUrl && (
-                      <a 
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs font-medium text-slate-400 hover:text-slate-200 transition-colors"
-                      >
-                        Live Demo
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Experience Timeline Section */}
-        <section id="experience" className="scroll-mt-24 space-y-8">
-          <div className="border-t border-slate-900 pt-12">
-            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Professional Timeline</h2>
-            <div className="mt-8 space-y-8 relative before:absolute before:inset-0 before:left-4 before:h-full before:w-px before:bg-slate-800">
-              {EXPERIENCE.map((exp, idx) => (
-                <div key={idx} className="relative pl-10 group">
-                  {/* Timeline dot */}
-                  <div className="absolute left-1.5 top-1.5 h-5 w-5 rounded-full border border-indigo-500/50 bg-slate-950 flex items-center justify-center transition-all group-hover:border-indigo-400">
-                    <div className="h-2.5 w-2.5 rounded-full bg-indigo-500" />
-                  </div>
-                  <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
-                    <span className="text-xs font-mono font-semibold text-indigo-400">{exp.period}</span>
-                    <span className="text-xs text-slate-500">{exp.institution}</span>
-                  </div>
-                  <h3 className="mt-1 text-lg font-semibold text-white">{exp.role}</h3>
-                  <p className="mt-2 text-sm text-slate-400 leading-relaxed max-w-2xl">{exp.description}</p>
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Education, Certifications & Languages Grid */}
+        <section id="education-certs" className="scroll-mt-24 space-y-8">
+          <div className="border-t border-slate-900 pt-12 grid gap-12 md:grid-cols-2">
+            
+            {/* Left Column: Education & Languages */}
+            <div className="space-y-6">
+              <h2 className="text-2xl font-bold tracking-tight text-white">Education</h2>
+              <div className="rounded-xl border border-slate-900 bg-slate-950/20 p-6 space-y-4">
+                <span className="text-xs font-mono text-indigo-400">July 2027 (Expected)</span>
+                <h3 className="text-lg font-bold text-white">BSc Computer Science & Engineering</h3>
+                <p className="text-sm text-slate-400">Adama Science and Technology University (ASTU), Ethiopia</p>
+                
+                <div className="border-t border-slate-900 pt-4 space-y-2">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-indigo-400 block">Coursework focus</span>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Data Structures & Algorithms, Database Systems, Web Development, Machine Learning, Operating Systems, Computer Networks, Object-Oriented Programming, Cybersecurity Fundamentals.
+                  </p>
+                </div>
+              </div>
+
+              {/* International Languages block */}
+              <div className="space-y-4">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">Languages Spoken</h3>
+                <div className="flex flex-wrap gap-2 text-xs font-mono font-medium">
+                  {['English (Fluent)', 'Arabic (Fluent)', 'Turkish (Fluent)', 'Amharic (Native)', 'Afaan Oromo (Native)'].map((lang) => (
+                    <span key={lang} className="rounded bg-slate-900/50 border border-slate-800 px-3 py-1.5 text-slate-300">
+                      {lang}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Certifications */}
+            <div className="space-y-6">
+              <h2 className="text-2xl font-bold tracking-tight text-white">Certifications</h2>
+              <div className="space-y-3">
+                {[
+                  { name: 'Certified in Cybersecurity (CC)', issuer: '(ISC)²' },
+                  { name: 'Generative AI Fundamentals (8 Badges)', issuer: 'Google Cloud' },
+                  { name: 'Full-Stack Developer Certification (1,800h)', issuer: 'freeCodeCamp' },
+                  { name: 'Machine Learning with Python (300h)', issuer: 'freeCodeCamp' },
+                  { name: 'Intro to Machine Learning', issuer: 'Kaggle' },
+                  { name: 'Python, Pandas, & AI Ethics Series', issuer: 'Kaggle' },
+                  { name: 'JavaScript Algorithms & Structures', issuer: 'freeCodeCamp' },
+                  { name: 'Front End Development Libraries', issuer: 'freeCodeCamp' }
+                ].map((cert, idx) => (
+                  <div key={idx} className="flex items-center justify-between rounded-lg border border-slate-900 bg-slate-950/20 px-4 py-3 text-sm">
+                    <span className="font-medium text-slate-300">{cert.name}</span>
+                    <span className="text-xs font-mono text-slate-500">{cert.issuer}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </section>
 
@@ -544,7 +612,7 @@ export default function Portfolio() {
           <div className="border-t border-slate-900 pt-12">
             <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Get In Touch</h2>
             <p className="mt-2 text-sm text-slate-400">
-              Have an opening, a freelance inquiry, or want to discuss automation/security developments? Send me a message below.
+              Let's discuss pipeline development, custom n8n configurations, or full stack opportunities.
             </p>
 
             <div className="mt-8 grid gap-12 md:grid-cols-5">
@@ -552,9 +620,9 @@ export default function Portfolio() {
               {/* Sidebar Contacts */}
               <div className="md:col-span-2 space-y-6">
                 <div className="space-y-4">
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">Contact Details</h3>
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">Communication Matrix</h3>
                   <p className="text-sm text-slate-400 leading-relaxed">
-                    I aim to reply to all inquiries within 24 to 48 business hours. Feel free to connect across any of these platforms.
+                    I typically respond within 24 business hours to incoming projects or pipeline design discussions.
                   </p>
                 </div>
 
@@ -563,17 +631,17 @@ export default function Portfolio() {
                     <MailIcon className="h-5 w-5" />
                     <span>abdulgeniabdulaziz@gmail.com</span>
                   </a>
+                  <a href="tel:+251910963110" className="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
+                    <PhoneIcon className="h-5 w-5" />
+                    <span>+251 910 963 110</span>
+                  </a>
                   <a href="https://github.com/Abdulgeni" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
                     <GithubIcon className="h-5 w-5" />
                     <span>github.com/Abdulgeni</span>
                   </a>
-                  <a href="https://www.linkedin.com/in/abdulgeni-abdulaziz-0141073b7" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
+                  <a href="https://linkedin.com/in/abdulgeni-abdulaziz-7bb360401" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
                     <LinkedinIcon className="h-5 w-5" />
                     <span>LinkedIn Profile</span>
-                  </a>
-                  <a href="https://twitter.com/@____Secw" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
-                    <TwitterIcon className="h-5 w-5" />
-                    <span>@____Secw</span>
                   </a>
                 </div>
               </div>
@@ -615,7 +683,7 @@ export default function Portfolio() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="mt-1 w-full rounded-lg border border-slate-800 bg-slate-900/30 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 resize-none"
-                    placeholder="Describe your project, timeline, or query..."
+                    placeholder="Describe your project requirements or work details..."
                   />
                 </div>
 
@@ -656,13 +724,13 @@ export default function Portfolio() {
 
       </main>
 
-      {/* Simple Footer */}
-      <footer className="mt-24 border-t border-slate-950 bg-slate-900/20 py-8">
+      {/* Footer */}
+      <footer className="mt-24 border-t border-slate-900 bg-slate-950 py-8">
         <div className="mx-auto max-w-6xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Abdulgeni Abdulaziz Jemal. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Abdulgeni Abdulaziz. All rights reserved.</p>
           <div className="flex items-center space-x-4">
             <a href="https://github.com/Abdulgeni" target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">GitHub</a>
-            <a href="https://www.linkedin.com/in/abdulgeni-abdulaziz-0141073b7" target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">LinkedIn</a>
+            <a href="https://linkedin.com/in/abdulgeni-abdulaziz-7bb360401" target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">LinkedIn</a>
             <a href="https://twitter.com/@____Secw" target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">Twitter</a>
           </div>
         </div>
