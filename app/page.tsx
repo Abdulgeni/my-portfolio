@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // ==========================================
 // 1. INLINE SVG ICONS (Ensures Turbopack compatibility)
@@ -100,7 +100,7 @@ const XIcon = ({ className = "h-6 w-6" }) => (
 );
 
 // ==========================================
-// 2. PROJECT SCHEMA & STRUCTURAL DATA
+// 2. PROJECT SCHEMA & PORTFOLIO DATA (CV SOURCED)
 // ==========================================
 interface Project {
   title: string;
@@ -111,47 +111,47 @@ interface Project {
   category: 'Business Tools' | 'AI / RAG Engineering';
 }
 
-const PROJECTS_DATA: Project[] = [
+const CURATED_PROJECTS: Project[] = [
   // --- Business Tools ---
-  {
-    title: 'SaaS AI Platform',
-    technologies: ['Next.js 16', 'TypeScript', 'PostgreSQL (Neon)', 'Prisma', 'NextAuth.js', 'Stripe', 'Gemini 2.5 Flash', 'Vercel'],
-    description: 'Full multi-tenant SaaS with Google/email authentication, Stripe subscription billing with webhook handlers, and an AI-powered feature. Production-grade: Prisma ORM, protected routes by subscription status, CI/CD via Vercel.',
-    githubUrl: 'https://github.com/Abdulgeni/ai-saas',
-    category: 'Business Tools'
-  },
   {
     title: 'AI WhatsApp Customer Support Bot',
     technologies: ['Python', 'LangChain', 'Twilio', 'ChromaDB', 'OpenAI API'],
-    description: '24/7 customer support bot deployable on WhatsApp — answers queries using a RAG knowledge base. Handles multi-turn conversation with per-user memory and escalates to a human agent when confidence is low.',
+    description: '24/7 customer support bot deployable on WhatsApp — answers queries using a RAG knowledge base built from business FAQs and product documentation. Handles multi-turn conversation with per-user memory, escalates to a human agent when confidence is low, and logs all interactions for review.',
     githubUrl: 'https://github.com/Abdulgeni/support-bot',
     category: 'Business Tools'
   },
   {
     title: 'Embeddable AI Chatbot Widget',
     technologies: ['Next.js', 'TypeScript', 'LangChain', 'ChromaDB', 'Gemini API', 'Vercel'],
-    description: 'RAG-powered chat widget embeddable on any website via a single script tag. Customizable bot name, colors, and greeting; zero external dependencies for the host site.',
+    description: 'RAG-powered chat widget embeddable on any website — answers visitor questions using a customizable knowledge base with sub-second retrieval via ChromaDB and LangChain. Built with Next.js API routes and TypeScript for type-safe, production-grade code; customizable bot name, colors, and greeting via configuration — zero external dependencies for the host site.',
     githubUrl: 'https://github.com/Abdulgeni/chat-widget',
+    category: 'Business Tools'
+  },
+  {
+    title: 'SaaS AI Platform',
+    technologies: ['Next.js 16', 'TypeScript', 'PostgreSQL (Neon)', 'Prisma', 'NextAuth.js', 'Stripe', 'Gemini 2.5 Flash', 'Vercel'],
+    description: 'Full multi-tenant SaaS with Google/email authentication via NextAuth.js, Stripe subscription billing with webhook handlers, and an AI-powered feature built on Gemini 2.5 Flash. Production-grade stack: Prisma ORM with type-safe queries, Neon serverless PostgreSQL, protected routes enforcing subscription status, and CI/CD via Vercel — zero fixed infrastructure cost.',
+    githubUrl: 'https://github.com/Abdulgeni/ai-saas',
     category: 'Business Tools'
   },
   {
     title: 'AI Email Automation System',
     technologies: ['n8n', 'OpenAI API', 'Gmail API', 'Webhooks'],
-    description: 'Reads incoming emails, classifies intent, generates a tailored draft reply, and notifies the team via Slack. Saves 2–3 hours/day of manual email handling.',
+    description: 'Reads incoming emails, classifies intent (support, sales, complaint, inquiry) using GPT-3.5, generates a tailored draft reply, and notifies the team via Slack — fully automated. Saves businesses 2–3 hours/day of manual email handling; workflow exported as importable n8n JSON for rapid client deployment.',
     githubUrl: 'https://github.com/Abdulgeni/email-automation',
     category: 'Business Tools'
   },
   {
     title: 'AI Invoice & Document Data Extractor',
-    technologies: ['Next.js', 'TypeScript', 'Gemini 2.5 Flash Vision API', 'Tailwind CSS', 'Vercel'],
-    description: 'Uploads any invoice or document — extracts vendor, amount, date, and line items as structured data in under 2 seconds. Exports to CSV.',
+    technologies: ['Next.js', 'TypeScript', 'OpenAI Vision API', 'Tailwind CSS', 'Vercel'],
+    description: 'Uploads any invoice or document — extracts vendor, amount, date, and line items as structured data in under 2 seconds. Exports to CSV and Airtable automatically using OpenAI Vision APIs to parse structural PDF layers.',
     githubUrl: 'https://github.com/Abdulgeni/invoice-extractor',
     category: 'Business Tools'
   },
   {
     title: 'AI Social Media Content Automation',
     technologies: ['n8n', 'Gemini 2.0 Flash API', 'Buffer API', 'Webhooks', 'REST APIs'],
-    description: 'Generates platform-optimised posts for Instagram, LinkedIn, and Twitter from a single topic and auto-schedules them via Buffer API. Fully automated from idea to published post.',
+    description: 'Generates platform-optimised posts for Instagram, LinkedIn, and Twitter from a single topic, scheduled and published via API. Auto-schedules them via Buffer API. Fully automated from idea to published post.',
     githubUrl: 'https://github.com/Abdulgeni/social-automation',
     category: 'Business Tools'
   },
@@ -160,7 +160,7 @@ const PROJECTS_DATA: Project[] = [
   {
     title: 'Agentic RAG — AI Agent with Tool Calling',
     technologies: ['Python', 'LangChain', 'ChromaDB', 'Streamlit'],
-    description: 'Autonomous AI agent that evaluates search quality, refines queries iteratively, and surfaces chain-of-thought reasoning. Reduces manual search iterations by 80%+ vs naive retrieval.',
+    description: 'Autonomous AI agent that evaluates search quality, refines queries iteratively, and surfaces chain-of-thought reasoning — built on production LangChain agent architecture patterns. Reduces manual search iterations by 80%+ compared to naive retrieval; sub-500ms query performance across all document types.',
     githubUrl: 'https://github.com/Abdulgeni/agentic-rag',
     liveUrl: 'https://agentic-rag.streamlit.app',
     category: 'AI / RAG Engineering'
@@ -168,7 +168,7 @@ const PROJECTS_DATA: Project[] = [
   {
     title: 'VulnAlert Bot — Security Monitoring',
     technologies: ['n8n', 'Python', 'GitHub Webhooks', 'Slack API'],
-    description: 'Event-driven automation engine monitoring GitHub repositories for security-related keywords in real time. Delivers Slack alerts within 5 seconds of a suspicious code push.',
+    description: 'Event-driven automation engine monitoring GitHub repositories for security-related keywords in real time — zero missed detections in production. Delivers formatted Slack alerts within 5 seconds of a suspicious code push; protects 3+ active client repositories.',
     githubUrl: 'https://github.com/Abdulgeni/vulnalert',
     category: 'AI / RAG Engineering'
   },
@@ -215,39 +215,107 @@ interface JobExperience {
 const EXPERIENCE_DATA: JobExperience[] = [
   {
     role: 'AI Systems Engineer',
-    company: 'Independent Engineering (Remote)',
+    company: 'Independent Engineering · Remote',
     period: '2024 – Present',
     highlights: [
-      'Architected 20+ production AI systems including RAG pipelines, WhatsApp customer support bots, and embeddable chat widgets using LangChain, ChromaDB, and OpenAI/Gemini API.',
+      'Architected 15+ production AI systems including RAG pipelines, WhatsApp customer support bots, and embeddable chat widgets using LangChain, ChromaDB, and OpenAI API.',
       'Built an AI WhatsApp support bot handling customer queries 24/7 using RAG-powered knowledge base retrieval — deployable for any business within hours.',
-      'Engineered an embeddable AI chatbot widget added to any website via a single script tag, with streaming responses and customizable branding.',
-      'Designed and shipped VulnAlert Bot — an event-driven GitHub security monitor delivering Slack alerts within 5 seconds of a suspicious commit.',
-      'Implemented n8n and Zapier automation workflows including AI email classification, social media content generation, and auto-reply systems, eliminating 15+ hours/week of manual operations per client.'
+      'Engineered an embeddable AI chatbot widget added to any website via a single script tag, powered by OpenAI API with streaming responses and customizable branding.',
+      'Designed and shipped VulnAlert Bot — an event-driven GitHub security monitor delivering Slack alerts within 5 seconds of a suspicious commit, protecting 3+ active repositories.',
+      'Implemented n8n and Zapier automation workflows including AI email classification and auto-reply systems, eliminating 15+ hours/week of manual operations per client.'
     ]
   },
   {
     role: 'Full Stack Software Engineer',
-    company: 'Independent Engineering (Remote)',
+    company: 'Self-Employed (Remote)',
     period: '2024 – Present',
     highlights: [
-      'Engineered 15+ production web applications end-to-end — from system design through deployment — using React, Next.js, Node.js, and Python.',
-      'Built a full SaaS platform with user authentication (NextAuth.js), Stripe subscription billing, and an AI feature — complete multi-tenant product from database schema to production deployment.',
-      'Developed an AI invoice and document data extractor using Gemini Vision API, outputting structured data to CSV automatically from any uploaded PDF.',
-      'Built an AI social media automation tool generating platform-specific posts for Instagram, LinkedIn, and Twitter from a single topic.',
-      'Integrated third-party APIs (Airtable, Slack, Stripe, ClickUp, GitHub) into client applications, enabling real-time cross-platform synchronisation.'
+      'Engineered 15+ production web applications end-to-end — from system design through deployment — using React, Next.js, Node.js, and Python across SaaS, e-commerce, and automation verticals.',
+      'Built a full SaaS platform with user authentication, Stripe subscription billing, and an AI feature — complete multi-tenant product from database schema to production deployment.',
+      'Developed an AI invoice and document data extractor using OpenAI Vision API, outputting structured data to CSV and Airtable automatically from any uploaded PDF.',
+      'Built an AI social media automation tool generating platform-specific posts for Instagram, LinkedIn, and Twitter from a single topic, scheduled and published via API.',
+      'Integrated third-party APIs (Airtable, Slack, Stripe, ClickUp, GitHub) into client applications, enabling real-time cross-platform synchronisation and eliminating manual handoffs.'
     ]
   }
 ];
 
 // ==========================================
-// 3. MAIN COMPONENT LOGIC
+// 3. MAIN PORTFOLIO MODULE
 // ==========================================
 export default function Portfolio() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [projectGroup, setProjectGroup] = useState<'Business Tools' | 'AI / RAG Engineering'>('Business Tools');
+  const [projects, setProjects] = useState<Project[]>(CURATED_PROJECTS);
+  const [isLoadingRepos, setIsLoadingRepos] = useState(true);
+  
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [formMessage, setFormMessage] = useState('');
+
+  // ==========================================
+  // DYNAMIC SELF-UPDATING GITHUB INTEGRATION
+  // ==========================================
+  useEffect(() => {
+    async function fetchGitHubRepos() {
+      try {
+        const response = await fetch('https://api.github.com/users/Abdulgeni/repos?sort=updated&per_page=100');
+        if (!response.ok) throw new Error('Failed to fetch repositories');
+        
+        const repos = await response.json();
+
+        const dynamicProjects: Project[] = repos
+          .filter((repo: any) => !repo.fork) 
+          .map((repo: any) => {
+            const matchedCurated = CURATED_PROJECTS.find(
+              (cp) => cp.githubUrl.toLowerCase().trim() === repo.html_url.toLowerCase().trim()
+            );
+
+            if (matchedCurated) {
+              return matchedCurated; 
+            }
+
+            const topics: string[] = repo.topics || [];
+            let category: 'Business Tools' | 'AI / RAG Engineering' = 'AI / RAG Engineering';
+            
+            if (topics.includes('business-tool') || topics.includes('automation') || topics.includes('saas')) {
+              category = 'Business Tools';
+            }
+
+            const techTags = [repo.language].filter(Boolean);
+            topics.slice(0, 3).forEach(topic => {
+              if (topic !== 'business-tool' && topic !== 'automation' && topic !== 'saas' && !techTags.includes(topic)) {
+                techTags.push(topic);
+              }
+            });
+
+            return {
+              title: repo.name.replace(/-/g, ' ').replace(/\b\w/g, (char: string) => char.toUpperCase()),
+              technologies: techTags.length > 0 ? techTags : ['Software'],
+              description: repo.description || 'Active development repository on GitHub. Visit codebase for setup instructions and documentation.',
+              githubUrl: repo.html_url,
+              liveUrl: repo.homepage || undefined,
+              category
+            };
+          });
+
+        const finalMerged = [...dynamicProjects];
+        CURATED_PROJECTS.forEach(cp => {
+          if (!finalMerged.some(fp => fp.githubUrl.toLowerCase().trim() === cp.githubUrl.toLowerCase().trim())) {
+            finalMerged.push(cp);
+          }
+        });
+
+        setProjects(finalMerged);
+      } catch (err) {
+        console.warn('Fallback to curated local metadata due to GitHub API limit/error:', err);
+        setProjects(CURATED_PROJECTS);
+      } finally {
+        setIsLoadingRepos(false);
+      }
+    }
+
+    fetchGitHubRepos();
+  }, []);
 
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -335,7 +403,7 @@ export default function Portfolio() {
               <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
                 Abdulgeni Abdulaziz
               </h1>
-              <p className="text-lg font-medium text-indigo-400 sm:text-xl">
+              <p className="text-lg font-medium text-indigo-400 sm:text-xl leading-relaxed">
                 Full Stack AI Engineer · RAG Systems · Workflow Automation · Next.js
               </p>
             </div>
@@ -367,7 +435,7 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* Profile Graphics Area */}
+          {/* Graphical Avatar Space */}
           <div className="flex items-center justify-center">
             <div className="relative flex h-48 w-48 items-center justify-center rounded-full border border-slate-800 bg-gradient-to-br from-slate-950 to-indigo-900/30 p-1 sm:h-56 sm:w-56">
               <div className="flex h-full w-full items-center justify-center rounded-full bg-slate-950">
@@ -382,7 +450,7 @@ export default function Portfolio() {
           <div className="border-t border-slate-900 pt-12">
             <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Professional Summary</h2>
             <p className="mt-4 text-sm leading-relaxed text-slate-400 sm:text-base max-w-4xl">
-              Full Stack AI Engineer with production experience designing and shipping RAG pipelines, AI-powered chatbots, workflow automation systems, and SaaS products for commercial clients. I have architected over 15 production systems including RAG applications, WhatsApp bots, embeddable chat widgets, and email automation pipelines. I own the full engineering lifecycle—system design, backend APIs, frontend interfaces, and deployment—while holding an ISC² certification in cybersecurity to keep data transmission and storage safe.
+              Full Stack AI Engineer with production experience designing and shipping RAG pipelines, AI-powered chatbots, workflow automation systems, and SaaS products for commercial clients. Architected 30+ production systems including RAG applications, WhatsApp bots, embeddable chat widgets, and email automation pipelines. Owns the full engineering lifecycle — system design, backend APIs, frontend interfaces, and deployment. Applies secure coding practices and OWASP Top 10 principles throughout every system delivered. Fluent in English, Arabic, and Turkish.
             </p>
           </div>
         </section>
@@ -395,12 +463,12 @@ export default function Portfolio() {
             
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {[
-                { category: 'AI & RAG Engineering', list: ['OpenAI API', 'Gemini API', 'LangChain', 'RAG', 'ChromaDB', 'Sentence Transformers', 'Hugging Face', 'CLIP', 'Prompt Engineering'] },
-                { category: 'Workflow Automation', list: ['n8n', 'Zapier', 'GitHub Actions', 'Slack API', 'REST APIs', 'Webhooks', 'Airtable', 'ClickUp', 'Buffer API'] },
-                { category: 'Frontend Architecture', list: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Figma', 'Responsive UI Design'] },
-                { category: 'Backend Systems', list: ['Node.js', 'Express', 'Python', 'PostgreSQL', 'NeonDB', 'Prisma ORM', 'Docker basics', 'Vercel'] },
-                { category: 'Auth, Payments & Security', list: ['NextAuth.js', 'Stripe payments', 'ISC² CC (Cybersecurity)', 'OWASP Top 10', 'Secure Coding', 'Vulnerability Assessment'] },
-                { category: 'Programming Languages', list: ['Python', 'JavaScript (ES6+)', 'TypeScript', 'SQL', 'HTML5/CSS3', 'Bash', 'C++', 'Rust'] }
+                { category: 'AI / RAG Engineering', list: ['OpenAI API', 'LangChain', 'RAG', 'ChromaDB', 'Sentence Transformers', 'Hugging Face', 'CLIP', 'Prompt Engineering'] },
+                { category: 'Workflow Automation', list: ['n8n', 'Zapier', 'GitHub Actions', 'Slack API', 'REST APIs', 'Webhooks', 'Airtable', 'ClickUp'] },
+                { category: 'Frontend Architecture', list: ['React', 'Next.js', 'Tailwind CSS', 'Figma', 'Responsive Web Design'] },
+                { category: 'Backend Systems', list: ['Node.js', 'Express', 'Python', 'PostgreSQL', 'Docker (basics)', 'Vercel'] },
+                { category: 'Auth, Payments & Security', list: ['NextAuth.js', 'Stripe payments', 'OWASP Top 10', 'Secure Coding Practices', 'Vulnerability Assessment', 'Network Security Fundamentals'] },
+                { category: 'Programming Languages', list: ['Python', 'JavaScript (ES6+)', 'TypeScript', 'SQL', 'HTML5', 'CSS3', 'Bash', 'C++', 'Rust', 'Dev Tools: Git', 'GitHub', 'VS Code', 'Postman', 'Linux CLI'] }
               ].map((skillBlock, idx) => (
                 <div key={idx} className="rounded-xl border border-slate-900 bg-slate-950/40 p-6 space-y-4">
                   <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">{skillBlock.category}</h3>
@@ -450,7 +518,12 @@ export default function Portfolio() {
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
               <div>
                 <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Shipped Systems</h2>
-                <p className="mt-1 text-sm text-slate-400">Explore complete AI integrations, automation roadmaps, and full-stack utilities.</p>
+                <p className="mt-1 text-sm text-slate-400">
+                  {isLoadingRepos 
+                    ? 'Syncing latest repositories directly from GitHub API...' 
+                    : 'Synced live with GitHub. Repositories automatically categorize on push.'
+                  }
+                </p>
               </div>
 
               {/* Segment Toggle Filter */}
@@ -473,7 +546,7 @@ export default function Portfolio() {
 
             {/* Shipped Systems Grid */}
             <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {PROJECTS_DATA.filter(p => p.category === projectGroup).map((project, idx) => (
+              {projects.filter(p => p.category === projectGroup).map((project, idx) => (
                 <div 
                   key={idx}
                   className="flex flex-col justify-between rounded-xl border border-slate-900 bg-slate-950/20 p-6 transition-all duration-300 hover:border-slate-800/80 hover:bg-slate-900/10"
@@ -557,21 +630,21 @@ export default function Portfolio() {
             <div className="space-y-6">
               <h2 className="text-2xl font-bold tracking-tight text-white">Education</h2>
               <div className="rounded-xl border border-slate-900 bg-slate-950/20 p-6 space-y-4">
-                <span className="text-xs font-mono text-indigo-400">July 2027 (Expected)</span>
+                <span className="text-xs font-mono text-indigo-400">Expected July 2027</span>
                 <h3 className="text-lg font-bold text-white">BSc Computer Science & Engineering</h3>
-                <p className="text-sm text-slate-400">Adama Science and Technology University (ASTU), Ethiopia</p>
+                <p className="text-sm text-slate-400">Adama Science and Technology University (ASTU), Adama, Ethiopia</p>
                 
                 <div className="border-t border-slate-900 pt-4 space-y-2">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-indigo-400 block">Coursework focus</span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-indigo-400 block">Relevant Coursework</span>
                   <p className="text-xs text-slate-400 leading-relaxed">
-                    Data Structures & Algorithms, Database Systems, Web Development, Machine Learning, Operating Systems, Computer Networks, Object-Oriented Programming, Cybersecurity Fundamentals.
+                    Data Structures & Algorithms, Database Systems, Web Development, Machine Learning, Operating Systems, Computer Networks, OOP, Cybersecurity Fundamentals.
                   </p>
                 </div>
               </div>
 
               {/* International Languages block */}
               <div className="space-y-4">
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">Languages Spoken</h3>
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">Languages</h3>
                 <div className="flex flex-wrap gap-2 text-xs font-mono font-medium">
                   {['English (Fluent)', 'Arabic (Fluent)', 'Turkish (Fluent)', 'Amharic (Native)', 'Afaan Oromo (Native)'].map((lang) => (
                     <span key={lang} className="rounded bg-slate-900/50 border border-slate-800 px-3 py-1.5 text-slate-300">
@@ -587,14 +660,15 @@ export default function Portfolio() {
               <h2 className="text-2xl font-bold tracking-tight text-white">Certifications</h2>
               <div className="space-y-3">
                 {[
-                  { name: 'Certified in Cybersecurity (CC)', issuer: '(ISC)²' },
-                  { name: 'Generative AI Fundamentals (8 Badges)', issuer: 'Google Cloud' },
-                  { name: 'Full-Stack Developer Certification (1,800h)', issuer: 'freeCodeCamp' },
-                  { name: 'Machine Learning with Python (300h)', issuer: 'freeCodeCamp' },
+                  
+                  { name: 'Generative AI Fundamentals (8 Badges)', issuer: 'Google Cloud Skills Boost' },
+                  { name: 'Python', issuer: 'Kaggle' },
                   { name: 'Intro to Machine Learning', issuer: 'Kaggle' },
-                  { name: 'Python, Pandas, & AI Ethics Series', issuer: 'Kaggle' },
-                  { name: 'JavaScript Algorithms & Structures', issuer: 'freeCodeCamp' },
-                  { name: 'Front End Development Libraries', issuer: 'freeCodeCamp' }
+                  { name: 'Front End Development Libraries', issuer: 'freeCodeCamp' },
+                  { name: 'Machine Learning with Python (300h)', issuer: 'freeCodeCamp' },
+                  { name: 'Intro to AI Ethics', issuer: 'Kaggle' },
+                  { name: 'JavaScript Algorithms & Data Structures', issuer: 'freeCodeCamp' },
+                  { name: 'Pandas', issuer: 'Kaggle' }
                 ].map((cert, idx) => (
                   <div key={idx} className="flex items-center justify-between rounded-lg border border-slate-900 bg-slate-950/20 px-4 py-3 text-sm">
                     <span className="font-medium text-slate-300">{cert.name}</span>

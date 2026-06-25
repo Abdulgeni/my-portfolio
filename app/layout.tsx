@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Abdulgeni Abdulaziz | Full Stack AI Engineer",
-  description: "Full Stack AI Engineer specializing in RAG systems, workflow automation, and production-ready Next.js SaaS development.",
+  description: "Portfolio of Abdulgeni Abdulaziz, a Full Stack AI Engineer specializing in production RAG systems, workflow automation, and Next.js SaaS architectures.",
 };
 
 export default function RootLayout({
