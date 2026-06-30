@@ -100,7 +100,7 @@ const XIcon = ({ className = "h-6 w-6" }) => (
 );
 
 // ==========================================
-// 2. PROJECT SCHEMA & PORTFOLIO DATA (CV SOURCED)
+// 2. SCHEMA DEFINITIONS & FALLBACK CONSTANTS
 // ==========================================
 interface Project {
   title: string;
@@ -111,99 +111,10 @@ interface Project {
   category: 'Business Tools' | 'AI / RAG Engineering';
 }
 
-const CURATED_PROJECTS: Project[] = [
-  // --- Business Tools ---
-  {
-    title: 'AI WhatsApp Customer Support Bot',
-    technologies: ['Python', 'LangChain', 'Twilio', 'ChromaDB', 'OpenAI API'],
-    description: '24/7 customer support bot deployable on WhatsApp — answers queries using a RAG knowledge base built from business FAQs and product documentation. Handles multi-turn conversation with per-user memory, escalates to a human agent when confidence is low, and logs all interactions for review.',
-    githubUrl: 'https://github.com/Abdulgeni/support-bot',
-    category: 'Business Tools'
-  },
-  {
-    title: 'Embeddable AI Chatbot Widget',
-    technologies: ['Next.js', 'TypeScript', 'LangChain', 'ChromaDB', 'Gemini API', 'Vercel'],
-    description: 'RAG-powered chat widget embeddable on any website — answers visitor questions using a customizable knowledge base with sub-second retrieval via ChromaDB and LangChain. Built with Next.js API routes and TypeScript for type-safe, production-grade code; customizable bot name, colors, and greeting via configuration — zero external dependencies for the host site.',
-    githubUrl: 'https://github.com/Abdulgeni/chat-widget',
-    category: 'Business Tools'
-  },
-  {
-    title: 'SaaS AI Platform',
-    technologies: ['Next.js 16', 'TypeScript', 'PostgreSQL (Neon)', 'Prisma', 'NextAuth.js', 'Stripe', 'Gemini 2.5 Flash', 'Vercel'],
-    description: 'Full multi-tenant SaaS with Google/email authentication via NextAuth.js, Stripe subscription billing with webhook handlers, and an AI-powered feature built on Gemini 2.5 Flash. Production-grade stack: Prisma ORM with type-safe queries, Neon serverless PostgreSQL, protected routes enforcing subscription status, and CI/CD via Vercel — zero fixed infrastructure cost.',
-    githubUrl: 'https://github.com/Abdulgeni/ai-saas',
-    category: 'Business Tools'
-  },
-  {
-    title: 'AI Email Automation System',
-    technologies: ['n8n', 'OpenAI API', 'Gmail API', 'Webhooks'],
-    description: 'Reads incoming emails, classifies intent (support, sales, complaint, inquiry) using GPT-3.5, generates a tailored draft reply, and notifies the team via Slack — fully automated. Saves businesses 2–3 hours/day of manual email handling; workflow exported as importable n8n JSON for rapid client deployment.',
-    githubUrl: 'https://github.com/Abdulgeni/email-automation',
-    category: 'Business Tools'
-  },
-  {
-    title: 'AI Invoice & Document Data Extractor',
-    technologies: ['Next.js', 'TypeScript', 'OpenAI Vision API', 'Tailwind CSS', 'Vercel'],
-    description: 'Uploads any invoice or document — extracts vendor, amount, date, and line items as structured data in under 2 seconds. Exports to CSV and Airtable automatically using OpenAI Vision APIs to parse structural PDF layers.',
-    githubUrl: 'https://github.com/Abdulgeni/invoice-extractor',
-    category: 'Business Tools'
-  },
-  {
-    title: 'AI Social Media Content Automation',
-    technologies: ['n8n', 'Gemini 2.0 Flash API', 'Buffer API', 'Webhooks', 'REST APIs'],
-    description: 'Generates platform-optimised posts for Instagram, LinkedIn, and Twitter from a single topic, scheduled and published via API. Auto-schedules them via Buffer API. Fully automated from idea to published post.',
-    githubUrl: 'https://github.com/Abdulgeni/social-automation',
-    category: 'Business Tools'
-  },
-
-  // --- AI / RAG Engineering ---
-  {
-    title: 'Agentic RAG — AI Agent with Tool Calling',
-    technologies: ['Python', 'LangChain', 'ChromaDB', 'Streamlit'],
-    description: 'Autonomous AI agent that evaluates search quality, refines queries iteratively, and surfaces chain-of-thought reasoning — built on production LangChain agent architecture patterns. Reduces manual search iterations by 80%+ compared to naive retrieval; sub-500ms query performance across all document types.',
-    githubUrl: 'https://github.com/Abdulgeni/agentic-rag',
-    liveUrl: 'https://agentic-rag.streamlit.app',
-    category: 'AI / RAG Engineering'
-  },
-  {
-    title: 'VulnAlert Bot — Security Monitoring',
-    technologies: ['n8n', 'Python', 'GitHub Webhooks', 'Slack API'],
-    description: 'Event-driven automation engine monitoring GitHub repositories for security-related keywords in real time — zero missed detections in production. Delivers formatted Slack alerts within 5 seconds of a suspicious code push; protects 3+ active client repositories.',
-    githubUrl: 'https://github.com/Abdulgeni/vulnalert',
-    category: 'AI / RAG Engineering'
-  },
-  {
-    title: 'Multi-Document RAG',
-    technologies: ['Python', 'Sentence Transformers', 'ChromaDB'],
-    description: 'Simultaneous search across multiple PDFs with per-result source attribution. Extended with CLIP embeddings for combined text and image retrieval.',
-    githubUrl: 'https://github.com/Abdulgeni/multidoc-rag',
-    liveUrl: 'https://multidoc-rag.streamlit.app',
-    category: 'AI / RAG Engineering'
-  },
-  {
-    title: 'Multimodal RAG — Text + Images',
-    technologies: ['Python', 'CLIP', 'ChromaDB'],
-    description: 'Unified search pipeline across PDFs and images using CLIP model embeddings for true multimodal retrieval.',
-    githubUrl: 'https://github.com/Abdulgeni/multimodal-rag',
-    liveUrl: 'https://multimodal-rag.streamlit.app',
-    category: 'AI / RAG Engineering'
-  },
-  {
-    title: 'Developer Portfolio',
-    technologies: ['Next.js', 'React', 'Tailwind CSS', 'Vercel', 'Figma'],
-    description: 'Server-side rendered portfolio with clean design, performance optimizations, and layout structures to target high Lighthouse audit metrics.',
-    githubUrl: 'https://github.com/Abdulgeni/my-portfolio',
-    liveUrl: 'https://abdulgeni-abdulaziz.vercel.app',
-    category: 'AI / RAG Engineering'
-  },
-  {
-    title: 'JS Summary API',
-    technologies: ['Node.js', 'Express', 'JavaScript'],
-    description: 'RESTful text summarization API with health check endpoint and compression ratio calculation. Demonstrates clean JavaScript routing logic.',
-    githubUrl: 'https://github.com/Abdulgeni/js-summary-api',
-    category: 'AI / RAG Engineering'
-  }
-];
+interface SkillGroup {
+  category: string;
+  list: string[];
+}
 
 interface JobExperience {
   role: string;
@@ -212,109 +123,403 @@ interface JobExperience {
   highlights: string[];
 }
 
-const EXPERIENCE_DATA: JobExperience[] = [
-  {
-    role: 'AI Systems Engineer',
-    company: 'Independent Engineering · Remote',
-    period: '2024 – Present',
-    highlights: [
-      'Architected 15+ production AI systems including RAG pipelines, WhatsApp customer support bots, and embeddable chat widgets using LangChain, ChromaDB, and OpenAI API.',
-      'Built an AI WhatsApp support bot handling customer queries 24/7 using RAG-powered knowledge base retrieval — deployable for any business within hours.',
-      'Engineered an embeddable AI chatbot widget added to any website via a single script tag, powered by OpenAI API with streaming responses and customizable branding.',
-      'Designed and shipped VulnAlert Bot — an event-driven GitHub security monitor delivering Slack alerts within 5 seconds of a suspicious commit, protecting 3+ active repositories.',
-      'Implemented n8n and Zapier automation workflows including AI email classification and auto-reply systems, eliminating 15+ hours/week of manual operations per client.'
-    ]
+interface PortfolioData {
+  personalInfo: {
+    name: string;
+    title: string;
+    location: string;
+    phone: string;
+    email: string;
+    portfolioUrl: string;
+    githubUrl: string;
+    linkedinUrl: string;
+    twitterUrl: string;
+    summary: string;
+  };
+  skills: SkillGroup[];
+  experience: JobExperience[];
+  projects: Project[];
+  education: {
+    degree: string;
+    institution: string;
+    period: string;
+    coursework: string;
+  };
+  certifications: Array<{ name: string; issuer: string }>;
+  languages: string[];
+}
+
+const FALLBACK_DATA: PortfolioData = {
+  personalInfo: {
+    name: "Abdulgeni Abdulaziz",
+    title: "Full Stack AI Engineer · RAG Systems · Workflow Automation · Next.js",
+    location: "Addis Ababa, Ethiopia",
+    phone: "+251 910 963 110",
+    email: "abdulgeniabdulaziz@gmail.com",
+    portfolioUrl: "https://abdulgeni-abdulaziz.vercel.app",
+    githubUrl: "https://github.com/Abdulgeni",
+    linkedinUrl: "https://www.linkedin.com/in/abdulgeni-abdulaziz-7bb360401",
+    twitterUrl: "https://twitter.com/@____Secw",
+    summary: "Full Stack AI Engineer with production experience designing and shipping RAG pipelines, AI-powered chatbots, workflow automation systems, and SaaS products for commercial clients. Architected 15+ production systems including RAG applications, WhatsApp bots, embeddable chat widgets, and email automation pipelines. Owns the full engineering lifecycle — system design, backend APIs, frontend interfaces, and deployment. Applies secure coding practices and OWASP Top 10 principles throughout every system delivered. Fluent in English, Arabic, and Turkish."
   },
-  {
-    role: 'Full Stack Software Engineer',
-    company: 'Self-Employed (Remote)',
-    period: '2024 – Present',
-    highlights: [
-      'Engineered 15+ production web applications end-to-end — from system design through deployment — using React, Next.js, Node.js, and Python across SaaS, e-commerce, and automation verticals.',
-      'Built a full SaaS platform with user authentication, Stripe subscription billing, and an AI feature — complete multi-tenant product from database schema to production deployment.',
-      'Developed an AI invoice and document data extractor using OpenAI Vision API, outputting structured data to CSV and Airtable automatically from any uploaded PDF.',
-      'Built an AI social media automation tool generating platform-specific posts for Instagram, LinkedIn, and Twitter from a single topic, scheduled and published via API.',
-      'Integrated third-party APIs (Airtable, Slack, Stripe, ClickUp, GitHub) into client applications, enabling real-time cross-platform synchronisation and eliminating manual handoffs.'
-    ]
-  }
-];
+  skills: [
+    {
+      category: "AI / RAG Engineering",
+      list: [
+        "OpenAI API",
+        "Gemini API",
+        "LangChain",
+        "RAG",
+        "ChromaDB",
+        "Sentence Transformers",
+        "Hugging Face",
+        "CLIP",
+        "Prompt Engineering"
+      ]
+    },
+    {
+      category: "Workflow Automation",
+      list: [
+        "n8n",
+        "Zapier",
+        "GitHub Actions",
+        "Slack API",
+        "REST APIs",
+        "Webhooks",
+        "Airtable",
+        "ClickUp",
+        "Buffer API"
+      ]
+    },
+    {
+      category: "Frontend Architecture",
+      list: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Figma",
+        "Responsive Web Design"
+      ]
+    },
+    {
+      category: "Backend Systems",
+      list: [
+        "Node.js",
+        "Express",
+        "Python",
+        "PostgreSQL",
+        "Prisma",
+        "Docker (basics)",
+        "Vercel"
+      ]
+    },
+    {
+      category: "Auth, Payments & Security",
+      list: [
+        "NextAuth.js",
+        "Stripe",
+        "OWASP Top 10",
+        "Secure Coding Practices",
+        "Vulnerability Assessment",
+        "Network Security Fundamentals"
+      ]
+    },
+    {
+      category: "Programming Languages",
+      list: [
+        "Python",
+        "JavaScript (ES6+)",
+        "TypeScript",
+        "SQL",
+        "HTML5",
+        "CSS3",
+        "Bash",
+        "C++",
+        "Rust"
+      ]
+    },
+    {
+      category: "Dev Tools",
+      list: [
+        "Git",
+        "GitHub",
+        "VS Code",
+        "Postman",
+        "Linux CLI"
+      ]
+    }
+  ],
+  experience: [
+    {
+      role: "AI Systems Engineer",
+      company: "Independent Engineering · Remote",
+      period: "2024 – Present",
+      highlights: [
+        "Architected 15+ production AI systems including RAG pipelines, WhatsApp customer support bots, and embeddable chat widgets using LangChain, ChromaDB, and OpenAI API.",
+        "Built an AI WhatsApp support bot handling customer queries 24/7 using RAG-powered knowledge base retrieval — deployable for any business within hours.",
+        "Engineered an embeddable AI chatbot widget added to any website via a single script tag, powered by Gemini API with streaming responses and customizable branding.",
+        "Designed and shipped VulnAlert Bot — an event-driven GitHub security monitor delivering Slack alerts within 5 seconds of a suspicious commit, protecting 3+ active repositories.",
+        "Implemented n8n and Zapier automation workflows including AI email classification and auto-reply systems, eliminating 15+ hours/week of manual operations per client."
+      ]
+    },
+    {
+      role: "Full Stack Software Engineer",
+      company: "Self-Employed (Remote)",
+      period: "2024 – Present",
+      highlights: [
+        "Engineered 15+ production web applications end-to-end — from system design through deployment — using React, Next.js, Node.js, and Python across SaaS, e-commerce, and automation verticals.",
+        "Built a full SaaS platform with user authentication, Stripe subscription billing, and an AI feature — complete multi-tenant product from database schema to production deployment.",
+        "Developed an AI invoice and document data extractor using Gemini 2.5 Flash Vision API, outputting structured data to CSV and Airtable automatically from any uploaded PDF.",
+        "Built an AI social media automation tool generating platform-specific posts for Instagram, LinkedIn, and Twitter from a single topic, scheduled and published via Buffer API.",
+        "Integrated third-party APIs (Airtable, Slack, Stripe, ClickUp, GitHub) into client applications, enabling real-time cross-platform synchronisation and eliminating manual handoffs."
+      ]
+    }
+  ],
+  projects: [
+    {
+      title: "SaaS AI Platform",
+      technologies: [
+        "Next.js 16",
+        "TypeScript",
+        "PostgreSQL (Neon)",
+        "Prisma",
+        "NextAuth.js",
+        "Stripe",
+        "Gemini 2.5 Flash",
+        "Vercel"
+      ],
+      description: "Full multi-tenant SaaS with Google/email authentication via NextAuth.js, Stripe subscription billing with webhook handlers, and an AI-powered feature built on Gemini 2.5 Flash. Production-grade stack: Prisma ORM with type-safe queries, Neon serverless PostgreSQL, protected routes enforcing subscription status, and CI/CD via Vercel — zero fixed infrastructure cost.",
+      githubUrl: "https://github.com/Abdulgeni/ai-saas",
+      category: "Business Tools"
+    },
+    {
+      title: "AI WhatsApp Customer Support Bot",
+      technologies: [
+        "Python",
+        "LangChain",
+        "Twilio",
+        "ChromaDB",
+        "OpenAI API"
+      ],
+      description: "24/7 customer support bot deployable on WhatsApp — answers queries using a RAG knowledge base built from business FAQs and product documentation. Handles multi-turn conversation with per-user memory, escalates to a human agent when confidence is low, and logs all interactions for review.",
+      githubUrl: "https://github.com/Abdulgeni/support-bot",
+      category: "Business Tools"
+    },
+    {
+      title: "Embeddable AI Chatbot Widget",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "LangChain",
+        "ChromaDB",
+        "Gemini API",
+        "Vercel"
+      ],
+      description: "RAG-powered chat widget embeddable on any website — answers visitor questions using a customizable knowledge base with sub-second retrieval via ChromaDB and LangChain. Built with Next.js API routes and TypeScript for type-safe, production-grade code; customizable bot name, colors, and greeting via configuration — zero external dependencies for the host site.",
+      githubUrl: "https://github.com/Abdulgeni/chat-widget",
+      category: "Business Tools"
+    },
+    {
+      title: "AI Email Automation System",
+      technologies: [
+        "n8n",
+        "OpenAI API",
+        "Gmail API",
+        "Webhooks"
+      ],
+      description: "Reads incoming emails, classifies intent (support, sales, complaint, inquiry) using GPT-3.5, generates a tailored draft reply, and notifies the team via Slack — fully automated. Saves businesses 2–3 hours/day of manual email handling; workflow exported as importable n8n JSON for rapid client deployment.",
+      githubUrl: "https://github.com/Abdulgeni/email-automation",
+      category: "Business Tools"
+    },
+    {
+      title: "AI Invoice & Document Data Extractor",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "Gemini 2.5 Flash Vision API",
+        "Tailwind CSS",
+        "Vercel"
+      ],
+      description: "Uploads any invoice or document — extracts vendor, amount, date, and line items as structured data in under 2 seconds using Gemini 2.5 Flash Vision API. Exports to CSV automatically from any uploaded PDF.",
+      githubUrl: "https://github.com/Abdulgeni/invoice-extractor",
+      category: "Business Tools"
+    },
+    {
+      title: "AI Social Media Content Automation",
+      technologies: [
+        "n8n",
+        "Gemini 2.0 Flash API",
+        "Buffer API",
+        "Webhooks",
+        "REST APIs"
+      ],
+      description: "Generates platform-optimised posts for Instagram, LinkedIn, and Twitter from a single topic and auto-schedules them via Buffer API. Fully automated from idea to published post with zero manual steps.",
+      githubUrl: "https://github.com/Abdulgeni/social-automation",
+      category: "Business Tools"
+    },
+    {
+      title: "Agentic RAG — AI Agent with Tool Calling",
+      technologies: [
+        "Python",
+        "LangChain",
+        "ChromaDB",
+        "Streamlit"
+      ],
+      description: "Autonomous AI agent that evaluates search quality, refines queries iteratively, and surfaces chain-of-thought reasoning — built on production LangChain agent architecture patterns. Reduces manual search iterations by 80%+ compared to naive retrieval; sub-500ms query performance across all document types.",
+      githubUrl: "https://github.com/Abdulgeni/agentic-rag",
+      liveUrl: "https://agentic-rag.streamlit.app",
+      category: "AI / RAG Engineering"
+    },
+    {
+      title: "VulnAlert Bot — Security Monitoring",
+      technologies: [
+        "n8n",
+        "Python",
+        "GitHub Webhooks",
+        "Slack API"
+      ],
+      description: "Event-driven automation engine monitoring GitHub repositories for security-related keywords in real time — zero missed detections in production. Delivers formatted Slack alerts within 5 seconds of a suspicious code push; protects 3+ active client repositories.",
+      githubUrl: "https://github.com/Abdulgeni/vulnalert",
+      category: "AI / RAG Engineering"
+    },
+    {
+      title: "Multi-Document RAG",
+      technologies: [
+        "Python",
+        "Sentence Transformers",
+        "ChromaDB"
+      ],
+      description: "Simultaneous search across multiple PDFs with per-result source attribution. Extended with CLIP embeddings for combined text and image retrieval.",
+      githubUrl: "https://github.com/Abdulgeni/multidoc-rag",
+      liveUrl: "https://multidoc-rag.streamlit.app",
+      category: "AI / RAG Engineering"
+    },
+    {
+      title: "Multimodal RAG — Text + Images",
+      technologies: [
+        "Python",
+        "CLIP",
+        "ChromaDB"
+      ],
+      description: "Unified search pipeline across PDFs and images using CLIP model embeddings for true multimodal retrieval.",
+      githubUrl: "https://github.com/Abdulgeni/multimodal-rag",
+      liveUrl: "https://multimodal-rag.streamlit.app",
+      category: "AI / RAG Engineering"
+    },
+    {
+      title: "Developer Portfolio",
+      technologies: [
+        "Next.js",
+        "React",
+        "Tailwind CSS",
+        "Vercel",
+        "Figma"
+      ],
+      description: "Server-side rendered portfolio with clean design, performance optimizations, and layout structures to target high Lighthouse audit metrics.",
+      githubUrl: "https://github.com/Abdulgeni/my-portfolio",
+      liveUrl: "https://abdulgeni-abdulaziz.vercel.app",
+      category: "AI / RAG Engineering"
+    },
+    {
+      title: "JS Summary API",
+      technologies: [
+        "Node.js",
+        "Express",
+        "JavaScript"
+      ],
+      description: "RESTful text summarization API with health check endpoint and compression ratio calculation. Demonstrates clean JavaScript routing logic.",
+      githubUrl: "https://github.com/Abdulgeni/js-summary-api",
+      category: "AI / RAG Engineering"
+    }
+  ],
+  education: {
+    degree: "BSc Computer Science & Engineering",
+    institution: "Adama Science and Technology University (ASTU), Adama, Ethiopia",
+    period: "Expected July 2027",
+    coursework: "Data Structures & Algorithms, Database Systems, Web Development, Machine Learning, Operating Systems, Computer Networks, OOP, Cybersecurity Fundamentals"
+  },
+  certifications: [
+    {
+      name: "Generative AI Fundamentals (8 Badges)",
+      issuer: "Google Cloud Skills Boost"
+    },
+    {
+      name: "Intro to Machine Learning",
+      issuer: "Kaggle"
+    },
+    {
+      name: "Python",
+      issuer: "Kaggle"
+    },
+    {
+      name: "Pandas",
+      issuer: "Kaggle"
+    },
+    {
+      name: "Intro to AI Ethics",
+      issuer: "Kaggle"
+    },
+    {
+      name: "Machine Learning with Python (300h)",
+      issuer: "freeCodeCamp"
+    },
+    {
+      name: "JavaScript Algorithms & Data Structures",
+      issuer: "freeCodeCamp"
+    },
+    {
+      name: "Front End Development Libraries",
+      issuer: "freeCodeCamp"
+    }
+  ],
+  languages: [
+    "English (Fluent)",
+    "Arabic (Fluent)",
+    "Turkish (Fluent)",
+    "Amharic (Native)",
+    "Afaan Oromo (Native)"
+  ]
+};
 
 // ==========================================
-// 3. MAIN PORTFOLIO MODULE
+// 3. MAIN COMPONENT
 // ==========================================
 export default function Portfolio() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [projectGroup, setProjectGroup] = useState<'Business Tools' | 'AI / RAG Engineering'>('Business Tools');
-  const [projects, setProjects] = useState<Project[]>(CURATED_PROJECTS);
-  const [isLoadingRepos, setIsLoadingRepos] = useState(true);
-  
+  const [portfolioData, setPortfolioData] = useState<PortfolioData>(FALLBACK_DATA);
+  const [isSyncing, setIsSyncing] = useState(true);
+
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [formMessage, setFormMessage] = useState('');
 
-  // ==========================================
-  // DYNAMIC SELF-UPDATING GITHUB INTEGRATION
-  // ==========================================
   useEffect(() => {
-    async function fetchGitHubRepos() {
+    async function fetchLatestContent() {
       try {
-        const response = await fetch('https://api.github.com/users/Abdulgeni/repos?sort=updated&per_page=100');
-        if (!response.ok) throw new Error('Failed to fetch repositories');
+        const response = await fetch(
+          'https://raw.githubusercontent.com/Abdulgeni/my-portfolio/main/portfolio-data.json'
+        );
         
-        const repos = await response.json();
+        // If the fetch fails, silently use the native FALLBACK_DATA without throwing a hard error
+        if (!response.ok) {
+          setIsSyncing(false);
+          return;
+        }
 
-        const dynamicProjects: Project[] = repos
-          .filter((repo: any) => !repo.fork) 
-          .map((repo: any) => {
-            const matchedCurated = CURATED_PROJECTS.find(
-              (cp) => cp.githubUrl.toLowerCase().trim() === repo.html_url.toLowerCase().trim()
-            );
-
-            if (matchedCurated) {
-              return matchedCurated; 
-            }
-
-            const topics: string[] = repo.topics || [];
-            let category: 'Business Tools' | 'AI / RAG Engineering' = 'AI / RAG Engineering';
-            
-            if (topics.includes('business-tool') || topics.includes('automation') || topics.includes('saas')) {
-              category = 'Business Tools';
-            }
-
-            const techTags = [repo.language].filter(Boolean);
-            topics.slice(0, 3).forEach(topic => {
-              if (topic !== 'business-tool' && topic !== 'automation' && topic !== 'saas' && !techTags.includes(topic)) {
-                techTags.push(topic);
-              }
-            });
-
-            return {
-              title: repo.name.replace(/-/g, ' ').replace(/\b\w/g, (char: string) => char.toUpperCase()),
-              technologies: techTags.length > 0 ? techTags : ['Software'],
-              description: repo.description || 'Active development repository on GitHub. Visit codebase for setup instructions and documentation.',
-              githubUrl: repo.html_url,
-              liveUrl: repo.homepage || undefined,
-              category
-            };
-          });
-
-        const finalMerged = [...dynamicProjects];
-        CURATED_PROJECTS.forEach(cp => {
-          if (!finalMerged.some(fp => fp.githubUrl.toLowerCase().trim() === cp.githubUrl.toLowerCase().trim())) {
-            finalMerged.push(cp);
-          }
-        });
-
-        setProjects(finalMerged);
+        const liveData = await response.json();
+        setPortfolioData(liveData);
       } catch (err) {
-        console.warn('Fallback to curated local metadata due to GitHub API limit/error:', err);
-        setProjects(CURATED_PROJECTS);
+        // Log a light warning in the browser console instead of a terminal stack trace
+        console.warn('GitHub content offline. Using native fallback data.');
+        setPortfolioData(FALLBACK_DATA);
       } finally {
-        setIsLoadingRepos(false);
+        setIsSyncing(false);
       }
     }
 
-    fetchGitHubRepos();
+    fetchLatestContent();
   }, []);
 
   const handleContactSubmit = async (e: React.FormEvent) => {
@@ -344,6 +549,8 @@ export default function Portfolio() {
       setFormMessage('An unexpected communication error occurred. Please try again.');
     }
   };
+
+  const { personalInfo, skills, experience, projects, education, certifications, languages } = portfolioData;
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-indigo-500/30 selection:text-indigo-200">
@@ -377,7 +584,7 @@ export default function Portfolio() {
 
         {/* Mobile Dropdown */}
         {isMobileMenuOpen && (
-          <nav className="border-b border-slate-900 bg-slate-950 px-6 py-4 md:hidden">
+          <nav className="border-b border-slate-800 bg-slate-950 px-6 py-4 md:hidden">
             <div className="flex flex-col space-y-4 text-sm font-medium text-slate-400">
               <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-indigo-400">About</a>
               <a href="#skills" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-indigo-400">Skills</a>
@@ -396,15 +603,15 @@ export default function Portfolio() {
         <section className="flex flex-col-reverse items-center justify-between gap-12 pt-8 md:flex-row md:pt-16">
           <div className="flex-1 space-y-6 text-center md:text-left">
             <div className="inline-flex items-center space-x-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-300">
-              <span>Active in Addis Ababa, Ethiopia & Remote Workbases</span>
+              <span>{isSyncing ? 'Synchronizing content from GitHub...' : 'Connected to GitHub Content Engine'}</span>
             </div>
             
             <div className="space-y-3">
               <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Abdulgeni Abdulaziz
+                {personalInfo.name}
               </h1>
               <p className="text-lg font-medium text-indigo-400 sm:text-xl leading-relaxed">
-                Full Stack AI Engineer · RAG Systems · Workflow Automation · Next.js
+                {personalInfo.title}
               </p>
             </div>
 
@@ -415,13 +622,13 @@ export default function Portfolio() {
             {/* Quick Contact Badges */}
             <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-slate-400 md:justify-start">
               <span className="flex items-center gap-1.5">
-                <MapPinIcon className="h-4 w-4 text-indigo-400" /> Addis Ababa, Ethiopia
+                <MapPinIcon className="h-4 w-4 text-indigo-400" /> {personalInfo.location}
               </span>
               <span className="flex items-center gap-1.5">
-                <PhoneIcon className="h-4 w-4 text-indigo-400" /> +251 910 963 110
+                <PhoneIcon className="h-4 w-4 text-indigo-400" /> {personalInfo.phone}
               </span>
               <span className="flex items-center gap-1.5">
-                <MailIcon className="h-4 w-4 text-indigo-400" /> abdulgeniabdulaziz@gmail.com
+                <MailIcon className="h-4 w-4 text-indigo-400" /> {personalInfo.email}
               </span>
             </div>
 
@@ -450,7 +657,7 @@ export default function Portfolio() {
           <div className="border-t border-slate-900 pt-12">
             <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Professional Summary</h2>
             <p className="mt-4 text-sm leading-relaxed text-slate-400 sm:text-base max-w-4xl">
-              Full Stack AI Engineer with production experience designing and shipping RAG pipelines, AI-powered chatbots, workflow automation systems, and SaaS products for commercial clients. Architected 30+ production systems including RAG applications, WhatsApp bots, embeddable chat widgets, and email automation pipelines. Owns the full engineering lifecycle — system design, backend APIs, frontend interfaces, and deployment. Applies secure coding practices and OWASP Top 10 principles throughout every system delivered. Fluent in English, Arabic, and Turkish.
+              {personalInfo.summary}
             </p>
           </div>
         </section>
@@ -462,14 +669,7 @@ export default function Portfolio() {
             <p className="mt-1 text-sm text-slate-400">Languages, frameworks, and utility platforms utilized in development pipelines.</p>
             
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                { category: 'AI / RAG Engineering', list: ['OpenAI API', 'LangChain', 'RAG', 'ChromaDB', 'Sentence Transformers', 'Hugging Face', 'CLIP', 'Prompt Engineering'] },
-                { category: 'Workflow Automation', list: ['n8n', 'Zapier', 'GitHub Actions', 'Slack API', 'REST APIs', 'Webhooks', 'Airtable', 'ClickUp'] },
-                { category: 'Frontend Architecture', list: ['React', 'Next.js', 'Tailwind CSS', 'Figma', 'Responsive Web Design'] },
-                { category: 'Backend Systems', list: ['Node.js', 'Express', 'Python', 'PostgreSQL', 'Docker (basics)', 'Vercel'] },
-                { category: 'Auth, Payments & Security', list: ['NextAuth.js', 'Stripe payments', 'OWASP Top 10', 'Secure Coding Practices', 'Vulnerability Assessment', 'Network Security Fundamentals'] },
-                { category: 'Programming Languages', list: ['Python', 'JavaScript (ES6+)', 'TypeScript', 'SQL', 'HTML5', 'CSS3', 'Bash', 'C++', 'Rust', 'Dev Tools: Git', 'GitHub', 'VS Code', 'Postman', 'Linux CLI'] }
-              ].map((skillBlock, idx) => (
+              {skills.map((skillBlock, idx) => (
                 <div key={idx} className="rounded-xl border border-slate-900 bg-slate-950/40 p-6 space-y-4">
                   <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">{skillBlock.category}</h3>
                   <div className="flex flex-wrap gap-2">
@@ -490,7 +690,7 @@ export default function Portfolio() {
           <div className="border-t border-slate-900 pt-12">
             <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Professional Engineering History</h2>
             <div className="mt-8 space-y-12">
-              {EXPERIENCE_DATA.map((job, idx) => (
+              {experience.map((job, idx) => (
                 <div key={idx} className="relative border-l border-slate-800 pl-6 space-y-4">
                   {/* Timeline dot node */}
                   <div className="absolute -left-[6px] top-1.5 h-3.5 w-3.5 rounded-full border border-indigo-500 bg-slate-950" />
@@ -519,10 +719,7 @@ export default function Portfolio() {
               <div>
                 <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Shipped Systems</h2>
                 <p className="mt-1 text-sm text-slate-400">
-                  {isLoadingRepos 
-                    ? 'Syncing latest repositories directly from GitHub API...' 
-                    : 'Synced live with GitHub. Repositories automatically categorize on push.'
-                  }
+                  {isSyncing ? 'Syncing latest content from GitHub...' : 'Updates pulled live from portfolio-data.json on GitHub.'}
                 </p>
               </div>
 
@@ -630,14 +827,14 @@ export default function Portfolio() {
             <div className="space-y-6">
               <h2 className="text-2xl font-bold tracking-tight text-white">Education</h2>
               <div className="rounded-xl border border-slate-900 bg-slate-950/20 p-6 space-y-4">
-                <span className="text-xs font-mono text-indigo-400">Expected July 2027</span>
-                <h3 className="text-lg font-bold text-white">BSc Computer Science & Engineering</h3>
-                <p className="text-sm text-slate-400">Adama Science and Technology University (ASTU), Adama, Ethiopia</p>
+                <span className="text-xs font-mono text-indigo-400">{education.period}</span>
+                <h3 className="text-lg font-bold text-white">{education.degree}</h3>
+                <p className="text-sm text-slate-400">{education.institution}</p>
                 
                 <div className="border-t border-slate-900 pt-4 space-y-2">
                   <span className="text-xs font-semibold uppercase tracking-wider text-indigo-400 block">Relevant Coursework</span>
                   <p className="text-xs text-slate-400 leading-relaxed">
-                    Data Structures & Algorithms, Database Systems, Web Development, Machine Learning, Operating Systems, Computer Networks, OOP, Cybersecurity Fundamentals.
+                    {education.coursework}
                   </p>
                 </div>
               </div>
@@ -646,7 +843,7 @@ export default function Portfolio() {
               <div className="space-y-4">
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">Languages</h3>
                 <div className="flex flex-wrap gap-2 text-xs font-mono font-medium">
-                  {['English (Fluent)', 'Arabic (Fluent)', 'Turkish (Fluent)', 'Amharic (Native)', 'Afaan Oromo (Native)'].map((lang) => (
+                  {languages.map((lang) => (
                     <span key={lang} className="rounded bg-slate-900/50 border border-slate-800 px-3 py-1.5 text-slate-300">
                       {lang}
                     </span>
@@ -659,17 +856,7 @@ export default function Portfolio() {
             <div className="space-y-6">
               <h2 className="text-2xl font-bold tracking-tight text-white">Certifications</h2>
               <div className="space-y-3">
-                {[
-                  
-                  { name: 'Generative AI Fundamentals (8 Badges)', issuer: 'Google Cloud Skills Boost' },
-                  { name: 'Python', issuer: 'Kaggle' },
-                  { name: 'Intro to Machine Learning', issuer: 'Kaggle' },
-                  { name: 'Front End Development Libraries', issuer: 'freeCodeCamp' },
-                  { name: 'Machine Learning with Python (300h)', issuer: 'freeCodeCamp' },
-                  { name: 'Intro to AI Ethics', issuer: 'Kaggle' },
-                  { name: 'JavaScript Algorithms & Data Structures', issuer: 'freeCodeCamp' },
-                  { name: 'Pandas', issuer: 'Kaggle' }
-                ].map((cert, idx) => (
+                {certifications.map((cert, idx) => (
                   <div key={idx} className="flex items-center justify-between rounded-lg border border-slate-900 bg-slate-950/20 px-4 py-3 text-sm">
                     <span className="font-medium text-slate-300">{cert.name}</span>
                     <span className="text-xs font-mono text-slate-500">{cert.issuer}</span>
@@ -701,19 +888,19 @@ export default function Portfolio() {
                 </div>
 
                 <div className="space-y-3 font-medium text-sm text-slate-300">
-                  <a href="mailto:abdulgeniabdulaziz@gmail.com" className="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
+                  <a href={`mailto:${personalInfo.email}`} className="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
                     <MailIcon className="h-5 w-5" />
-                    <span>abdulgeniabdulaziz@gmail.com</span>
+                    <span>{personalInfo.email}</span>
                   </a>
-                  <a href="tel:+251910963110" className="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
+                  <a href={`tel:${personalInfo.phone}`} className="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
                     <PhoneIcon className="h-5 w-5" />
-                    <span>+251 910 963 110</span>
+                    <span>{personalInfo.phone}</span>
                   </a>
-                  <a href="https://github.com/Abdulgeni" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
+                  <a href={personalInfo.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
                     <GithubIcon className="h-5 w-5" />
-                    <span>github.com/Abdulgeni</span>
+                    <span>{personalInfo.githubUrl.replace('https://', '')}</span>
                   </a>
-                  <a href="https://linkedin.com/in/abdulgeni-abdulaziz-7bb360401" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
+                  <a href={personalInfo.linkedinUrl} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
                     <LinkedinIcon className="h-5 w-5" />
                     <span>LinkedIn Profile</span>
                   </a>
@@ -801,11 +988,11 @@ export default function Portfolio() {
       {/* Footer */}
       <footer className="mt-24 border-t border-slate-900 bg-slate-950 py-8">
         <div className="mx-auto max-w-6xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Abdulgeni Abdulaziz. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {personalInfo.name}. All rights reserved.</p>
           <div className="flex items-center space-x-4">
-            <a href="https://github.com/Abdulgeni" target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">GitHub</a>
-            <a href="https://linkedin.com/in/abdulgeni-abdulaziz-7bb360401" target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">LinkedIn</a>
-            <a href="https://twitter.com/@____Secw" target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">Twitter</a>
+            <a href={personalInfo.githubUrl} target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">GitHub</a>
+            <a href={personalInfo.linkedinUrl} target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">LinkedIn</a>
+            <a href={personalInfo.twitterUrl} target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">Twitter</a>
           </div>
         </div>
       </footer>
