@@ -1,0 +1,332 @@
+{
+  "personalInfo": {
+    "name": "Abdulgeni Abdulaziz",
+    "title": "Full Stack AI Engineer · RAG Systems · Workflow Automation · Next.js",
+    "location": "Addis Ababa, Ethiopia",
+    "phone": "+251 910 963 110",
+    "email": "abdulgeniabdulaziz@gmail.com",
+    "portfolioUrl": "https://abdulgeni-abdulaziz.vercel.app",
+    "githubUrl": "https://github.com/Abdulgeni",
+    "linkedinUrl": "https://www.linkedin.com/in/abdulgeni-abdulaziz-7bb360401",
+    "twitterUrl": "https://twitter.com/@____Secw",
+    "summary": "Full Stack AI Engineer with production experience designing and shipping RAG pipelines, AI-powered chatbots, workflow automation systems, and SaaS products for commercial clients. Architected 15+ production systems including RAG applications, WhatsApp bots, embeddable chat widgets, and email automation pipelines. Owns the full engineering lifecycle — system design, backend APIs, frontend interfaces, and deployment. Applies secure coding practices and OWASP Top 10 principles throughout every system delivered. Fluent in English, Arabic, and Turkish."
+  },
+  "skills": [
+    {
+      "category": "AI / RAG Engineering",
+      "list": [
+        "OpenAI API",
+        "Gemini API",
+        "LangChain",
+        "RAG",
+        "ChromaDB",
+        "Sentence Transformers",
+        "Hugging Face",
+        "CLIP",
+        "Prompt Engineering"
+      ]
+    },
+    {
+      "category": "Workflow Automation",
+      "list": [
+        "n8n",
+        "Zapier",
+        "GitHub Actions",
+        "Slack API",
+        "REST APIs",
+        "Webhooks",
+        "Airtable",
+        "ClickUp",
+        "Buffer API"
+      ]
+    },
+    {
+      "category": "Frontend Architecture",
+      "list": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Figma",
+        "Responsive Web Design"
+      ]
+    },
+    {
+      "category": "Backend Systems",
+      "list": [
+        "Node.js",
+        "Express",
+        "Python",
+        "PostgreSQL",
+        "Prisma",
+        "Docker (basics)",
+        "Vercel"
+      ]
+    },
+    {
+      "category": "Auth, Payments & Security",
+      "list": [
+        "NextAuth.js",
+        "Stripe",
+        "OWASP Top 10",
+        "Secure Coding Practices",
+        "Vulnerability Assessment",
+        "Network Security Fundamentals"
+      ]
+    },
+    {
+      "category": "Programming Languages",
+      "list": [
+        "Python",
+        "JavaScript (ES6+)",
+        "TypeScript",
+        "SQL",
+        "HTML5",
+        "CSS3",
+        "Bash",
+        "C++",
+        "Rust"
+      ]
+    },
+    {
+      "category": "Dev Tools",
+      "list": [
+        "Git",
+        "GitHub",
+        "VS Code",
+        "Postman",
+        "Linux CLI"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "role": "AI Systems Engineer",
+      "company": "Independent Engineering · Remote",
+      "period": "2024 – Present",
+      "highlights": [
+        "Architected 15+ production AI systems including RAG pipelines, WhatsApp customer support bots, and embeddable chat widgets using LangChain, ChromaDB, and OpenAI API.",
+        "Built an AI WhatsApp support bot handling customer queries 24/7 using RAG-powered knowledge base retrieval — deployable for any business within hours.",
+        "Engineered an embeddable AI chatbot widget added to any website via a single script tag, powered by Gemini API with streaming responses and customizable branding.",
+        "Designed and shipped VulnAlert Bot — an event-driven GitHub security monitor delivering Slack alerts within 5 seconds of a suspicious commit, protecting 3+ active repositories.",
+        "Implemented n8n and Zapier automation workflows including AI email classification and auto-reply systems, eliminating 15+ hours/week of manual operations per client."
+      ]
+    },
+    {
+      "role": "Full Stack Software Engineer",
+      "company": "Self-Employed (Remote)",
+      "period": "2024 – Present",
+      "highlights": [
+        "Engineered 15+ production web applications end-to-end — from system design through deployment — using React, Next.js, Node.js, and Python across SaaS, e-commerce, and automation verticals.",
+        "Built a full SaaS platform with user authentication, Stripe subscription billing, and an AI feature — complete multi-tenant product from database schema to production deployment.",
+        "Developed an AI invoice and document data extractor using Gemini 2.5 Flash Vision API, outputting structured data to CSV and Airtable automatically from any uploaded PDF.",
+        "Built an AI social media automation tool generating platform-specific posts for Instagram, LinkedIn, and Twitter from a single topic, scheduled and published via Buffer API.",
+        "Integrated third-party APIs (Airtable, Slack, Stripe, ClickUp, GitHub) into client applications, enabling real-time cross-platform synchronisation and eliminating manual handoffs."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "SaaS AI Platform",
+      "technologies": [
+        "Next.js 16",
+        "TypeScript",
+        "PostgreSQL (Neon)",
+        "Prisma",
+        "NextAuth.js",
+        "Stripe",
+        "Gemini 2.5 Flash",
+        "Vercel"
+      ],
+      "description": "Full multi-tenant SaaS with Google/email authentication via NextAuth.js, Stripe subscription billing with webhook handlers, and an AI-powered feature built on Gemini 2.5 Flash. Production-grade stack: Prisma ORM with type-safe queries, Neon serverless PostgreSQL, protected routes enforcing subscription status, and CI/CD via Vercel — zero fixed infrastructure cost.",
+      "githubUrl": "https://github.com/Abdulgeni/ai-saas",
+      "category": "Business Tools"
+    },
+    {
+      "title": "AI WhatsApp Customer Support Bot",
+      "technologies": [
+        "Python",
+        "LangChain",
+        "Twilio",
+        "ChromaDB",
+        "OpenAI API"
+      ],
+      "description": "24/7 customer support bot deployable on WhatsApp — answers queries using a RAG knowledge base built from business FAQs and product documentation. Handles multi-turn conversation with per-user memory, escalates to a human agent when confidence is low, and logs all interactions for review.",
+      "githubUrl": "https://github.com/Abdulgeni/support-bot",
+      "category": "Business Tools"
+    },
+    {
+      "title": "Embeddable AI Chatbot Widget",
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "LangChain",
+        "ChromaDB",
+        "Gemini API",
+        "Vercel"
+      ],
+      "description": "RAG-powered chat widget embeddable on any website — answers visitor questions using a customizable knowledge base with sub-second retrieval via ChromaDB and LangChain. Built with Next.js API routes and TypeScript for type-safe, production-grade code; customizable bot name, colors, and greeting via configuration — zero external dependencies for the host site.",
+      "githubUrl": "https://github.com/Abdulgeni/chat-widget",
+      "category": "Business Tools"
+    },
+    {
+      "title": "AI Email Automation System",
+      "technologies": [
+        "n8n",
+        "OpenAI API",
+        "Gmail API",
+        "Webhooks"
+      ],
+      "description": "Reads incoming emails, classifies intent (support, sales, complaint, inquiry) using GPT-3.5, generates a tailored draft reply, and notifies the team via Slack — fully automated. Saves businesses 2–3 hours/day of manual email handling; workflow exported as importable n8n JSON for rapid client deployment.",
+      "githubUrl": "https://github.com/Abdulgeni/email-automation",
+      "category": "Business Tools"
+    },
+    {
+      "title": "AI Invoice & Document Data Extractor",
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "Gemini 2.5 Flash Vision API",
+        "Tailwind CSS",
+        "Vercel"
+      ],
+      "description": "Uploads any invoice or document — extracts vendor, amount, date, and line items as structured data in under 2 seconds using Gemini 2.5 Flash Vision API. Exports to CSV automatically from any uploaded PDF.",
+      "githubUrl": "https://github.com/Abdulgeni/invoice-extractor",
+      "category": "Business Tools"
+    },
+    {
+      "title": "AI Social Media Content Automation",
+      "technologies": [
+        "n8n",
+        "Gemini 2.0 Flash API",
+        "Buffer API",
+        "Webhooks",
+        "REST APIs"
+      ],
+      "description": "Generates platform-optimised posts for Instagram, LinkedIn, and Twitter from a single topic and auto-schedules them via Buffer API. Fully automated from idea to published post with zero manual steps.",
+      "githubUrl": "https://github.com/Abdulgeni/social-automation",
+      "category": "Business Tools"
+    },
+    {
+      "title": "Agentic RAG — AI Agent with Tool Calling",
+      "technologies": [
+        "Python",
+        "LangChain",
+        "ChromaDB",
+        "Streamlit"
+      ],
+      "description": "Autonomous AI agent that evaluates search quality, refines queries iteratively, and surfaces chain-of-thought reasoning — built on production LangChain agent architecture patterns. Reduces manual search iterations by 80%+ compared to naive retrieval; sub-500ms query performance across all document types.",
+      "githubUrl": "https://github.com/Abdulgeni/agentic-rag",
+      "liveUrl": "https://agentic-rag.streamlit.app",
+      "category": "AI / RAG Engineering"
+    },
+    {
+      "title": "VulnAlert Bot — Security Monitoring",
+      "technologies": [
+        "n8n",
+        "Python",
+        "GitHub Webhooks",
+        "Slack API"
+      ],
+      "description": "Event-driven automation engine monitoring GitHub repositories for security-related keywords in real time — zero missed detections in production. Delivers formatted Slack alerts within 5 seconds of a suspicious code push; protects 3+ active client repositories.",
+      "githubUrl": "https://github.com/Abdulgeni/vulnalert",
+      "category": "AI / RAG Engineering"
+    },
+    {
+      "title": "Multi-Document RAG",
+      "technologies": [
+        "Python",
+        "Sentence Transformers",
+        "ChromaDB"
+      ],
+      "description": "Simultaneous search across multiple PDFs with per-result source attribution. Extended with CLIP embeddings for combined text and image retrieval.",
+      "githubUrl": "https://github.com/Abdulgeni/multidoc-rag",
+      "liveUrl": "https://multidoc-rag.streamlit.app",
+      "category": "AI / RAG Engineering"
+    },
+    {
+      "title": "Multimodal RAG — Text + Images",
+      "technologies": [
+        "Python",
+        "CLIP",
+        "ChromaDB"
+      ],
+      "description": "Unified search pipeline across PDFs and images using CLIP model embeddings for true multimodal retrieval.",
+      "githubUrl": "https://github.com/Abdulgeni/multimodal-rag",
+      "liveUrl": "https://multimodal-rag.streamlit.app",
+      "category": "AI / RAG Engineering"
+    },
+    {
+      "title": "Developer Portfolio",
+      "technologies": [
+        "Next.js",
+        "React",
+        "Tailwind CSS",
+        "Vercel",
+        "Figma"
+      ],
+      "description": "Server-side rendered portfolio with clean design, performance optimizations, and layout structures to target high Lighthouse audit metrics.",
+      "githubUrl": "https://github.com/Abdulgeni/my-portfolio",
+      "liveUrl": "https://abdulgeni-abdulaziz.vercel.app",
+      "category": "AI / RAG Engineering"
+    },
+    {
+      "title": "JS Summary API",
+      "technologies": [
+        "Node.js",
+        "Express",
+        "JavaScript"
+      ],
+      "description": "RESTful text summarization API with health check endpoint and compression ratio calculation. Demonstrates clean JavaScript routing logic.",
+      "githubUrl": "https://github.com/Abdulgeni/js-summary-api",
+      "category": "AI / RAG Engineering"
+    }
+  ],
+  "education": {
+    "degree": "BSc Computer Science & Engineering",
+    "institution": "Adama Science and Technology University (ASTU), Adama, Ethiopia",
+    "period": "Expected July 2027",
+    "coursework": "Data Structures & Algorithms, Database Systems, Web Development, Machine Learning, Operating Systems, Computer Networks, OOP, Cybersecurity Fundamentals"
+  },
+  "certifications": [
+    {
+      "name": "Generative AI Fundamentals (8 Badges)",
+      "issuer": "Google Cloud Skills Boost"
+    },
+    {
+      "name": "Intro to Machine Learning",
+      "issuer": "Kaggle"
+    },
+    {
+      "name": "Python",
+      "issuer": "Kaggle"
+    },
+    {
+      "name": "Pandas",
+      "issuer": "Kaggle"
+    },
+    {
+      "name": "Intro to AI Ethics",
+      "issuer": "Kaggle"
+    },
+    {
+      "name": "Machine Learning with Python (300h)",
+      "issuer": "freeCodeCamp"
+    },
+    {
+      "name": "JavaScript Algorithms & Data Structures",
+      "issuer": "freeCodeCamp"
+    },
+    {
+      "name": "Front End Development Libraries",
+      "issuer": "freeCodeCamp"
+    }
+  ],
+  "languages": [
+    "English (Fluent)",
+    "Arabic (Fluent)",
+    "Turkish (Fluent)",
+    "Amharic (Native)",
+    "Afaan Oromo (Native)"
+  ]
+}
