@@ -100,7 +100,7 @@ const XIcon = ({ className = "h-6 w-6" }) => (
 );
 
 // ==========================================
-// 2. SCHEMA DEFINITIONS & FALLBACK CONSTANTS
+// 2. DATA SCHEMAS
 // ==========================================
 interface Project {
   title: string;
@@ -165,89 +165,31 @@ const FALLBACK_DATA: PortfolioData = {
   skills: [
     {
       category: "AI / RAG Engineering",
-      list: [
-        "OpenAI API",
-        "Gemini API",
-        "LangChain",
-        "RAG",
-        "ChromaDB",
-        "Sentence Transformers",
-        "Hugging Face",
-        "CLIP",
-        "Prompt Engineering"
-      ]
+      list: ["OpenAI API", "Gemini API", "LangChain", "RAG", "ChromaDB", "Sentence Transformers", "Hugging Face", "CLIP", "Prompt Engineering"]
     },
     {
       category: "Workflow Automation",
-      list: [
-        "n8n",
-        "Zapier",
-        "GitHub Actions",
-        "Slack API",
-        "REST APIs",
-        "Webhooks",
-        "Airtable",
-        "ClickUp",
-        "Buffer API"
-      ]
+      list: ["n8n", "Zapier", "GitHub Actions", "Slack API", "REST APIs", "Webhooks", "Airtable", "ClickUp", "Buffer API"]
     },
     {
       category: "Frontend Architecture",
-      list: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "Figma",
-        "Responsive Web Design"
-      ]
+      list: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Figma", "Responsive Web Design"]
     },
     {
       category: "Backend Systems",
-      list: [
-        "Node.js",
-        "Express",
-        "Python",
-        "PostgreSQL",
-        "Prisma",
-        "Docker (basics)",
-        "Vercel"
-      ]
+      list: ["Node.js", "Express", "Python", "PostgreSQL", "Prisma", "Docker (basics)", "Vercel"]
     },
     {
       category: "Auth, Payments & Security",
-      list: [
-        "NextAuth.js",
-        "Stripe",
-        "OWASP Top 10",
-        "Secure Coding Practices",
-        "Vulnerability Assessment",
-        "Network Security Fundamentals"
-      ]
+      list: ["NextAuth.js", "Stripe", "OWASP Top 10", "Secure Coding Practices", "Vulnerability Assessment", "Network Security Fundamentals"]
     },
     {
       category: "Programming Languages",
-      list: [
-        "Python",
-        "JavaScript (ES6+)",
-        "TypeScript",
-        "SQL",
-        "HTML5",
-        "CSS3",
-        "Bash",
-        "C++",
-        "Rust"
-      ]
+      list: ["Python", "JavaScript (ES6+)", "TypeScript", "SQL", "HTML5", "CSS3", "Bash", "C++", "Rust"]
     },
     {
       category: "Dev Tools",
-      list: [
-        "Git",
-        "GitHub",
-        "VS Code",
-        "Postman",
-        "Linux CLI"
-      ]
+      list: ["Git", "GitHub", "VS Code", "Postman", "Linux CLI"]
     }
   ],
   experience: [
@@ -279,93 +221,49 @@ const FALLBACK_DATA: PortfolioData = {
   projects: [
     {
       title: "SaaS AI Platform",
-      technologies: [
-        "Next.js 16",
-        "TypeScript",
-        "PostgreSQL (Neon)",
-        "Prisma",
-        "NextAuth.js",
-        "Stripe",
-        "Gemini 2.5 Flash",
-        "Vercel"
-      ],
+      technologies: ["Next.js 16", "TypeScript", "PostgreSQL (Neon)", "Prisma", "NextAuth.js", "Stripe", "Gemini 2.5 Flash", "Vercel"],
       description: "Full multi-tenant SaaS with Google/email authentication via NextAuth.js, Stripe subscription billing with webhook handlers, and an AI-powered feature built on Gemini 2.5 Flash. Production-grade stack: Prisma ORM with type-safe queries, Neon serverless PostgreSQL, protected routes enforcing subscription status, and CI/CD via Vercel — zero fixed infrastructure cost.",
       githubUrl: "https://github.com/Abdulgeni/ai-saas",
       category: "Business Tools"
     },
     {
       title: "AI WhatsApp Customer Support Bot",
-      technologies: [
-        "Python",
-        "LangChain",
-        "Twilio",
-        "ChromaDB",
-        "OpenAI API"
-      ],
+      technologies: ["Python", "LangChain", "Twilio", "ChromaDB", "OpenAI API"],
       description: "24/7 customer support bot deployable on WhatsApp — answers queries using a RAG knowledge base built from business FAQs and product documentation. Handles multi-turn conversation with per-user memory, escalates to a human agent when confidence is low, and logs all interactions for review.",
       githubUrl: "https://github.com/Abdulgeni/support-bot",
       category: "Business Tools"
     },
     {
       title: "Embeddable AI Chatbot Widget",
-      technologies: [
-        "Next.js",
-        "TypeScript",
-        "LangChain",
-        "ChromaDB",
-        "Gemini API",
-        "Vercel"
-      ],
+      technologies: ["Next.js", "TypeScript", "LangChain", "ChromaDB", "Gemini API", "Vercel"],
       description: "RAG-powered chat widget embeddable on any website — answers visitor questions using a customizable knowledge base with sub-second retrieval via ChromaDB and LangChain. Built with Next.js API routes and TypeScript for type-safe, production-grade code; customizable bot name, colors, and greeting via configuration — zero external dependencies for the host site.",
       githubUrl: "https://github.com/Abdulgeni/chat-widget",
       category: "Business Tools"
     },
     {
       title: "AI Email Automation System",
-      technologies: [
-        "n8n",
-        "OpenAI API",
-        "Gmail API",
-        "Webhooks"
-      ],
+      technologies: ["n8n", "OpenAI API", "Gmail API", "Webhooks"],
       description: "Reads incoming emails, classifies intent (support, sales, complaint, inquiry) using GPT-3.5, generates a tailored draft reply, and notifies the team via Slack — fully automated. Saves businesses 2–3 hours/day of manual email handling; workflow exported as importable n8n JSON for rapid client deployment.",
       githubUrl: "https://github.com/Abdulgeni/email-automation",
       category: "Business Tools"
     },
     {
       title: "AI Invoice & Document Data Extractor",
-      technologies: [
-        "Next.js",
-        "TypeScript",
-        "Gemini 2.5 Flash Vision API",
-        "Tailwind CSS",
-        "Vercel"
-      ],
+      technologies: ["Next.js", "TypeScript", "Gemini 2.5 Flash Vision API", "Tailwind CSS", "Vercel"],
       description: "Uploads any invoice or document — extracts vendor, amount, date, and line items as structured data in under 2 seconds using Gemini 2.5 Flash Vision API. Exports to CSV automatically from any uploaded PDF.",
       githubUrl: "https://github.com/Abdulgeni/invoice-extractor",
       category: "Business Tools"
     },
     {
       title: "AI Social Media Content Automation",
-      technologies: [
-        "n8n",
-        "Gemini 2.0 Flash API",
-        "Buffer API",
-        "Webhooks",
-        "REST APIs"
-      ],
+      technologies: ["n8n", "Gemini 2.0 Flash API", "Buffer API", "Webhooks", "REST APIs"],
       description: "Generates platform-optimised posts for Instagram, LinkedIn, and Twitter from a single topic and auto-schedules them via Buffer API. Fully automated from idea to published post with zero manual steps.",
       githubUrl: "https://github.com/Abdulgeni/social-automation",
       category: "Business Tools"
     },
     {
       title: "Agentic RAG — AI Agent with Tool Calling",
-      technologies: [
-        "Python",
-        "LangChain",
-        "ChromaDB",
-        "Streamlit"
-      ],
+      technologies: ["Python", "LangChain", "ChromaDB", "Streamlit"],
       description: "Autonomous AI agent that evaluates search quality, refines queries iteratively, and surfaces chain-of-thought reasoning — built on production LangChain agent architecture patterns. Reduces manual search iterations by 80%+ compared to naive retrieval; sub-500ms query performance across all document types.",
       githubUrl: "https://github.com/Abdulgeni/agentic-rag",
       liveUrl: "https://agentic-rag.streamlit.app",
@@ -373,23 +271,14 @@ const FALLBACK_DATA: PortfolioData = {
     },
     {
       title: "VulnAlert Bot — Security Monitoring",
-      technologies: [
-        "n8n",
-        "Python",
-        "GitHub Webhooks",
-        "Slack API"
-      ],
+      technologies: ["n8n", "Python", "GitHub Webhooks", "Slack API"],
       description: "Event-driven automation engine monitoring GitHub repositories for security-related keywords in real time — zero missed detections in production. Delivers formatted Slack alerts within 5 seconds of a suspicious code push; protects 3+ active client repositories.",
       githubUrl: "https://github.com/Abdulgeni/vulnalert",
       category: "AI / RAG Engineering"
     },
     {
       title: "Multi-Document RAG",
-      technologies: [
-        "Python",
-        "Sentence Transformers",
-        "ChromaDB"
-      ],
+      technologies: ["Python", "Sentence Transformers", "ChromaDB"],
       description: "Simultaneous search across multiple PDFs with per-result source attribution. Extended with CLIP embeddings for combined text and image retrieval.",
       githubUrl: "https://github.com/Abdulgeni/multidoc-rag",
       liveUrl: "https://multidoc-rag.streamlit.app",
@@ -397,11 +286,7 @@ const FALLBACK_DATA: PortfolioData = {
     },
     {
       title: "Multimodal RAG — Text + Images",
-      technologies: [
-        "Python",
-        "CLIP",
-        "ChromaDB"
-      ],
+      technologies: ["Python", "CLIP", "ChromaDB"],
       description: "Unified search pipeline across PDFs and images using CLIP model embeddings for true multimodal retrieval.",
       githubUrl: "https://github.com/Abdulgeni/multimodal-rag",
       liveUrl: "https://multimodal-rag.streamlit.app",
@@ -409,13 +294,7 @@ const FALLBACK_DATA: PortfolioData = {
     },
     {
       title: "Developer Portfolio",
-      technologies: [
-        "Next.js",
-        "React",
-        "Tailwind CSS",
-        "Vercel",
-        "Figma"
-      ],
+      technologies: ["Next.js", "React", "Tailwind CSS", "Vercel", "Figma"],
       description: "Server-side rendered portfolio with clean design, performance optimizations, and layout structures to target high Lighthouse audit metrics.",
       githubUrl: "https://github.com/Abdulgeni/my-portfolio",
       liveUrl: "https://abdulgeni-abdulaziz.vercel.app",
@@ -423,11 +302,7 @@ const FALLBACK_DATA: PortfolioData = {
     },
     {
       title: "JS Summary API",
-      technologies: [
-        "Node.js",
-        "Express",
-        "JavaScript"
-      ],
+      technologies: ["Node.js", "Express", "JavaScript"],
       description: "RESTful text summarization API with health check endpoint and compression ratio calculation. Demonstrates clean JavaScript routing logic.",
       githubUrl: "https://github.com/Abdulgeni/js-summary-api",
       category: "AI / RAG Engineering"
@@ -483,7 +358,7 @@ const FALLBACK_DATA: PortfolioData = {
 };
 
 // ==========================================
-// 3. MAIN COMPONENT
+// 3. MAIN COMPONENT (High-End Masterpiece)
 // ==========================================
 export default function Portfolio() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -501,18 +376,12 @@ export default function Portfolio() {
         const response = await fetch(
           'https://raw.githubusercontent.com/Abdulgeni/my-portfolio/main/portfolio-data.json'
         );
-        
-        // If the fetch fails, silently use the native FALLBACK_DATA without throwing a hard error
-        if (!response.ok) {
-          setIsSyncing(false);
-          return;
-        }
+        if (!response.ok) throw new Error('Data file not found on GitHub yet');
 
         const liveData = await response.json();
         setPortfolioData(liveData);
       } catch (err) {
-        // Log a light warning in the browser console instead of a terminal stack trace
-        console.warn('GitHub content offline. Using native fallback data.');
+        console.warn('Fallback to native structural constants.', err);
         setPortfolioData(FALLBACK_DATA);
       } finally {
         setIsSyncing(false);
@@ -553,28 +422,36 @@ export default function Portfolio() {
   const { personalInfo, skills, experience, projects, education, certifications, languages } = portfolioData;
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-indigo-500/30 selection:text-indigo-200">
+    <div className="relative min-h-screen bg-slate-950 text-slate-100 selection:bg-indigo-500/30 selection:text-indigo-200 overflow-x-hidden">
       
-      {/* Sticky Blurred Header */}
-      <header className="sticky top-0 z-50 w-full border-b border-slate-900 bg-slate-950/80 backdrop-blur-md">
+      {/* 1. Cinematic Grid Overlay Pattern */}
+      <div className="absolute inset-0 -z-20 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+
+      {/* 2. Soft Background Color Orbs */}
+      <div className="absolute top-0 left-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-indigo-500/5 blur-[120px] pointer-events-none animate-pulse duration-[10s]" />
+      <div className="absolute top-[800px] right-1/4 -z-10 h-[600px] w-[600px] rounded-full bg-indigo-500/[0.03] blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-40 left-10 -z-10 h-[400px] w-[400px] rounded-full bg-indigo-500/5 blur-[100px] pointer-events-none" />
+
+      {/* Sticky Blurred Glass Header */}
+      <header className="sticky top-0 z-50 w-full border-b border-slate-900 bg-slate-950/70 backdrop-blur-md transition-all">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#" className="text-xl font-bold tracking-tight text-white">
-            Abdulgeni<span className="text-indigo-400">.</span>
+          <a href="#" className="text-xl font-bold tracking-tight text-white group">
+            Abdulgeni<span className="text-indigo-400 group-hover:text-indigo-300 transition-colors">.</span>
           </a>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Links */}
           <nav className="hidden items-center space-x-8 text-sm font-medium text-slate-400 md:flex">
-            <a href="#about" className="transition-colors hover:text-indigo-400">About</a>
-            <a href="#skills" className="transition-colors hover:text-indigo-400">Skills</a>
-            <a href="#experience" className="transition-colors hover:text-indigo-400">Experience</a>
-            <a href="#projects" className="transition-colors hover:text-indigo-400">Projects</a>
-            <a href="#education-certs" className="transition-colors hover:text-indigo-400">Education</a>
-            <a href="#contact" className="transition-colors hover:text-indigo-400">Contact</a>
+            <a href="#about" className="transition-all hover:text-indigo-400">About</a>
+            <a href="#skills" className="transition-all hover:text-indigo-400">Skills</a>
+            <a href="#experience" className="transition-all hover:text-indigo-400">Experience</a>
+            <a href="#projects" className="transition-all hover:text-indigo-400">Projects</a>
+            <a href="#education-certs" className="transition-all hover:text-indigo-400">Education</a>
+            <a href="#contact" className="transition-all hover:text-indigo-400">Contact</a>
           </nav>
 
           {/* Mobile Menu Icon */}
           <button 
-            className="text-slate-400 hover:text-white md:hidden"
+            className="text-slate-400 hover:text-white md:hidden p-1 rounded-lg hover:bg-slate-900/40"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle navigation menu"
           >
@@ -584,7 +461,7 @@ export default function Portfolio() {
 
         {/* Mobile Dropdown */}
         {isMobileMenuOpen && (
-          <nav className="border-b border-slate-800 bg-slate-950 px-6 py-4 md:hidden">
+          <nav className="border-b border-slate-900 bg-slate-950 px-6 py-4 md:hidden animate-in fade-in slide-in-from-top-2 duration-200">
             <div className="flex flex-col space-y-4 text-sm font-medium text-slate-400">
               <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-indigo-400">About</a>
               <a href="#skills" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-indigo-400">Skills</a>
@@ -597,20 +474,24 @@ export default function Portfolio() {
         )}
       </header>
 
-      <main className="mx-auto max-w-6xl px-6 py-12 space-y-28">
+      <main className="mx-auto max-w-6xl px-6 py-12 space-y-36 relative z-10">
 
         {/* Hero Area */}
         <section className="flex flex-col-reverse items-center justify-between gap-12 pt-8 md:flex-row md:pt-16">
           <div className="flex-1 space-y-6 text-center md:text-left">
-            <div className="inline-flex items-center space-x-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-300">
-              <span>{isSyncing ? 'Synchronizing content from GitHub...' : 'Connected to GitHub Content Engine'}</span>
+            <div className="inline-flex items-center space-x-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3 py-1 text-[11px] font-medium text-indigo-300">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+              </span>
+              <span>{isSyncing ? 'Synchronizing from GitHub...' : 'Live GitHub Content Engine Connected'}</span>
             </div>
             
-            <div className="space-y-3">
-              <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <div className="space-y-4">
+              <h1 className="text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white via-slate-100 to-indigo-200 sm:text-6xl lg:text-7xl">
                 {personalInfo.name}
               </h1>
-              <p className="text-lg font-medium text-indigo-400 sm:text-xl leading-relaxed">
+              <p className="text-lg font-medium text-indigo-400/90 sm:text-xl leading-relaxed">
                 {personalInfo.title}
               </p>
             </div>
@@ -620,33 +501,36 @@ export default function Portfolio() {
             </p>
 
             {/* Quick Contact Badges */}
-            <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-slate-400 md:justify-start">
-              <span className="flex items-center gap-1.5">
+            <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-medium text-slate-400 md:justify-start">
+              <span className="flex items-center gap-1.5 rounded-lg bg-slate-900/30 border border-slate-900/80 px-3 py-1.5">
                 <MapPinIcon className="h-4 w-4 text-indigo-400" /> {personalInfo.location}
               </span>
-              <span className="flex items-center gap-1.5">
+              <span className="flex items-center gap-1.5 rounded-lg bg-slate-900/30 border border-slate-900/80 px-3 py-1.5">
                 <PhoneIcon className="h-4 w-4 text-indigo-400" /> {personalInfo.phone}
               </span>
-              <span className="flex items-center gap-1.5">
+              <span className="flex items-center gap-1.5 rounded-lg bg-slate-900/30 border border-slate-900/80 px-3 py-1.5">
                 <MailIcon className="h-4 w-4 text-indigo-400" /> {personalInfo.email}
               </span>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-4 pt-2 md:justify-start">
-              <a href="#projects" className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-500 shadow-sm">
+              <a href="#projects" className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-500 shadow-lg shadow-indigo-500/10 hover:shadow-indigo-500/20 active:scale-95">
                 Explore Project Catalog
               </a>
-              <a href="#contact" className="inline-flex items-center justify-center rounded-lg border border-slate-800 bg-slate-900/40 px-5 py-2.5 text-sm font-semibold text-slate-200 transition hover:bg-slate-800">
+              <a href="#contact" className="inline-flex items-center justify-center rounded-lg border border-slate-800 bg-slate-900/40 px-5 py-2.5 text-sm font-semibold text-slate-200 transition hover:bg-slate-800 hover:text-white active:scale-95">
                 Contact Me
               </a>
             </div>
           </div>
 
-          {/* Graphical Avatar Space */}
+          {/* Interactive Graphical Avatar Space */}
           <div className="flex items-center justify-center">
-            <div className="relative flex h-48 w-48 items-center justify-center rounded-full border border-slate-800 bg-gradient-to-br from-slate-950 to-indigo-900/30 p-1 sm:h-56 sm:w-56">
-              <div className="flex h-full w-full items-center justify-center rounded-full bg-slate-950">
-                <CodeIcon className="h-16 w-16 text-indigo-400/80" />
+            <div className="relative flex h-52 w-52 items-center justify-center rounded-full border border-slate-800/80 bg-gradient-to-br from-slate-950 to-indigo-900/30 p-1.5 sm:h-60 sm:w-60 group">
+              {/* Outer pulsing ring */}
+              <div className="absolute inset-0 rounded-full bg-indigo-500/5 blur-md group-hover:bg-indigo-500/15 transition-all duration-500" />
+              <div className="flex h-full w-full items-center justify-center rounded-full bg-slate-950/90 relative overflow-hidden">
+                <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:10px_10px]" />
+                <CodeIcon className="h-16 w-16 text-indigo-400 group-hover:scale-110 group-hover:text-indigo-300 transition-all duration-500 relative z-10" />
               </div>
             </div>
           </div>
@@ -654,58 +538,83 @@ export default function Portfolio() {
 
         {/* Professional Summary Section */}
         <section id="about" className="scroll-mt-24 space-y-6">
-          <div className="border-t border-slate-900 pt-12">
+          <div className="border-t border-slate-900 pt-16">
             <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Professional Summary</h2>
-            <p className="mt-4 text-sm leading-relaxed text-slate-400 sm:text-base max-w-4xl">
-              {personalInfo.summary}
-            </p>
+            <div className="mt-6 p-8 rounded-2xl border border-slate-900/80 bg-slate-900/10 backdrop-blur-sm relative overflow-hidden group hover:border-slate-800 transition-all">
+              <div className="absolute top-0 right-0 h-32 w-32 bg-indigo-500/[0.03] rounded-full blur-2xl group-hover:bg-indigo-500/5 transition-all" />
+              <p className="text-sm leading-relaxed text-slate-300 sm:text-base max-w-4xl relative z-10">
+                {personalInfo.summary}
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* Technical Skills Section */}
+        {/* Bento Grid Technical Skills Section */}
         <section id="skills" className="scroll-mt-24 space-y-8">
-          <div className="border-t border-slate-900 pt-12">
+          <div className="border-t border-slate-900 pt-16">
             <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Technical Spectrum</h2>
-            <p className="mt-1 text-sm text-slate-400">Languages, frameworks, and utility platforms utilized in development pipelines.</p>
+            <p className="mt-1 text-sm text-slate-400">Languages, frameworks, and utility platforms structured in an automated design matrix.</p>
             
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {skills.map((skillBlock, idx) => (
-                <div key={idx} className="rounded-xl border border-slate-900 bg-slate-950/40 p-6 space-y-4">
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">{skillBlock.category}</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {skillBlock.list.map((skill) => (
-                      <span key={skill} className="rounded bg-slate-900/50 border border-slate-800/60 px-2 py-1 text-xs text-slate-300 font-mono">
-                        {skill}
-                      </span>
-                    ))}
+            {/* Bento Grid Layout */}
+            <div className="mt-8 grid gap-4 grid-cols-1 md:grid-cols-3">
+              {skills.map((skillBlock, idx) => {
+                // Determine Bento grid sizing to create beautiful structural hierarchy
+                const isLarge = idx === 0 || idx === 1 || idx === 3 || idx === 5;
+                const colSpanClass = isLarge ? 'md:col-span-2' : 'md:col-span-1';
+                
+                return (
+                  <div 
+                    key={idx} 
+                    className={`rounded-2xl border border-slate-900 bg-slate-900/20 p-6 space-y-4 hover:border-slate-800/80 hover:bg-slate-900/40 hover:shadow-2xl hover:shadow-indigo-500/[0.01] transition-all duration-300 ${colSpanClass}`}
+                  >
+                    <h3 className="text-xs font-semibold uppercase tracking-wider text-indigo-400/90">{skillBlock.category}</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {skillBlock.list.map((skill) => (
+                        <span 
+                          key={skill} 
+                          className="rounded-md bg-slate-950/70 border border-slate-900 px-2.5 py-1 text-xs text-slate-300 font-mono hover:border-indigo-500/40 hover:text-white transition-all cursor-default"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
 
         {/* Work Experience Section */}
         <section id="experience" className="scroll-mt-24 space-y-8">
-          <div className="border-t border-slate-900 pt-12">
+          <div className="border-t border-slate-900 pt-16">
             <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Professional Engineering History</h2>
-            <div className="mt-8 space-y-12">
+            <div className="mt-12 space-y-8 relative before:absolute before:inset-0 before:left-3 before:h-full before:w-px before:bg-slate-900">
               {experience.map((job, idx) => (
-                <div key={idx} className="relative border-l border-slate-800 pl-6 space-y-4">
-                  {/* Timeline dot node */}
-                  <div className="absolute -left-[6px] top-1.5 h-3.5 w-3.5 rounded-full border border-indigo-500 bg-slate-950" />
-                  
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                    <h3 className="text-lg font-bold text-white">{job.role}</h3>
-                    <span className="text-xs font-mono text-indigo-400">{job.period}</span>
+                <div key={idx} className="relative pl-8 group">
+                  {/* Timeline Glowing Node */}
+                  <div className="absolute left-1 top-2.5 h-4 w-4 rounded-full border border-indigo-500 bg-slate-950 flex items-center justify-center transition-all group-hover:border-indigo-400">
+                    <div className="h-1.5 w-1.5 rounded-full bg-indigo-500 group-hover:scale-125 transition-transform" />
                   </div>
-                  <p className="text-sm font-medium text-slate-400">{job.company}</p>
                   
-                  <ul className="space-y-2 text-sm text-slate-400 list-disc list-inside leading-relaxed pl-2">
-                    {job.highlights.map((highlight, index) => (
-                      <li key={index}>{highlight}</li>
-                    ))}
-                  </ul>
+                  {/* Frosted Glass Experience Card */}
+                  <div className="p-6 rounded-2xl border border-slate-900 bg-slate-900/10 backdrop-blur-sm space-y-4 group-hover:border-slate-800 transition-all duration-300">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                      <h3 className="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors">{job.role}</h3>
+                      <span className="inline-block rounded-full bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 text-[11px] font-mono text-indigo-300 self-start sm:self-center">
+                        {job.period}
+                      </span>
+                    </div>
+                    <p className="text-xs sm:text-sm font-semibold text-slate-400">{job.company}</p>
+                    
+                    <ul className="space-y-2 text-xs sm:text-sm text-slate-400 leading-relaxed pl-1 list-none">
+                      {job.highlights.map((highlight, index) => (
+                        <li key={index} className="relative pl-5 before:content-[''] before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-800 group-hover:before:bg-indigo-500/40 before:transition-colors">
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               ))}
             </div>
@@ -714,24 +623,24 @@ export default function Portfolio() {
 
         {/* Projects Grid Section */}
         <section id="projects" className="scroll-mt-24 space-y-8">
-          <div className="border-t border-slate-900 pt-12">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div className="border-t border-slate-900 pt-16">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
               <div>
                 <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Shipped Systems</h2>
                 <p className="mt-1 text-sm text-slate-400">
-                  {isSyncing ? 'Syncing latest content from GitHub...' : 'Updates pulled live from portfolio-data.json on GitHub.'}
+                  {isSyncing ? 'Syncing repository matrix...' : 'Updates pulled live from portfolio-data.json on GitHub.'}
                 </p>
               </div>
 
               {/* Segment Toggle Filter */}
-              <div className="flex border border-slate-800 rounded-lg p-1 bg-slate-950">
+              <div className="flex border border-slate-900 rounded-lg p-1 bg-slate-950/80 self-start">
                 {(['Business Tools', 'AI / RAG Engineering'] as const).map((group) => (
                   <button
                     key={group}
                     onClick={() => setProjectGroup(group)}
-                    className={`rounded-md px-3.5 py-1.5 text-xs font-semibold transition-all ${
+                    className={`rounded-md px-4 py-1.5 text-xs font-semibold transition-all duration-300 ${
                       projectGroup === group
-                        ? 'bg-indigo-600 text-white'
+                        ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/10'
                         : 'text-slate-400 hover:text-white'
                     }`}
                   >
@@ -746,17 +655,17 @@ export default function Portfolio() {
               {projects.filter(p => p.category === projectGroup).map((project, idx) => (
                 <div 
                   key={idx}
-                  className="flex flex-col justify-between rounded-xl border border-slate-900 bg-slate-950/20 p-6 transition-all duration-300 hover:border-slate-800/80 hover:bg-slate-900/10"
+                  className="group flex flex-col justify-between rounded-2xl border border-slate-900 bg-slate-950/20 p-6 transition-all duration-300 hover:border-slate-800/80 hover:bg-slate-900/10 hover:shadow-xl hover:shadow-indigo-500/[0.01]"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-mono text-indigo-400">{project.category}</span>
+                      <span className="text-[10px] uppercase font-mono tracking-wider text-indigo-400">{project.category}</span>
                       <div className="flex items-center space-x-3">
                         <a 
                           href={project.githubUrl} 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="text-slate-500 hover:text-slate-200 transition-colors"
+                          className="text-slate-500 hover:text-white transition-colors"
                           aria-label="GitHub Repository"
                         >
                           <GithubIcon className="h-5 w-5" />
@@ -778,26 +687,26 @@ export default function Portfolio() {
                     <h3 className="text-base font-bold text-white group-hover:text-indigo-300 transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-slate-400 leading-relaxed line-clamp-5">
+                    <p className="text-xs sm:text-sm text-slate-400 leading-relaxed line-clamp-4 group-hover:text-slate-300 transition-colors">
                       {project.description}
                     </p>
                   </div>
 
                   <div className="mt-6 space-y-4">
                     <div className="flex flex-wrap gap-1.5">
-                      {project.technologies.map((tech) => (
-                        <span key={tech} className="rounded bg-slate-900/60 border border-slate-800/50 px-2 py-0.5 text-[10px] sm:text-xs font-mono text-slate-400">
+                      {project.technologies.slice(0, 5).map((tech) => (
+                        <span key={tech} className="rounded bg-slate-900/60 border border-slate-800/40 px-2.5 py-0.5 text-[10px] font-mono text-slate-400">
                           {tech}
                         </span>
                       ))}
                     </div>
 
-                    <div className="flex items-center justify-between border-t border-slate-900 pt-3 text-xs font-medium">
+                    <div className="flex items-center justify-between border-t border-slate-900 pt-4 text-xs font-semibold">
                       <a 
                         href={project.githubUrl} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="text-indigo-400 hover:text-indigo-300 transition-colors flex items-center gap-1"
+                        className="text-indigo-400 hover:text-indigo-300 transition-colors flex items-center gap-1 group-hover:underline"
                       >
                         Source Code <ExternalLinkIcon className="h-3 w-3" />
                       </a>
@@ -821,30 +730,32 @@ export default function Portfolio() {
 
         {/* Education, Certifications & Languages Grid */}
         <section id="education-certs" className="scroll-mt-24 space-y-8">
-          <div className="border-t border-slate-900 pt-12 grid gap-12 md:grid-cols-2">
+          <div className="border-t border-slate-900 pt-16 grid gap-12 md:grid-cols-2">
             
             {/* Left Column: Education & Languages */}
             <div className="space-y-6">
               <h2 className="text-2xl font-bold tracking-tight text-white">Education</h2>
-              <div className="rounded-xl border border-slate-900 bg-slate-950/20 p-6 space-y-4">
-                <span className="text-xs font-mono text-indigo-400">{education.period}</span>
+              <div className="rounded-2xl border border-slate-900 bg-slate-900/10 p-6 space-y-4">
+                <span className="inline-block rounded-full bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 text-xs font-mono text-indigo-300">
+                  {education.period}
+                </span>
                 <h3 className="text-lg font-bold text-white">{education.degree}</h3>
                 <p className="text-sm text-slate-400">{education.institution}</p>
                 
                 <div className="border-t border-slate-900 pt-4 space-y-2">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-indigo-400 block">Relevant Coursework</span>
-                  <p className="text-xs text-slate-400 leading-relaxed">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-indigo-400 block">Coursework spectrum</span>
+                  <p className="text-xs text-slate-400 leading-relaxed font-mono">
                     {education.coursework}
                   </p>
                 </div>
               </div>
 
               {/* International Languages block */}
-              <div className="space-y-4">
+              <div className="space-y-4 pt-2">
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">Languages</h3>
-                <div className="flex flex-wrap gap-2 text-xs font-mono font-medium">
+                <div className="flex flex-wrap gap-2">
                   {languages.map((lang) => (
-                    <span key={lang} className="rounded bg-slate-900/50 border border-slate-800 px-3 py-1.5 text-slate-300">
+                    <span key={lang} className="rounded-md bg-slate-900/60 border border-slate-800 px-3 py-1.5 text-xs font-mono font-medium text-slate-300">
                       {lang}
                     </span>
                   ))}
@@ -857,7 +768,10 @@ export default function Portfolio() {
               <h2 className="text-2xl font-bold tracking-tight text-white">Certifications</h2>
               <div className="space-y-3">
                 {certifications.map((cert, idx) => (
-                  <div key={idx} className="flex items-center justify-between rounded-lg border border-slate-900 bg-slate-950/20 px-4 py-3 text-sm">
+                  <div 
+                    key={idx} 
+                    className="flex items-center justify-between rounded-xl border border-slate-900 bg-slate-900/10 px-4 py-3.5 text-sm hover:border-slate-800 transition-colors"
+                  >
                     <span className="font-medium text-slate-300">{cert.name}</span>
                     <span className="text-xs font-mono text-slate-500">{cert.issuer}</span>
                   </div>
@@ -870,7 +784,7 @@ export default function Portfolio() {
 
         {/* Contact Form Section */}
         <section id="contact" className="scroll-mt-24 space-y-8">
-          <div className="border-t border-slate-900 pt-12">
+          <div className="border-t border-slate-900 pt-16">
             <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Get In Touch</h2>
             <p className="mt-2 text-sm text-slate-400">
               Let's discuss pipeline development, custom n8n configurations, or full stack opportunities.
@@ -879,7 +793,7 @@ export default function Portfolio() {
             <div className="mt-8 grid gap-12 md:grid-cols-5">
               
               {/* Sidebar Contacts */}
-              <div className="md:col-span-2 space-y-6">
+              <div className="md:col-span-2 space-y-8">
                 <div className="space-y-4">
                   <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">Communication Matrix</h3>
                   <p className="text-sm text-slate-400 leading-relaxed">
@@ -887,20 +801,20 @@ export default function Portfolio() {
                   </p>
                 </div>
 
-                <div className="space-y-3 font-medium text-sm text-slate-300">
-                  <a href={`mailto:${personalInfo.email}`} className="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
-                    <MailIcon className="h-5 w-5" />
+                <div className="space-y-4 font-medium text-sm text-slate-300">
+                  <a href={`mailto:${personalInfo.email}`} className="flex items-center space-x-3 rounded-xl border border-slate-900/80 bg-slate-900/20 px-4 py-3 hover:border-indigo-500/40 hover:bg-slate-900/40 transition-all">
+                    <MailIcon className="h-5 w-5 text-indigo-400" />
                     <span>{personalInfo.email}</span>
                   </a>
-                  <a href={`tel:${personalInfo.phone}`} className="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
+                  <a href={`tel:${personalInfo.phone}`} className="flex items-center space-x-3 rounded-xl border border-slate-900/80 bg-slate-900/20 px-4 py-3 hover:border-indigo-500/40 hover:bg-slate-900/40 transition-all">
                     <PhoneIcon className="h-5 w-5" />
                     <span>{personalInfo.phone}</span>
                   </a>
-                  <a href={personalInfo.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
+                  <a href={personalInfo.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 rounded-xl border border-slate-900/80 bg-slate-900/20 px-4 py-3 hover:border-indigo-500/40 hover:bg-slate-900/40 transition-all">
                     <GithubIcon className="h-5 w-5" />
                     <span>{personalInfo.githubUrl.replace('https://', '')}</span>
                   </a>
-                  <a href={personalInfo.linkedinUrl} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
+                  <a href={personalInfo.linkedinUrl} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 rounded-xl border border-slate-900/80 bg-slate-900/20 px-4 py-3 hover:border-indigo-500/40 hover:bg-slate-900/40 transition-all">
                     <LinkedinIcon className="h-5 w-5" />
                     <span>LinkedIn Profile</span>
                   </a>
@@ -908,7 +822,9 @@ export default function Portfolio() {
               </div>
 
               {/* Form Element */}
-              <form onSubmit={handleContactSubmit} className="md:col-span-3 space-y-4">
+              <form onSubmit={handleContactSubmit} className="md:col-span-3 space-y-4 rounded-2xl border border-slate-900 bg-slate-900/25 p-6 backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute top-0 right-0 h-32 w-32 bg-indigo-500/[0.02] rounded-full blur-3xl pointer-events-none" />
+                
                 <div>
                   <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-wider text-slate-400">Name</label>
                   <input
@@ -917,7 +833,7 @@ export default function Portfolio() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="mt-1 w-full rounded-lg border border-slate-800 bg-slate-900/30 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                    className="mt-1.5 w-full rounded-lg border border-slate-800 bg-slate-950/50 px-4 py-3 text-sm text-white placeholder-slate-600 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 transition-all"
                     placeholder="Enter your name"
                   />
                 </div>
@@ -930,7 +846,7 @@ export default function Portfolio() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="mt-1 w-full rounded-lg border border-slate-800 bg-slate-900/30 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                    className="mt-1.5 w-full rounded-lg border border-slate-800 bg-slate-950/50 px-4 py-3 text-sm text-white placeholder-slate-600 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 transition-all"
                     placeholder="you@example.com"
                   />
                 </div>
@@ -943,21 +859,21 @@ export default function Portfolio() {
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="mt-1 w-full rounded-lg border border-slate-800 bg-slate-900/30 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 resize-none"
+                    className="mt-1.5 w-full rounded-lg border border-slate-800 bg-slate-950/50 px-4 py-3 text-sm text-white placeholder-slate-600 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 resize-none transition-all"
                     placeholder="Describe your project requirements or work details..."
                   />
                 </div>
 
                 {/* Status Banners */}
                 {formStatus === 'success' && (
-                  <div className="flex items-center space-x-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 p-3 text-sm text-emerald-400">
+                  <div className="flex items-center space-x-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 p-3 text-sm text-emerald-400 animate-in fade-in duration-200">
                     <CheckCircleIcon className="h-5 w-5" />
                     <span>{formMessage}</span>
                   </div>
                 )}
 
                 {formStatus === 'error' && (
-                  <div className="flex items-center space-x-2 rounded-lg bg-rose-500/10 border border-rose-500/20 p-3 text-sm text-rose-400">
+                  <div className="flex items-center space-x-2 rounded-lg bg-rose-500/10 border border-rose-500/20 p-3 text-sm text-rose-400 animate-in fade-in duration-200">
                     <AlertCircleIcon className="h-5 w-5" />
                     <span>{formMessage}</span>
                   </div>
@@ -966,7 +882,7 @@ export default function Portfolio() {
                 <button
                   type="submit"
                   disabled={formStatus === 'submitting'}
-                  className="inline-flex w-full items-center justify-center space-x-2 rounded-lg bg-indigo-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500 focus:outline-none disabled:bg-indigo-600/50"
+                  className="inline-flex w-full items-center justify-center space-x-2 rounded-lg bg-indigo-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500 focus:outline-none disabled:bg-indigo-600/50 active:scale-[0.98]"
                 >
                   {formStatus === 'submitting' ? (
                     <span>Processing Submission...</span>
@@ -986,13 +902,13 @@ export default function Portfolio() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-24 border-t border-slate-900 bg-slate-950 py-8">
+      <footer className="mt-32 border-t border-slate-900 bg-slate-950/90 py-10 relative">
         <div className="mx-auto max-w-6xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} {personalInfo.name}. All rights reserved.</p>
-          <div className="flex items-center space-x-4">
-            <a href={personalInfo.githubUrl} target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">GitHub</a>
-            <a href={personalInfo.linkedinUrl} target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">LinkedIn</a>
-            <a href={personalInfo.twitterUrl} target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">Twitter</a>
+          <div className="flex items-center space-x-6">
+            <a href="https://github.com/Abdulgeni" target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">GitHub</a>
+            <a href="https://linkedin.com/in/abdulgeni-abdulaziz-7bb360401" target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">LinkedIn</a>
+            <a href="https://twitter.com/@____Secw" target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">Twitter</a>
           </div>
         </div>
       </footer>
