@@ -9,7 +9,7 @@
     "githubUrl": "https://github.com/Abdulgeni",
     "linkedinUrl": "https://www.linkedin.com/in/abdulgeni-abdulaziz-7bb360401",
     "twitterUrl": "https://twitter.com/@____Secw",
-    "summary": "Full Stack AI Engineer with production experience designing and shipping RAG pipelines, AI-powered chatbots, workflow automation systems, and SaaS products for commercial clients. Architected 15+ production systems including RAG applications, WhatsApp bots, embeddable chat widgets, and email automation pipelines. Owns the full engineering lifecycle — system design, backend APIs, frontend interfaces, and deployment. Applies secure coding practices and OWASP Top 10 principles throughout every system delivered. Fluent in English, Arabic, and Turkish."
+    "summary": "Full Stack AI Engineer with production experience designing and shipping RAG pipelines, AI-powered chatbots, workflow automation systems, and SaaS products for commercial clients. Architected 15+ production systems including RAG applications, WhatsApp bots, embeddable chat widgets, PR review agents, and MCP servers. Owns the full engineering lifecycle — system design, backend APIs, frontend interfaces, and deployment. Applies secure coding practices and OWASP Top 10 principles throughout every system delivered. Fluent in English, Arabic, and Turkish."
   },
   "skills": [
     {
@@ -23,7 +23,8 @@
         "Sentence Transformers",
         "Hugging Face",
         "CLIP",
-        "Prompt Engineering"
+        "Prompt Engineering",
+        "MCP (Model Context Protocol)"
       ]
     },
     {
@@ -32,6 +33,7 @@
         "n8n",
         "Zapier",
         "GitHub Actions",
+        "GitHub Actions PR Automation",
         "Slack API",
         "REST APIs",
         "Webhooks",
@@ -109,7 +111,9 @@
         "Built an AI WhatsApp support bot handling customer queries 24/7 using RAG-powered knowledge base retrieval — deployable for any business within hours.",
         "Engineered an embeddable AI chatbot widget added to any website via a single script tag, powered by Gemini API with streaming responses and customizable branding.",
         "Designed and shipped VulnAlert Bot — an event-driven GitHub security monitor delivering Slack alerts within 5 seconds of a suspicious commit, protecting 3+ active repositories.",
-        "Implemented n8n and Zapier automation workflows including AI email classification and auto-reply systems, eliminating 15+ hours/week of manual operations per client."
+        "Implemented n8n and Zapier automation workflows including AI email classification and auto-reply systems, eliminating 15+ hours/week of manual operations per client.",
+        "Built an Agentic PR Review Bot using Gemini 2.5 Flash and GitHub Actions — automatically reviews pull requests, analyzes diffs for bugs, security issues, and edge cases, and posts structured review comments directly on the PR with Slack notifications.",
+        "Built a production MCP server using the Model Context Protocol SDK exposing AI invoice extraction as a callable tool for Claude Desktop and any MCP-compatible client."
       ]
     },
     {
@@ -205,6 +209,30 @@
       ],
       "description": "Generates platform-optimised posts for Instagram, LinkedIn, and Twitter from a single topic and auto-schedules them via Buffer API. Fully automated from idea to published post with zero manual steps.",
       "githubUrl": "https://github.com/Abdulgeni/social-automation",
+      "category": "Business Tools"
+    },
+    {
+      "title": "Agentic PR Review Bot",
+      "technologies": [
+        "Python",
+        "Gemini 2.5 Flash",
+        "GitHub Actions",
+        "Slack API"
+      ],
+      "description": "AI-powered code review agent that automatically reviews GitHub pull requests using Gemini 2.5 Flash and GitHub Actions. Triggers on PR open/update, fetches diffs, analyzes code for bugs, security issues, edge cases, and best practices, then posts structured review comments directly on the PR. Includes Slack notifications for review summaries — fully automated code review pipeline requiring zero manual intervention.",
+      "githubUrl": "https://github.com/Abdulgeni/pr-review-bot",
+      "category": "Business Tools"
+    },
+    {
+      "title": "Invoice Extractor MCP Server",
+      "technologies": [
+        "Python",
+        "MCP SDK",
+        "Gemini Vision API",
+        "Model Context Protocol"
+      ],
+      "description": "Production MCP server that exposes AI invoice extraction as a tool callable by Claude Desktop and any MCP-compatible client. Built with Python and the MCP SDK, using Gemini Vision API to extract vendor, invoice number, date, and total amount from uploaded invoice images. Turns an existing AI project into a reusable building block for AI agent pipelines.",
+      "githubUrl": "https://github.com/Abdulgeni/invoice-extractor-mcp",
       "category": "Business Tools"
     },
     {
