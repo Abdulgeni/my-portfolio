@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
@@ -67,10 +68,30 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#4f46e5",
+=======
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Abdulgeni Abdulaziz | Full Stack AI Engineer",
+  description: "Portfolio of Abdulgeni Abdulaziz, a Full Stack AI Engineer specializing in production RAG systems, workflow automation, and Next.js SaaS architectures.",
+>>>>>>> 310d1b85f6650eb9992b428c73310bfb174ef3f6
 };
 
 export default function RootLayout({
   children,
+<<<<<<< HEAD
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
@@ -85,6 +106,17 @@ export default function RootLayout({
           <KeyboardShortcuts />
         </Providers>
       </body>
+=======
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">{children}</body>
+>>>>>>> 310d1b85f6650eb9992b428c73310bfb174ef3f6
     </html>
   );
 }
