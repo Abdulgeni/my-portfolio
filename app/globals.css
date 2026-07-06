@@ -1,0 +1,270 @@
+@import "tailwindcss";
+
+:root {
+  /* Default dark theme values */
+  --bg-color: #030712;
+  --surface-color: #0f172a;
+  --surface-2-color: #1e293b;
+  --border-color: #1e293b;
+  --border-2-color: #334155;
+  --accent-color: #6366f1;
+  --accent-dim-color: rgba(99, 102, 241, 0.12);
+  --text-1-color: #f1f5f9;
+  --text-2-color: #94a3b8;
+  --text-3-color: #64748b;
+  --text-accent-color: #6366f1;
+}
+
+:root.light {
+  /* High-contrast light theme values */
+  --bg-color: #f8fafc;
+  --surface-color: #ffffff;
+  --surface-2-color: #f1f5f9;
+  --border-color: #e2e8f0;
+  --border-2-color: #cbd5e1;
+  --accent-color: #4f46e5;
+  --accent-dim-color: rgba(79, 70, 229, 0.08);
+  --text-1-color: #0f172a;
+  --text-2-color: #334155;
+  --text-3-color: #64748b;
+  --text-accent-color: #4f46e5;
+}
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-space: var(--font-space-grotesk), sans-serif;
+
+  --color-bg: var(--bg-color);
+  --color-surface: var(--surface-color);
+  --color-surface-2: var(--surface-2-color);
+  --color-border: var(--border-color);
+  --color-border-2: var(--border-2-color);
+  --color-accent: var(--accent-color);
+  --color-accent-dim: var(--accent-dim-color);
+  --color-text-1: var(--text-1-color);
+  --color-text-2: var(--text-2-color);
+  --color-text-3: var(--text-3-color);
+  --color-text-accent: var(--text-accent-color);
+
+  --font-size-micro: 10px;
+  --font-size-secondary: 12px;
+  --font-size-primary: 14px;
+  --font-size-title: 16px;
+  --font-size-heading: 20px;
+  --font-size-subtitle: 32px;
+  --font-size-hero: 56px;
+  --font-size-hero-mobile: 36px;
+}
+
+/* Custom Base Resets */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-1-color);
+  font-family: var(--font-inter), sans-serif;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+  opacity: 0.8;
+}
+
+/* Text Selection */
+::selection {
+  background-color: var(--accent-dim-color);
+  color: var(--accent-color);
+}
+
+/* Hero name reveal: animates a clip-path wipe over the FULL, already-shaped
+   string instead of building it character-by-character. Building Arabic text
+   one character at a time breaks its contextual letter shaping (the same
+   letter takes a different glyph depending on its neighbors), which is why
+   the name looked garbled mid-animation. Revealing the whole word via clip
+   keeps every glyph correctly joined the entire time. */
+@keyframes name-reveal-ltr {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes name-reveal-rtl {
+  from { clip-path: inset(0 0 0 100%); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+.name-reveal-ltr {
+  animation: name-reveal-ltr 1.1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.name-reveal-rtl {
+  animation: name-reveal-rtl 1.1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+/* Focus outlines */
+input:focus, textarea:focus, select:focus, button:focus {
+  outline: 2px solid var(--accent-color) !important;
+  outline-offset: 2px;
+}
+
+/* Terminal Cursor Blinking animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 0.8s step-end infinite;
+}
+
+/* Bento Card glow & shadow styling */
+.bento-card {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.15);
+  border-color: #4f46e5;
+}
+
+/* Print Stylesheet for clean, professional PDF resume generation */
+@media print {
+  :root, :root.light {
+    --bg-color: #ffffff !important;
+    --surface-color: #ffffff !important;
+    --surface-2-color: #f8fafc !important;
+    --border-color: #cbd5e1 !important;
+    --border-2-color: #94a3b8 !important;
+    --accent-color: #312e81 !important; /* Deep indigo for printing contrast */
+    --accent-dim-color: rgba(49, 46, 129, 0.05) !important;
+    --text-1-color: #0f172a !important;
+    --text-2-color: #334155 !important;
+    --text-3-color: #475569 !important;
+    --text-accent-color: #312e81 !important;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Force print background colors if browser supports it */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* FadeInSection animations bypass */
+  .opacity-0, [class*="opacity-0"] {
+    opacity: 1 !important;
+  }
+  .translate-y-3, [class*="translate-y-"] {
+    transform: none !important;
+  }
+
+  /* Hide interactive / non-essential layout controls */
+  nav, #nav-desktop, #nav-mobile, #scroll-progress-bar, #chat-widget, [id*="chat"], .recruiter-tool, button, input, textarea {
+    display: none !important;
+  }
+
+  /* Reset layout offset for fixed sidebar */
+  main {
+    padding-left: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Layout and spacing optimization */
+  section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    border-top: 1px solid #cbd5e1 !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Avoid page breaks inside important components */
+  .bento-card, .grid > div, [class*="rounded-2xl"], [class*="rounded-xl"] {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    color: #000000 !important;
+  }
+
+  p, span, li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Expand contact info to full width by hiding the interactive form */
+  #contact .grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+  #contact .md\:col-span-5 {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  #contact .md\:col-span-7 {
+    display: none !important; /* Hide contact form completely */
+  }
+
+  /* Display links cleanly with their destination */
+  a {
+    text-decoration: underline !important;
+    color: #312e81 !important;
+  }
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #475569 !important;
+    text-decoration: none !important;
+    display: inline-block;
+  }
+  a[href^="mailto"]:after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #475569 !important;
+    text-decoration: none !important;
+    display: inline-block;
+  }
+  a[href^="tel"]:after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #475569 !important;
+    text-decoration: none !important;
+    display: inline-block;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 1.2cm 1.5cm;
+  }
+}
