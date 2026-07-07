@@ -1,78 +1,180 @@
-<<<<<<< HEAD
-# Abdulgeni Abdulaziz — Portfolio (Next.js)
+<div align="center">
 
-This is your bilingual (EN/AR, with RTL) portfolio, converted from the original Vite + Express build into Next.js 15 (App Router, TypeScript). All the original features are preserved: theme toggle, keyboard shortcuts, back-to-top, animated section separators, live GitHub telemetry, the Gemini-powered chat assistant, and the print-friendly résumé stylesheet.
+# Abdulgeni Abdulaziz — Portfolio
 
-## Run locally
+### Full Stack AI Engineer · RAG Systems · Workflow Automation
 
-```bash
-npm install
-cp .env.local.example .env.local   # then fill in real keys
-npm run dev
-```
+A schematic-inspired personal portfolio built with Next.js — live GitHub telemetry, RAG/agent project catalog, and a signal-routing hero diagram, all wired into one system.
 
-Open http://localhost:3000
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-38BDF8?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=flat-square&logo=vercel)](https://vercel.com/)
+[![License](https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square)](#license)
 
-## Environment variables
+[Live Site](https://abdulgeni-abdulaziz.vercel.app) · [Report a bug](https://github.com/Abdulgeni/my-portfolio/issues) · [Contact](mailto:abdulgeniabdulaziz@gmail.com)
 
-- `GEMINI_API_KEY` — powers the portfolio chat assistant (`/api/chat`).
-- `RESEND_API_KEY` — powers the contact form (`/api/contact`).
-- `CONTACT_TO_EMAIL` — optional override for where contact form submissions are sent (defaults to Abdulgeni's email in `lib/data.ts`).
+</div>
 
-## What changed in this conversion
+---
 
-**Framework**
-- Vite + Express + React 19 → Next.js 15 App Router + React 18.
-- `server.ts`'s three routes became `app/api/github/route.ts`, `app/api/chat/route.ts`, `app/api/contact/route.ts`.
-- `App.tsx`'s JSX split across `app/layout.tsx` (nav, chat widget, back-to-top, keyboard shortcuts — anything present on every page), `components/PageShell.tsx` (scroll progress bar + RTL-aware content offset), and `app/page.tsx` (the actual section list).
-- `react-helmet-async` still drives the bilingual `<title>`/meta tags client-side (via `components/SiteMeta.tsx`), same as before; static fallback metadata is also set via Next's `generateMetadata`/`export const metadata` for SSR.
-- `motion/react` imports switched to `framer-motion` (same API, matches the originally-specified tech stack).
+## Overview
 
-**Bugs fixed**
-1. **Services section showed an empty header.** `Services.tsx` was reading `t('ui.servicesSubtitle')` / `t('ui.servicesTitle')` — neither key exists in `translations.ts` (the real keys are `servicesHeaderLabel` / `servicesHeaderTitle`), so both rendered as empty strings.
-2. **Duplicated section numbers.** `Experience.tsx`, `Education.tsx`, and `Contact.tsx` each hardcoded a prefix like `[ 04 / {t('ui.experienceHeaderLabel')} ]`, but the translation string itself already includes `"04 / ENGINEERING LOG"` — so the page showed `"04 / 04 / ENGINEERING LOG"`. Removed the hardcoded prefixes.
-3. **Chat assistant was broken.** `server.ts` called `model: "gemini-3.5-flash"`, which isn't a real Gemini model name — every chat request would fail. Changed to `gemini-2.5-flash`.
-4. **Contact form didn't send anything.** The old `/api/contact` route only did `console.log(...)` and always returned `{ success: true }` — the "MESSAGE TRANSMITTED" confirmation was cosmetic. It now actually sends the message via Resend, and returns a real error if that fails.
-5. **GitHub contribution-streak calculation never advanced past "today."** The loop's early-continue skipped decrementing the date it was checking, so it re-checked today's date twice and always bailed out instead of walking backward through previous days. Fixed the date decrement so it correctly walks the last 15 days.
+This repository is the source for my personal engineering portfolio. Rather than a generic template, the design treats the site itself as a piece of technical documentation — sections are numbered like schematic sheets, the hero renders an animated signal-routing diagram of my own workflow, and a live console panel pulls real GitHub telemetry instead of static numbers.
 
-## Deploy
+**Highlights:**
 
-Push to GitHub, import into Vercel, set the environment variables above in the Vercel dashboard, deploy.
-=======
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+- 🛰️ **Live GitHub telemetry** — real repo count, star totals, weekly commit activity, and contribution streak, fetched server-side and cached
+- 🧩 **Data-driven content** — profile, skills, experience, and projects can sync from a `portfolio-data.json` file on GitHub without a redeploy
+- 🌐 **Bilingual support** — English / Arabic with full RTL layout handling
+- 🎛️ **Filterable project catalog** — toggle between client/production systems and AI agent engineering work
+- 📬 **Working contact form** — posts to an API route (or falls back to `mailto:`)
+- ⚡ Fully responsive, keyboard-accessible, and built for Lighthouse performance
+
+---
+
+## Tech Stack
+
+| Layer            | Technology                              |
+| ----------------- | ---------------------------------------- |
+| Framework          | Next.js 16 (App Router)                  |
+| Language           | TypeScript                               |
+| Styling            | Tailwind CSS                             |
+| Icons              | lucide-react                             |
+| Hosting            | Vercel                                   |
+| Data source        | GitHub REST API + `portfolio-data.json`  |
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18.17 or later
+- npm, pnpm, or yarn
+
+### Installation
+
+```bash
+git clone https://github.com/Abdulgeni/my-portfolio.git
+cd my-portfolio
+npm install
+```
+
+### Environment Variables
+
+Create a `.env.local` file in the project root:
+
+```bash
+# GitHub Personal Access Token — required for live stats.
+# No scopes needed: only public data is read (repos, stars, public events).
+# Without this, requests are capped at 60/hour per IP and the API silently
+# falls back to placeholder numbers.
+GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx
+
+# Optional: recipient address for the contact form API route
+CONTACT_EMAIL=abdulgeniabdulaziz@gmail.com
+```
+
+> Generate a token at **GitHub → Settings → Developer settings → Personal access tokens**. Leave every scope unchecked (classic token) or select "Public repositories (read-only)" (fine-grained token) — no elevated permissions are required.
+
+### Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+.
+├── app/
+│   ├── page.tsx                 # Main portfolio page
+│   ├── api/
+│   │   ├── github/route.ts      # Live GitHub telemetry endpoint
+│   │   └── contact/route.ts     # Contact form handler
+│   └── context/
+│       └── LanguageContext.tsx  # EN / AR + RTL toggle
+├── components/
+│   └── GitHubStats.tsx          # Realtime repository telemetry panel
+├── public/
+├── .env.local                   # Local environment variables (not committed)
+└── README.md
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Live GitHub Telemetry
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The `/api/github` route fetches real data on each request (cached for 1 hour):
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
->>>>>>> 310d1b85f6650eb9992b428c73310bfb174ef3f6
+| Metric               | Source                                              |
+| --------------------- | ---------------------------------------------------- |
+| Public repositories   | `GET /users/{username}`                              |
+| Total stars           | `GET /users/{username}/repos` (summed)                |
+| Weekly commits         | `GET /users/{username}/events/public` (last 7 days)   |
+| Contribution streak   | Derived from consecutive active days in public events |
+
+> Note: `events/public` only returns the most recent ~90 days / 300 events, so very long streaks may be undercounted — this is a GitHub REST API limitation, not a bug in this project.
+
+---
+
+## Deployment
+
+The site is deployed on [Vercel](https://vercel.com/). To deploy your own copy:
+
+1. Fork or clone this repository
+2. Import it into Vercel
+3. Add `GITHUB_TOKEN` (and any other required variables) under **Project Settings → Environment Variables**
+4. Deploy — Vercel will build and serve it automatically on every push to `main`
+
+---
+
+## Content Sync
+
+Profile details, skills, experience, and project data can optionally be served from a `portfolio-data.json` file hosted on GitHub, so content updates don't require a redeploy. If that file is unreachable, the site falls back to the bundled defaults automatically — the page never breaks due to a missing or malformed sync file.
+
+---
+
+## Roadmap
+
+- [ ] Add contribution calendar heatmap visualization
+- [ ] Add blog/notes section
+- [ ] Add automated Lighthouse CI checks on PRs
+- [ ] Add dark/light theme toggle
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## Contact
+
+**Abdulgeni Abdulaziz**
+Full Stack AI Engineer · RAG Systems · Workflow Automation
+📍 Addis Ababa, Ethiopia
+
+- Email: [abdulgeniabdulaziz@gmail.com](mailto:abdulgeniabdulaziz@gmail.com)
+- GitHub: [@Abdulgeni](https://github.com/Abdulgeni)
+- LinkedIn: [abdulgeni-abdulaziz](https://www.linkedin.com/in/abdulgeni-abdulaziz-7bb360401)
+- Portfolio: [abdulgeni-abdulaziz.vercel.app](https://abdulgeni-abdulaziz.vercel.app)
+
+<div align="center">
+
+⭐ If this project was useful as a reference, consider starring the repo.
+
+</div>
