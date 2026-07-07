@@ -9,41 +9,83 @@ interface GithubStatsResult {
   contributionStreak: number;
 }
 
-// In-memory cache (per server instance), same 1-hour window as the original Express server.
+// In-memory cache (per server instance) as a lightweight backstop.
+// Note: on serverless platforms (Vercel) this cache does NOT reliably persist
+// across invocations — real caching is handled via `next: { revalidate }` below.
 let cachedGithubData: GithubStatsResult | null = null;
 let lastCacheTime = 0;
 const CACHE_TTL_MS = 3600 * 1000;
 
+const GITHUB_USER = "Abdulgeni";
+
+function buildHeaders(): HeadersInit {
+  const headers: Record<string, string> = {
+    "User-Agent": "abdulgeni-portfolio-console",
+    Accept: "application/vnd.github+json",
+  };
+  if (process.env.GITHUB_TOKEN) {
+    headers["Authorization"] = `Bearer ${process.env.GITHUB_TOKEN}`;
+  } else {
+    console.warn(
+      "GITHUB_TOKEN is not set — requests will be rate-limited to 60/hour per IP and will likely fall back to placeholder values."
+    );
+  }
+  return headers;
+}
+
 async function fetchGithubStats(): Promise<GithubStatsResult> {
-  const headers = { "User-Agent": "abdulgeni-portfolio-console" };
+  const headers = buildHeaders();
 
   try {
-    const userRes = await fetch("https://api.github.com/users/Abdulgeni", { headers });
-    let repos = 15; // default fallback matching his portfolio context
+    // ---- Public repo count ----
+    const userRes = await fetch(`https://api.github.com/users/${GITHUB_USER}`, {
+      headers,
+      next: { revalidate: 3600 },
+    });
+
+    let repos = 15; // fallback
     if (userRes.ok) {
       const userData = (await userRes.json()) as { public_repos?: number };
-      repos = userData.public_repos || repos;
+      repos = userData.public_repos ?? repos;
+    } else {
+      console.error(
+        "GitHub /users request failed:",
+        userRes.status,
+        await userRes.text()
+      );
     }
 
-    // Fetch repos to calculate total stars
-    let totalStars = 12; // default fallback
+    // ---- Total stars across repos ----
+    let totalStars = 12; // fallback
     try {
-      const reposRes = await fetch("https://api.github.com/users/Abdulgeni/repos?per_page=100", {
-        headers,
-      });
+      const reposRes = await fetch(
+        `https://api.github.com/users/${GITHUB_USER}/repos?per_page=100`,
+        { headers, next: { revalidate: 3600 } }
+      );
       if (reposRes.ok) {
         const reposData = (await reposRes.json()) as Array<{ stargazers_count?: number }>;
         if (Array.isArray(reposData)) {
           totalStars = reposData.reduce((acc, r) => acc + (r.stargazers_count || 0), 0);
         }
+      } else {
+        console.error(
+          "GitHub /repos request failed:",
+          reposRes.status,
+          await reposRes.text()
+        );
       }
     } catch (err) {
       console.error("Error fetching repo list for stars:", err);
     }
 
-    const eventsRes = await fetch("https://api.github.com/users/Abdulgeni/events", { headers });
-    let weeklyCommits = 24; // default fallback matching active state
-    let contributionStreak = 6; // default fallback streak
+    // ---- Weekly commits + contribution streak (derived from public events) ----
+    const eventsRes = await fetch(
+      `https://api.github.com/users/${GITHUB_USER}/events/public?per_page=100`,
+      { headers, next: { revalidate: 3600 } }
+    );
+
+    let weeklyCommits = 24; // fallback
+    let contributionStreak = 6; // fallback
 
     if (eventsRes.ok) {
       const events = (await eventsRes.json()) as Array<{
@@ -51,6 +93,7 @@ async function fetchGithubStats(): Promise<GithubStatsResult> {
         created_at?: string;
         payload?: { commits?: unknown[] };
       }>;
+
       const sevenDaysAgo = new Date();
       sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
 
@@ -67,11 +110,14 @@ async function fetchGithubStats(): Promise<GithubStatsResult> {
           activeDates.add(dateStr);
         }
       }
-      if (commitCount > 0) {
-        weeklyCommits = commitCount;
-      }
 
-      // Calculate consecutive active days streak from events
+      // Only overwrite the fallback once we have real signal.
+      // (Leaving commitCount === 0 as-is would misreport a quiet week as "no data".)
+      weeklyCommits = commitCount;
+
+      // Calculate consecutive active days streak from events.
+      // Note: /events/public only returns the last ~90 days / 300 events max,
+      // so long streaks may be undercounted — this is a REST API limitation.
       let streak = 0;
       const checkDate = new Date();
       for (let i = 0; i < 15; i++) {
@@ -87,7 +133,13 @@ async function fetchGithubStats(): Promise<GithubStatsResult> {
         }
         checkDate.setDate(checkDate.getDate() - 1);
       }
-      contributionStreak = Math.max(streak, 6);
+      contributionStreak = streak; // no artificial floor
+    } else {
+      console.error(
+        "GitHub /events/public request failed:",
+        eventsRes.status,
+        await eventsRes.text()
+      );
     }
 
     return { repos, weeklyCommits, totalStars, contributionStreak };
