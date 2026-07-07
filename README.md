@@ -1,18 +1,16 @@
-<div align="center">
-
 # Abdulgeni Abdulaziz — Portfolio
 
-### Full Stack AI Engineer · RAG Systems · Workflow Automation
+<div align="center">
 
-A schematic-inspired personal portfolio built with Next.js — live GitHub telemetry, RAG/agent project catalog, and a signal-routing hero diagram, all wired into one system.
+**Full Stack AI Engineer** · RAG Systems · Workflow Automation · Next.js
 
-[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-38BDF8?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=flat-square&logo=vercel)](https://vercel.com/)
-[![License](https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square)](#license)
+[Live Site](https://abdulgeni-abdulaziz.vercel.app) · [GitHub](https://github.com/Abdulgeni) · [LinkedIn](https://www.linkedin.com/in/abdulgeni-abdulaziz-7bb360401)
 
-[Live Site](https://abdulgeni-abdulaziz.vercel.app) · [Report a bug](https://github.com/Abdulgeni/my-portfolio/issues) · [Contact](mailto:abdulgeniabdulaziz@gmail.com)
+![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue?logo=typescript)
+![Tailwind](https://img.shields.io/badge/Tailwind-v4-38bdf8?logo=tailwindcss)
+![Gemini](https://img.shields.io/badge/Gemini-2.5%20Flash-8e75f2?logo=googlegemini)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 </div>
 
@@ -20,161 +18,112 @@ A schematic-inspired personal portfolio built with Next.js — live GitHub telem
 
 ## Overview
 
-This repository is the source for my personal engineering portfolio. Rather than a generic template, the design treats the site itself as a piece of technical documentation — sections are numbered like schematic sheets, the hero renders an animated signal-routing diagram of my own workflow, and a live console panel pulls real GitHub telemetry instead of static numbers.
+A bilingual (English / Arabic, full RTL support), AI-powered developer portfolio — built with Next.js 15's App Router and TypeScript. It's not a static résumé page: it ships live GitHub telemetry, a RAG-style chat assistant that can actually answer questions about my work, and a real working contact form.
 
-**Highlights:**
+## ✨ Features
 
-- 🛰️ **Live GitHub telemetry** — real repo count, star totals, weekly commit activity, and contribution streak, fetched server-side and cached
-- 🧩 **Data-driven content** — profile, skills, experience, and projects can sync from a `portfolio-data.json` file on GitHub without a redeploy
-- 🌐 **Bilingual support** — English / Arabic with full RTL layout handling
-- 🎛️ **Filterable project catalog** — toggle between client/production systems and AI agent engineering work
-- 📬 **Working contact form** — posts to an API route (or falls back to `mailto:`)
-- ⚡ Fully responsive, keyboard-accessible, and built for Lighthouse performance
+- 🌐 **Bilingual, RTL-aware** — full English/Arabic translation layer with automatic layout mirroring, not just text swapping
+- 🤖 **AI portfolio assistant** — a Gemini-powered chat widget that answers questions about my skills, projects, and experience using my actual data as context
+- 📊 **Live GitHub telemetry** — real-time public repo count, star count, weekly commits, and contribution streak, pulled straight from the GitHub API
+- 📬 **Working contact form** — sends real email via Resend, not a fake "message sent" toast
+- 🎨 **Light / dark theme toggle**
+- ⌨️ **Keyboard shortcuts** — press `?` to see them
+- 🖨️ **Print-friendly résumé view** — a dedicated print stylesheet turns the page into a clean PDF
+- 📈 **Scroll progress bar**, animated section transitions, and a back-to-top control
+- ⚡ Fully typed, strict TypeScript throughout
 
----
+## 🛠️ Tech Stack
 
-## Tech Stack
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 15 (App Router) |
+| Language | TypeScript (strict) |
+| Styling | Tailwind CSS v4 |
+| Animation | Framer Motion |
+| Icons | Lucide React |
+| AI | Google Gemini (`@google/genai`) |
+| Email | Resend |
+| Deployment | Vercel |
 
-| Layer            | Technology                              |
-| ----------------- | ---------------------------------------- |
-| Framework          | Next.js 16 (App Router)                  |
-| Language           | TypeScript                               |
-| Styling            | Tailwind CSS                             |
-| Icons              | lucide-react                             |
-| Hosting            | Vercel                                   |
-| Data source        | GitHub REST API + `portfolio-data.json`  |
-
----
-
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js 18.17 or later
-- npm, pnpm, or yarn
+- Node.js 18.18+
+- npm
 
 ### Installation
 
 ```bash
-git clone https://github.com/Abdulgeni/my-portfolio.git
-cd my-portfolio
 npm install
-```
-
-### Environment Variables
-
-Create a `.env.local` file in the project root:
-
-```bash
-# GitHub Personal Access Token — required for live stats.
-# No scopes needed: only public data is read (repos, stars, public events).
-# Without this, requests are capped at 60/hour per IP and the API silently
-# falls back to placeholder numbers.
-GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx
-
-# Optional: recipient address for the contact form API route
-CONTACT_EMAIL=abdulgeniabdulaziz@gmail.com
-```
-
-> Generate a token at **GitHub → Settings → Developer settings → Personal access tokens**. Leave every scope unchecked (classic token) or select "Public repositories (read-only)" (fine-grained token) — no elevated permissions are required.
-
-### Run locally
-
-```bash
+cp .env.local.example .env.local   # then fill in your real keys
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Visit **http://localhost:3000**
 
-### Build for production
+### Environment Variables
+
+| Variable | Required | Purpose |
+|---|---|---|
+| `GEMINI_API_KEY` | Yes, for the chat assistant | Get one free at [aistudio.google.com/apikey](https://aistudio.google.com/apikey) |
+| `RESEND_API_KEY` | Yes, for the contact form | Get one free at [resend.com](https://resend.com) |
+| `CONTACT_TO_EMAIL` | Optional | Where contact form submissions are delivered (defaults to my email) |
+| `CONTACT_FROM_EMAIL` | Optional | Custom sender once you verify a domain in Resend; defaults to Resend's sandbox sender |
+| `GITHUB_TOKEN` | Optional | Raises the GitHub API rate limit from 60/hr to 5,000/hr |
 
 ```bash
-npm run build
-npm start
+GEMINI_API_KEY=your_key_here
+RESEND_API_KEY=your_key_here
+CONTACT_TO_EMAIL=abdulgeniabdulaziz@gmail.com
+CONTACT_FROM_EMAIL=
+GITHUB_TOKEN=
 ```
 
----
-
-## Project Structure
+## 📁 Project Structure
 
 ```
-.
-├── app/
-│   ├── page.tsx                 # Main portfolio page
-│   ├── api/
-│   │   ├── github/route.ts      # Live GitHub telemetry endpoint
-│   │   └── contact/route.ts     # Contact form handler
-│   └── context/
-│       └── LanguageContext.tsx  # EN / AR + RTL toggle
-├── components/
-│   └── GitHubStats.tsx          # Realtime repository telemetry panel
-├── public/
-├── .env.local                   # Local environment variables (not committed)
-└── README.md
+app/
+├── layout.tsx              # Root layout — fonts, providers, nav, chat widget
+├── page.tsx                # Section list with scroll-triggered fade-ins
+├── globals.css             # Theme tokens, print stylesheet, animations
+└── api/
+    ├── github/route.ts     # Live GitHub telemetry
+    ├── chat/route.ts       # Gemini-powered portfolio assistant
+    └── contact/route.ts    # Resend email delivery
+
+components/                 # Hero, Nav, Projects, Skills, Experience,
+                             # Education, Contact, ChatWidget, etc.
+context/
+└── LanguageContext.tsx      # EN/AR translation + RTL state
+
+lib/
+├── data.ts                 # Portfolio content (source of truth)
+├── translations.ts         # EN/AR translation dictionary
+└── types.ts                 # Shared TypeScript interfaces
 ```
 
----
+## 🔌 API Routes
 
-## Live GitHub Telemetry
+| Route | Description |
+|---|---|
+| `GET /api/github` | Fetches live repo count, stars, weekly commits, and streak from the GitHub API (cached hourly) |
+| `POST /api/chat` | Sends a message to Gemini with the full portfolio dataset as context |
+| `POST /api/contact` | Validates and sends a contact form submission via Resend |
 
-The `/api/github` route fetches real data on each request (cached for 1 hour):
+## 📦 Deployment
 
-| Metric               | Source                                              |
-| --------------------- | ---------------------------------------------------- |
-| Public repositories   | `GET /users/{username}`                              |
-| Total stars           | `GET /users/{username}/repos` (summed)                |
-| Weekly commits         | `GET /users/{username}/events/public` (last 7 days)   |
-| Contribution streak   | Derived from consecutive active days in public events |
+1. Push this repo to GitHub
+2. Import it into [Vercel](https://vercel.com)
+3. Add the environment variables above in **Project Settings → Environment Variables**
+4. Deploy
 
-> Note: `events/public` only returns the most recent ~90 days / 300 events, so very long streaks may be undercounted — this is a GitHub REST API limitation, not a bug in this project.
+## 📄 License
 
----
-
-## Deployment
-
-The site is deployed on [Vercel](https://vercel.com/). To deploy your own copy:
-
-1. Fork or clone this repository
-2. Import it into Vercel
-3. Add `GITHUB_TOKEN` (and any other required variables) under **Project Settings → Environment Variables**
-4. Deploy — Vercel will build and serve it automatically on every push to `main`
+MIT — feel free to fork this and adapt it for your own portfolio.
 
 ---
-
-## Content Sync
-
-Profile details, skills, experience, and project data can optionally be served from a `portfolio-data.json` file hosted on GitHub, so content updates don't require a redeploy. If that file is unreachable, the site falls back to the bundled defaults automatically — the page never breaks due to a missing or malformed sync file.
-
----
-
-## Roadmap
-
-- [ ] Add contribution calendar heatmap visualization
-- [ ] Add blog/notes section
-- [ ] Add automated Lighthouse CI checks on PRs
-- [ ] Add dark/light theme toggle
-
----
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-## Contact
-
-**Abdulgeni Abdulaziz**
-Full Stack AI Engineer · RAG Systems · Workflow Automation
-📍 Addis Ababa, Ethiopia
-
-- Email: [abdulgeniabdulaziz@gmail.com](mailto:abdulgeniabdulaziz@gmail.com)
-- GitHub: [@Abdulgeni](https://github.com/Abdulgeni)
-- LinkedIn: [abdulgeni-abdulaziz](https://www.linkedin.com/in/abdulgeni-abdulaziz-7bb360401)
-- Portfolio: [abdulgeni-abdulaziz.vercel.app](https://abdulgeni-abdulaziz.vercel.app)
 
 <div align="center">
-
-⭐ If this project was useful as a reference, consider starring the repo.
-
+Built by <strong>Abdulgeni Abdulaziz</strong> · <a href="mailto:abdulgeniabdulaziz@gmail.com">abdulgeniabdulaziz@gmail.com</a>
 </div>
