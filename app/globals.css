@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-void: #060810;
+    --bg-surface: #0C1018;
+    --bg-elevated: #141B26;
+    --border: rgba(255, 255, 255, 0.06);
+    --border-glow: rgba(103, 232, 249, 0.4);
+
+    --signal-ice: #67E8F9;
+    --signal-ice-bright: #A5F3FC;
+    --signal-pulse-red: #EF4444;
+    --signal-ice-dim: rgba(103, 232, 249, 0.1);
+
+    --text-primary: #EEF2F7;
+    --text-secondary: #8B96A8;
+    --text-tertiary: #4A5262;
+  }
+
+  html.light, [data-theme="light"] {
+    --bg-void: #F2F5FA;
+    --bg-surface: #FFFFFF;
+    --bg-elevated: #E5EDF7;
+    --border: rgba(15, 23, 42, 0.12);
+    --border-glow: rgba(2, 132, 199, 0.4);
+
+    --signal-ice: #0284C7;
+    --signal-ice-bright: #0369A1;
+    --signal-pulse-red: #DC2626;
+    --signal-ice-dim: rgba(2, 132, 199, 0.12);
+
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-tertiary: #64748B;
+  }
+
+  body {
+    background-color: var(--bg-void);
+    color: var(--text-primary);
+    font-family: var(--font-inter), sans-serif;
+    overflow-x: hidden;
+    selection-background-color: rgba(103, 232, 249, 0.35);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  button,
+  a,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    cursor: pointer !important;
+  }
+}
+
+/* Light Theme Overrides for crisp Day Mode ergonomics */
+html.light body {
+  background-color: #F2F5FA !important;
+  color: #0F172A !important;
+}
+
+html.light .bg-\[\#060810\] {
+  background-color: #F2F5FA !important;
+}
+
+html.light .bg-\[\#0C1018\] {
+  background-color: #FFFFFF !important;
+}
+
+html.light .bg-\[\#0C1018\]\/90 {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+}
+
+html.light .bg-\[\#141B26\] {
+  background-color: #E2ECF8 !important;
+}
+
+html.light .text-\[\#EEF2F7\] {
+  color: #0F172A !important;
+}
+
+html.light .text-\[\#8B96A8\] {
+  color: #475569 !important;
+}
+
+html.light .text-\[\#A5F3FC\] {
+  color: #0284C7 !important;
+}
+
+html.light .text-\[\#67E8F9\] {
+  color: #0369A1 !important;
+}
+
+html.light .border-white\/5,
+html.light .border-white\/10,
+html.light .border-white\/15,
+html.light .border-white\/20 {
+  border-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+html.light .border-\[\#67E8F9\]\/20,
+html.light .border-\[\#67E8F9\]\/30,
+html.light .border-\[\#67E8F9\]\/40 {
+  border-color: rgba(2, 132, 199, 0.3) !important;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #F2F5FA;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border: 1px solid rgba(2, 132, 199, 0.3);
+}
+
+.font-space {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-jetbrains-mono), monospace;
+}
+
+.font-sans {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060810;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #141B26;
+  border-radius: 3px;
+  border: 1px solid rgba(103, 232, 249, 0.25);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #67E8F9;
+}
+
+/* Background grid pattern */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(103, 232, 249, 0.18) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Glow utilities */
+.glow-border {
+  box-shadow: 0 0 20px -3px rgba(103, 232, 249, 0.35), inset 0 0 15px -3px rgba(103, 232, 249, 0.15);
+}
+
+.glow-text-supreme, .glow-text-ice, .glow-text-amber, .glow-text-violet {
+  text-shadow: 0 0 12px rgba(103, 232, 249, 0.7);
+}
+
+.glow-text-ice-bright, .glow-text-copper, .glow-text-gold {
+  text-shadow: 0 0 14px rgba(165, 243, 252, 0.85);
+}
+
+.glow-text-pulse-red, .glow-text-red {
+  text-shadow: 0 0 12px rgba(239, 68, 68, 0.75);
+}
+
+/* Terminal Scanline Effect */
+.scanline {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(103, 232, 249, 0.03) 50%,
+    rgba(103, 232, 249, 0.03)
+  );
+  background-size: 100% 4px;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s infinite ease-in-out;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-33.333%); }
+}
+
