@@ -1,136 +1,202 @@
 <div align="center">
 
-# Abdulgeni Abdulaziz
+<img src="public/og-image.PNG" alt="Abdulgeni Abdulaziz Portfolio Banner" width="100%" />
 
-### Full Stack AI Engineer
+<br/><br/>
 
-*Building intelligent systems at the intersection of full-stack engineering and applied AI*
+# ⚡ ABDULGENI ABDULAZIZ
 
-[![Live Site](https://img.shields.io/badge/Live-Portfolio-67E8F9?style=for-the-badge)](https://your-domain.vercel.app)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/abdulgeni-abdulaziz-7bb360401)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Abdulgeni)
+### `// Full Stack AI Engineer`
+
+<em>Architecting intelligent systems where full-stack engineering meets applied AI</em>
+
+<br/>
+
+[![Live Portfolio](https://img.shields.io/badge/🌐_LIVE_SITE-Visit_Now-67E8F9?style=for-the-badge&labelColor=0C1018)](https://your-domain.vercel.app)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0C1018)](https://www.linkedin.com/in/abdulgeni-abdulaziz-7bb360401)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white&labelColor=0C1018)](https://github.com/Abdulgeni)
+[![Email](https://img.shields.io/badge/Email-Contact-EA4335?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0C1018)](mailto:abdulgeniabdulaziz@gmail.com)
+
+<br/>
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&pause=1000&color=67E8F9&center=true&vCenter=true&width=600&lines=RAG+Pipelines+%26+Vector+Retrieval;Production-Grade+AI+Chatbots;Full-Stack+SaaS+Platforms;Model+Context+Protocol+(MCP)+Servers" alt="Typing SVG" />
+
+</div>
+
+<br/>
+
+---
+
+<div align="center">
+
+### `📍 Addis Ababa, Ethiopia` &nbsp;·&nbsp; `🎓 BSc CS & Engineering, ASTU` &nbsp;·&nbsp; `🗣️ 5 Languages`
 
 </div>
 
 ---
 
-## Overview
+<br/>
 
-This is my personal engineering portfolio — a full-stack, AI-augmented showcase built to demonstrate production-grade frontend craftsmanship alongside real backend and AI integration work, not just static project cards.
+## 📖 Table of Contents
 
-It features a live embedded AI assistant, real-time GitHub statistics, an interactive system architecture explorer, and a WebGL-powered neural background — all built with a modern App Router architecture, strict TypeScript, and careful attention to performance and accessibility.
+<div align="center">
 
----
+[Overview](#-overview) • [Features](#-features) • [Tech Stack](#-tech-stack) • [Getting Started](#-getting-started) • [Architecture](#-project-structure) • [Roadmap](#-roadmap) • [Connect](#-connect)
+
+</div>
+
+<br/>
+
+## ✦ Overview
+
+> This isn't a template. This is a fully engineered, production-grade portfolio built to *prove* full-stack and applied-AI capability — not just describe it.
+
+Every section of this site is a real, working system: a live Gemini-powered AI assistant that actually reasons about my background, GitHub statistics pulled live from the API (not screenshots), and an interactive architecture explorer showing genuine system designs I've shipped. Built on Next.js's App Router with strict TypeScript, a custom WebGL particle background, and meticulous motion design throughout.
+
+<br/>
 
 ## ✦ Features
 
-| | |
-|---|---|
-| 🤖 **Live AI Assistant** | Embedded Gemini-powered chat assistant that can answer questions about my background, skills, and projects in real time |
-| 📊 **Dynamic GitHub Stats** | Live repository count, stars, forks, and language breakdown pulled directly from the GitHub API |
-| 🏗️ **Interactive Architecture Explorer** | Bento-grid breakdown of real system designs — RAG pipelines, automation workflows, and full-stack API patterns |
-| 🌐 **Multi-language Support** | Full UI localization with a dedicated language switcher |
-| 🌗 **Light / Dark Theme** | Smooth animated theme switching with a keyboard shortcut (`T`) |
-| ✨ **WebGL Neural Background** | Custom Three.js particle system rendered client-side for a distinctive visual identity |
-| 📬 **Working Contact Form** | Real email delivery via Resend, not a mock form |
-| 📱 **Fully Responsive** | Purpose-built mobile navigation with scrollable drawer, optimized for every screen size |
+<table>
+<tr>
+<td width="50%" valign="top">
 
----
+### 🤖 Live AI Assistant
+Embedded Gemini-powered chat that reasons about my real background, skills, and project history — not a scripted FAQ bot.
+
+### 📊 Dynamic GitHub Stats
+Repository count, stars, forks, followers, and language breakdown — pulled live from the GitHub API on every visit.
+
+### 🏗️ Architecture Explorer
+An interactive bento grid breaking down real system designs: RAG pipelines, automation workflows, secured API proxy patterns.
+
+### 🌐 Multi-Language Support
+Complete UI localization with a polished, animated language switcher.
+
+</td>
+<td width="50%" valign="top">
+
+### 🌗 Adaptive Theming
+Buttery-smooth light/dark theme transitions, with a `T` keyboard shortcut for power users.
+
+### ✨ WebGL Neural Background
+A custom Three.js particle field, hand-tuned for performance without sacrificing visual density.
+
+### 📬 Real Contact Delivery
+A working contact form with genuine email delivery via Resend — messages land in my actual inbox.
+
+### 📱 Engineered for Mobile
+Purpose-built scrollable navigation drawer and touch-optimized interactions across every breakpoint.
+
+</td>
+</tr>
+</table>
+
+<br/>
 
 ## ✦ Tech Stack
 
 <div align="center">
 
-![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
-![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
-![Framer Motion](https://img.shields.io/badge/Framer%20Motion-Animations-EF008F?style=flat-square&logo=framer&logoColor=white)
-![Three.js](https://img.shields.io/badge/Three.js-WebGL-000000?style=flat-square&logo=three.js&logoColor=white)
-![Gemini API](https://img.shields.io/badge/Gemini%20API-Google%20GenAI-4285F4?style=flat-square&logo=google&logoColor=white)
+<table>
+<tr><td align="center" width="96"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" width="40"/><br/><sub><b>Next.js</b></sub></td>
+<td align="center" width="96"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="40"/><br/><sub><b>React</b></sub></td>
+<td align="center" width="96"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="40"/><br/><sub><b>TypeScript</b></sub></td>
+<td align="center" width="96"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" width="40"/><br/><sub><b>Tailwind</b></sub></td>
+<td align="center" width="96"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg" width="40"/><br/><sub><b>Three.js</b></sub></td>
+<td align="center" width="96"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="40"/><br/><sub><b>Node.js</b></sub></td>
+</tr>
+</table>
 
 </div>
 
-**Frontend:** Next.js (App Router) · React · TypeScript · Tailwind CSS · Framer Motion
-**3D / Graphics:** Three.js · @react-three/fiber · @react-three/drei
-**AI:** Google Gemini API (`@google/genai`)
-**Email:** Resend
-**Icons:** Lucide React
+| Layer | Technologies |
+|---|---|
+| **Frontend** | Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · Framer Motion |
+| **3D / Graphics** | Three.js · @react-three/fiber · @react-three/drei |
+| **AI** | Google Gemini API (`@google/genai`) |
+| **Email** | Resend |
+| **Icons** | Lucide React |
+| **Deployment** | Vercel |
 
----
+<br/>
 
 ## ✦ Getting Started
 
-### Prerequisites
-- Node.js `20.19+`
-- A [Gemini API key](https://aistudio.google.com/apikey) (for the AI assistant)
-- A [Resend API key](https://resend.com) (optional, for the contact form)
+<table>
+<tr><td>
 
-### Installation
+**Prerequisites:** Node.js `20.19+` · A [Gemini API key](https://aistudio.google.com/apikey) · A [Resend API key](https://resend.com) *(optional)*
 
 ```bash
-# Clone the repository
+# 1. Clone the repository
 git clone https://github.com/Abdulgeni/my-portfolio.git
 cd my-portfolio
 
-# Install dependencies
+# 2. Install dependencies
 npm install
 
-# Set up environment variables
+# 3. Configure environment variables
 cp .env.example .env.local
-# then fill in GEMINI_API_KEY and RESEND_API_KEY in .env.local
+# → fill in GEMINI_API_KEY and RESEND_API_KEY
 
-# Run the development server
+# 4. Launch the dev server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view it locally.
+Then open **[localhost:3000](http://localhost:3000)** 🚀
 
-### Production Build
+</td></tr>
+</table>
 
+**Production build:**
 ```bash
-npm run build
-npm run start
+npm run build && npm run start
 ```
 
----
+<br/>
 
 ## ✦ Project Structure
-├── app/ # Next.js App Router pages & API routes
+my-portfolio/
+├── app/
 │ ├── api/
-│ │ ├── chat/ # AI assistant endpoint (Gemini)
-│ │ ├── contact/ # Contact form email delivery (Resend)
-│ │ └── github/ # Live GitHub stats fetcher
-│ └── page.tsx
-├── components/ # UI components (Hero, Navbar, sections, etc.)
-├── lib/ # Data, contexts (theme, language), animations
-├── hooks/ # Custom React hooks
-└── public/ # Static assets
+│ │ ├── chat/ ⟶ Gemini AI assistant endpoint
+│ │ ├── contact/ ⟶ Resend email delivery
+│ │ └── github/ ⟶ Live GitHub stats fetcher
+│ └── page.tsx ⟶ Root composition
+├── components/ ⟶ Hero, Navbar, sections, widgets
+├── lib/ ⟶ Data, contexts, animation presets
+├── hooks/ ⟶ Custom React hooks
+└── public/ ⟶ Static assets
 
 
----
+<br/>
 
 ## ✦ Roadmap
 
-- [ ] Live GitHub contribution graph via GraphQL API
+- [ ] Live GitHub contribution graph via GraphQL
 - [ ] Dynamic project cards sourced from pinned repositories
-- [ ] Blog / engineering notes section
-- [ ] Automated OG image generation per section
+- [ ] Engineering blog / dev-log section
+- [ ] Auto-generated per-section OG images
 
----
+<br/>
 
 ## ✦ Connect
 
 <div align="center">
 
-📧 [abdulgeniabdulaziz@gmail.com](mailto:abdulgeniabdulaziz@gmail.com) · 📍 Addis Ababa, Ethiopia
+<br/>
 
-</div>
+**Let's build something intelligent together.**
 
----
+[![Email](https://img.shields.io/badge/abdulgeniabdulaziz@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:abdulgeniabdulaziz@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/Abdulgeni_Abdulaziz-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/abdulgeni-abdulaziz-7bb360401)
+[![GitHub](https://img.shields.io/badge/@Abdulgeni-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Abdulgeni)
 
-<div align="center">
+<br/><br/>
 
-*Built by [Abdulgeni Abdulaziz](https://github.com/Abdulgeni) — Full Stack AI Engineer*
+<sub>Built with obsessive attention to detail by <b>Abdulgeni Abdulaziz</b></sub>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=67E8F9&height=100&section=footer"/>
 
 </div>
